@@ -13,23 +13,30 @@
     body {
       overflow: hidden;
       background-color: pink; /* Pink background */
-      color: red; /* Red text */
-      font-family: Arial, sans-serif;
+      color: white; /* White text */
+      font-family: impact;
     }
     .love-card {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color: red;
-      color: white;
-      padding: 20px;
-      border-radius: 20px;
+      width: 80%; /* Adjust width as needed */
+      text-align: center;
     }
     .heart {
       position: absolute;
       color: red; /* Red heart icons */
       animation: fall 5s linear infinite;
+    }
+    #gift-icon {
+      font-size: 3em; /* Adjust size of the gift icon */
+      cursor: pointer;
+      animation: flip 1s infinite alternate; /* Add flip animation */
+    }
+    #exclamation {
+      cursor: pointer;
+      animation: drop 1s ease-out infinite alternate; /* Add drop animation */
     }
     @keyframes fall {
       0% {
@@ -39,19 +46,51 @@
         transform: translateY(100vh) rotate(360deg);
       }
     }
+    @keyframes flip {
+      0% {
+        transform: rotateY(0deg);
+      }
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+    @keyframes drop {
+      0% {
+        transform: translateY(-5px);
+      }
+      100% {
+        transform: translateY(5px);
+      }
+    }
+    @keyframes fly-out {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(50px, -100px);
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="love-card">
-    <h1 class="text-center mb-4">Happy Valentine's Day!</h1>
-    <h2 class="text-center">Victor Lai & Kimberly Chang Yii</h2>
-    <div id="countdown" class="mt-4 text-center"></div>
+  <div class="love-card text-center">
+    <h3>❤️ 情人节快乐 ❤️</h3>
+    <h4>Victor Lai & Kimberly Chang Yii</h4>
+    <div>我们已经在一起</div>
+    <div id="countdown"></div><br>
+    <p class="text-center" id="gift-text" style="color:orange; background-color: #fff; margin-left: 20px; margin-right: 20px; border-radius: 5px;">您有一个礼物请查收</p>
+    <div id="gift-icon" onclick="giftClick()">!<br><i class="fas fa-gift" id="exclamation"></i></div>
   </div>
 
   <!-- Font Awesome -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
   <!-- Custom JavaScript -->
   <script>
+    // Counter for the number of clicks
+    var clickCount = 0;
+
     // Function to calculate the time since the start date
     function timeSince(startDate) {
       var currentDate = new Date();
@@ -70,7 +109,7 @@
       var startDate = new Date(2023, 10, 21); // November is 10 because months are zero-indexed
       var time = timeSince(startDate);
       var countdownElement = document.getElementById('countdown');
-      countdownElement.innerHTML = `${time.days} days ${time.hours} hours ${time.minutes} minutes ${time.seconds} seconds`;
+      countdownElement.innerHTML = `${time.days} 天 ${time.hours} 小时 ${time.minutes} 分钟 ${time.seconds} 秒`;
     }
 
     // Update countdown every second
@@ -90,6 +129,74 @@
 
     // Create hearts every 0.5 seconds
     setInterval(createHeart, 500);
+
+    // Function to handle click on the gift icon
+    function giftClick() {
+      clickCount++; // Increment the click count
+      var giftText = document.getElementById('gift-text');
+
+      if (clickCount === 1) {
+        giftText.innerText = "情人节没什么能给你";
+      } else if (clickCount === 2) {
+        giftText.innerText = "这是我一点小小心意";
+      }else if (clickCount === 3) {
+        giftText.innerText = "希望我的阿bb不介意";
+      }else if (clickCount === 4) {
+        giftText.innerText = "准备好了吗";
+      }else if (clickCount === 5) {
+        giftText.innerText = "准备收礼物咯";
+      }else if (clickCount === 6) {
+        giftText.innerText = "倒数！";
+      }else if (clickCount === 7) {
+        giftText.innerText = "3!";
+      }else if (clickCount === 8) {
+        giftText.innerText = "2!";
+      }else if (clickCount === 9) {
+        giftText.innerText = "1!";
+      }else if (clickCount === 10) {
+        // If 10 clicks, display the photo as a modal
+        displayPhotoModal();
+      }
+    }
+
+    // Function to display the photo as a modal
+    function displayPhotoModal() {
+      var modalContainer = document.createElement('div');
+      modalContainer.classList.add('modal', 'fade', 'show', 'd-block');
+      modalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+      modalContainer.setAttribute('tabindex', '-1');
+      modalContainer.setAttribute('role', 'dialog');
+      modalContainer.setAttribute('aria-labelledby', 'exampleModalCenterTitle');
+      modalContainer.setAttribute('aria-hidden', 'true');
+
+      var modalDialog = document.createElement('div');
+      modalDialog.classList.add('modal-dialog', 'modal-dialog-centered');
+
+      var modalContent = document.createElement('div');
+      modalContent.classList.add('modal-content');
+
+      var modalBody = document.createElement('div');
+      modalBody.classList.add('modal-body');
+
+      var photo = document.createElement('img');
+      photo.src = 'loveu520.jpg'; // Change 'your-photo.jpg' to the actual path of your photo
+      photo.style.maxWidth = '100%';
+      photo.style.height = 'auto';
+      modalBody.appendChild(photo);
+
+      modalContent.appendChild(modalBody);
+      modalDialog.appendChild(modalContent);
+      modalContainer.appendChild(modalDialog);
+      
+      document.body.appendChild(modalContainer);
+
+      // Close the modal when clicked outside
+      modalContainer.addEventListener('click', function(event) {
+        if (event.target === modalContainer) {
+          modalContainer.remove();
+        }
+      });
+    }
   </script>
 </body>
 </html>
