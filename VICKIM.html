@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Day Celebration</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      overflow: hidden;
+      background-color: pink; /* Pink background */
+      color: #fff; /* Red text */
+      font-family: Arial, sans-serif;
+    }
+    .heart {
+      position: absolute;
+      color: red; /* Red heart icons */
+      animation: fall 5s linear infinite;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h1 class="text-center mt-5 mb-4">Happy Valentine's Day!</h1>
+        <h2 class="text-center">Victor Lai & Kimberly Chang Yii</h2>
+        <div id="countdown" class="mt-4"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script>
+    // Function to calculate the time since the start date
+    function timeSince(startDate) {
+      var currentDate = new Date();
+      var timeDifference = currentDate.getTime() - startDate.getTime();
+
+      var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      return { days, hours, minutes, seconds };
+    }
+
+    // Function to update the countdown
+    function updateCountdown() {
+      var startDate = new Date(2023, 10, 21); // November is 10 because months are zero-indexed
+      var time = timeSince(startDate);
+      var countdownElement = document.getElementById('countdown');
+      countdownElement.innerHTML = `${time.days} days ${time.hours} hours ${time.minutes} minutes ${time.seconds} seconds`;
+    }
+
+    // Update countdown every second
+    setInterval(updateCountdown, 1000);
+
+    // Function to create heart icons
+    function createHeart() {
+      var heart = document.createElement('i');
+      heart.classList.add('fas', 'fa-heart', 'heart');
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      document.body.appendChild(heart);
+      setTimeout(function () {
+        heart.remove();
+      }, 5000); // Remove the heart after 5 seconds
+    }
+
+    // Create hearts every 0.5 seconds
+    setInterval(createHeart, 500);
+  </script>
+</body>
+</html>
