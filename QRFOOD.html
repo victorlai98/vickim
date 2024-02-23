@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SHOP NAME</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    .body {
+      margin: 0;
+      background-color: black;
+      color: white;
+    }
+    .container_top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: black;
+      height: 5%;
+      padding: 10px;
+    }
+    .container_middle {
+      height: 60%;
+    }
+    .container_middle_2 {
+      height: 5%;
+      overflow-x: auto; /* Enable horizontal scrolling */
+    }
+    .container_bottom {
+      padding-top: 0px;
+    }
+    .nav-link {
+      color: white;
+	  text-align: center; /* Center-align text */
+		
+    }
+    .accordion .card-header {
+      background-color: darkgreen;
+    }
+    .accordion .card-header a {
+      color: white;
+    }
+    .navbar-nav {
+      display: flex;
+      flex-direction: row; /* Horizontal alignment */
+    }
+    .navbar-nav .nav-item {
+		padding-left: 10px;
+		padding-right: 10px; /* Adjust spacing between items */
+	  border-radius: 4px; /* Add border radius */
+    }
+	.nav_container_left{
+		img-color: orange;
+	}
+	.nav_container_right{
+		background-color: orange;
+		padding: 5px;
+		border-radius: 2px; /* Add border radius */
+		font-size:2.5vw;
+	}
+	@media screen and (min-width: 600px) {
+	  .nav_container_right, .nav_container_left{
+		 font-size: 12px;
+	  }
+	}
+	.flex-container {
+	  display: flex;
+	  flex-wrap: nowrap;
+	}
+	.float-card {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: darkgreen;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+	.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	}
+
+	.btn-group {
+		margin-left: auto;
+	}
+  </style>
+</head>
+<body class="body" data-spy="scroll" data-target=".navbar" data-bs-offset="50">
+
+<div class="container_top  sticky-top">
+  <div class="nav_container_left" id="nav_container_left">
+    <img src="house-solid.png" style="width: 20px; height: 20px">
+  </div>
+  <div class="nav_container_center" id="nav_container_center">
+    SHOP NAME
+  </div>
+  <div class="nav_container_right" id="nav_container_right">
+    TABLE 1
+  </div>
+</div>
+
+<div class="container_middle">
+	<div id="carouselExampleIndicators" class="carousel slide">
+	  <div class="carousel-indicators">
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+	  </div>
+	  <div class="carousel-inner">
+		<div class="carousel-item active">
+		  <img src="new-food-ads.jpg" class="d-block w-100" alt="...">
+		</div>
+		<div class="carousel-item">
+		  <img src="new-food-ads.jpg" class="d-block w-100" alt="...">
+		</div>
+		<div class="carousel-item">
+		  <img src="new-food-ads.jpg" class="d-block w-100" alt="...">
+		</div>
+	  </div>
+	  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Previous</span>
+	  </button>
+	  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Next</span>
+	  </button>
+	</div>
+</div>
+
+<div class="container_middle_2 sticky-top">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li id="nav_menu_1" class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#collapse1">Rice</a>
+        </li>
+        <li id="nav_menu_2" class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#collapse2">Noodles</a>
+        </li>
+        <li id="nav_menu_3" class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#collapse3">Soup</a>
+        </li>
+        <li id="nav_menu_4" class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#collapse4">Stir Fried</a>
+        </li>
+        <li id="nav_menu_5" class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#collapse5">Snack</a>
+        </li>
+        <li id="nav_menu_6" class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#collapse6">Drinks</a>
+        </li>
+        <!-- Add more menu items as needed -->
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div id="container_bottom" class="container_bottom">  
+    <div id="accordion">
+		<div class="card">
+		  <div class="card-header" data-bs-toggle="collapse" href="#collapse1">
+			<a class="card-link">Rice</a>
+		  </div>
+		  <div id="collapse1" class="collapse show" data-bs-parent="#accordion">
+		  
+			<div class="flex-container">
+				<div class="" style="width: 65%;">
+				  <div class="card-body">
+					<h5 class="card-title">Chicken Rice</h5>
+					<p class="card-text"><small class="text-muted">RM 8.00</small></p>
+					<a href="#" class="btn btn-primary">+</a>
+				  </div>
+				</div>
+				<div class="" style="width: 35%;">
+					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
+				</div>
+			</div>
+			<div class="flex-container">
+				<div class="" style="width: 65%;">
+				  <div class="card-body">
+					<h5 class="card-title">Nasi Lemak</h5>
+					<p class="card-text"><small class="text-muted">RM 10.00</small></p>
+					<a href="#" class="btn btn-primary">+</a>
+				  </div>
+				</div>
+				<div class="" style="width: 35%;">
+					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
+				</div>
+			</div>
+			<div class="flex-container">
+				<div class="" style="width: 65%;">
+				  <div class="card-body">
+					<h5 class="card-title">Curry Chicken Rice</h5>
+					<p class="card-text"><small class="text-muted">RM 11.00</small></p>
+					<a href="#" class="btn btn-primary">+</a>
+				  </div>
+				</div>
+				<div class="" style="width: 35%;">
+					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
+				</div>
+			</div>
+			
+		  </div>
+		</div>
+		<div class="card">
+		  <div class="card-header" data-bs-toggle="collapse" href="#collapse2">
+			<a class="collapsed card-link">Noodles</a>
+		  </div>
+		  <div id="collapse2" class="collapse" data-bs-parent="#accordion">
+			
+			<div class="flex-container">
+				<div class="" style="width: 65%;">
+				  <div class="card-body">
+					<h5 class="card-title">Kolo Mee</h5>
+					<p class="card-text"><small class="text-muted">RM 7.00</small></p>
+					<a href="#" class="btn btn-primary">+</a>
+				  </div>
+				</div>
+				<div class="" style="width: 35%;">
+					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
+				</div>
+			</div>
+			
+		  </div>
+		</div>
+		<div class="card">
+		  <div class="card-header" data-bs-toggle="collapse" href="#collapse3">
+			<a class="collapsed card-link">Soup</a>
+		  </div>
+		  <div id="collapse3" class="collapse" data-bs-parent="#accordion">
+			
+			<div class="flex-container">
+				<div class="" style="width: 65%;">
+				  <div class="card-body">
+					<h5 class="card-title">Tomyum Soup</h5>
+					<p class="card-text"><small class="text-muted">RM 15.00</small></p>
+					<a href="#" class="btn btn-primary">+</a>
+				  </div>
+				</div>
+				<div class="" style="width: 35%;">
+					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
+				</div>
+			</div>
+			
+		  </div>
+		</div>
+		<div class="card">
+		  <div class="card-header" data-bs-toggle="collapse" href="#collapse4">
+			<a class="collapsed card-link">Stir Fried</a>
+		  </div>
+		  <div id="collapse4" class="collapse" data-bs-parent="#accordion">
+			
+			<div class="flex-container">
+				<div class="" style="width: 65%;">
+				  <div class="card-body">
+					<h5 class="card-title">Fried Kueh Tiaw</h5>
+					<p class="card-text"><small class="text-muted">RM 8.00</small></p>
+					<a href="#" class="btn btn-primary">+</a>
+				  </div>
+				</div>
+				<div class="" style="width: 35%;">
+					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
+				</div>
+			</div>
+			
+		  </div>
+		</div>
+		<div class="card">
+		  <div class="card-header" data-bs-toggle="collapse" href="#collapse5">
+			<a class="collapsed card-link">Snack</a>
+		  </div>
+		  <div id="collapse5" class="collapse" data-bs-parent="#accordion">
+			
+			<div class="flex-container">
+				<div class="" style="width: 65%;">
+				  <div class="card-body">
+					<h5 class="card-title">French Fried</h5>
+					<p class="card-text"><small class="text-muted">RM 6.00</small></p>
+					<a href="#" class="btn btn-primary">+</a>
+				  </div>
+				</div>
+				<div class="" style="width: 35%;">
+					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
+				</div>
+			</div>
+			
+		  </div>
+		</div>
+		<div class="card">
+		  <div class="card-header" data-bs-toggle="collapse" href="#collapse6">
+			<a class="collapsed card-link">Drinks</a>
+		  </div>
+		  <div id="collapse6" class="collapse" data-bs-parent="#accordion">
+			
+			<div class="flex-container">
+				<div class="" style="width: 65%;">
+				  <div class="card-body">
+					<h5 class="card-title">Coca cola</h5>
+					<p class="card-text"><small class="text-muted">RM 3.00</small></p>
+					<a href="#" class="btn btn-primary">+</a>
+				  </div>
+				</div>
+				<div class="" style="width: 35%;">
+					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
+				</div>
+			</div>
+			
+		  </div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-bottom">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="cartModalLabel" style="color: #000;">Order List</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		  </div>
+			<div class="modal-body" id="cartItems">
+			<!-- Cart items will be dynamically added here -->
+		</div>
+		<div class="modal-footer">
+			<div>Total Price: <span id="totalPrice" class="text-muted">RM 0.00</span></div>
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Order More</button>
+			<button type="button" class="btn btn-primary">Checkout</button>
+		</div>
+
+		</div>
+	  </div>
+	</div>
+
+	<!-- Update the button in the HTML body to trigger the modal -->
+	<button class="float-card bg-opacity-10" data-bs-toggle="modal" data-bs-target="#cartModal">Order List <span id="cartBadge" class="badge bg-warning">0</span></button>
+
+	
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('#accordion').on('hidden.bs.collapse', function (e) {
+        var target = $(e.target).attr('id');
+        $('#nav_menu_' + target.substr(target.length - 1)).css('background-color', '');
+    });
+
+    $('#accordion').on('shown.bs.collapse', function (e) {
+        var target = $(e.target).attr('id');
+        $('#nav_menu_' + target.substr(target.length - 1)).css('background-color', 'orange');
+    });
+  });
+  
+  $(document).ready(function(){
+    var cartItems = {}; // Object to store cart items and their quantities
+
+    // Add click event listener to the + buttons on food items
+    $('.btn.btn-primary').click(function() {
+        var cardBody = $(this).closest('.card-body');
+        var foodName = cardBody.find('.card-title').text();
+        var foodPrice = parseFloat(cardBody.find('.text-muted').text().replace('RM', '')); // Convert price to float
+        var foodImage = cardBody.closest('.flex-container').find('img').attr('src');
+
+        // Check if item already exists in the cart
+        if (cartItems.hasOwnProperty(foodName)) {
+            // Item exists, increment quantity
+            cartItems[foodName].quantity++;
+        } else {
+            // Item doesn't exist, add to cart
+            cartItems[foodName] = {
+                price: foodPrice,
+                quantity: 1,
+                image: foodImage
+            };
+        }
+
+        // Update cart display
+        updateCart();
+    });
+
+    // Add click event listener to the - buttons on cart items
+		$(document).on('click', '.btn.btn-minus', function() {
+		var foodName = $(this).closest('.cart-item').data('name');
+		if (cartItems.hasOwnProperty(foodName)) {
+			if (cartItems[foodName].quantity === 1) {
+				// Remove item if quantity is 1
+				delete cartItems[foodName];
+			} else {
+				// Decrement quantity
+				cartItems[foodName].quantity--;
+			}
+			// Update cart display
+			updateCart();
+		}
+	});
+
+
+    // Add click event listener to the + buttons on cart items
+    $(document).on('click', '.btn.btn-plus', function() {
+        var foodName = $(this).closest('.cart-item').data('name');
+        // Increment quantity
+        cartItems[foodName].quantity++;
+        // Update cart display
+        updateCart();
+    });
+
+    // Function to update cart display
+    function updateCart() {
+        // Clear previous items
+        $('#cartItems').empty();
+
+        var totalPrice = 0;
+        // Loop through cart items
+        for (var item in cartItems) {
+            if (cartItems.hasOwnProperty(item)) {
+                var quantity = cartItems[item].quantity;
+                var price = cartItems[item].price;
+                var totalItemPrice = quantity * price;
+                // Add item to cart modal
+                var cartItem = '<div class="d-flex align-items-center mb-3 cart-item" data-name="' + item + '">' +
+					'<img src="' + cartItems[item].image + '" alt="' + item + '" class="me-3" style="width: 50px;">' +
+					'<div><h6 class="mb-0" style="color: #000;">' + item + '</h6>' +
+					'<div class="btn-group ms-auto" role="group">' +
+					'<button type="button" class="btn btn-minus btn-sm btn-outline-secondary">-</button>' +
+					'<span class="mx-2" style="color: #000;">' + quantity + '</span>' +
+					'<button type="button" class="btn btn-plus btn-sm btn-outline-secondary">+</button>' +
+					'</div>' +
+					'<span class="text-muted">' + totalItemPrice.toFixed(2) + ' RM</span>' +
+					'</div>' +
+					'</div>';
+
+				// Add subtotal price
+				var subtotalPrice = '<div class="text-end"><strong>Subtotal: ' + totalPrice.toFixed(2) + ' RM</strong></div>';
+
+				$('#cartItems').append(cartItem);
+				$('#cartItems').append(subtotalPrice);
+            }
+        }
+
+        // Update total price and cart badge
+        $('#totalPrice').text(totalPrice.toFixed(2) + ' RM');
+        // Update cart badge to show total number of items
+		$('#cartBadge').text(Object.values(cartItems).reduce((acc, item) => acc + item.quantity, 0));
+
+    }
+});
+
+</script>
+
+
+</body>
+</html>
