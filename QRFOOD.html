@@ -1,21 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>SHOP NAME</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZIG ZAG KOPITIAM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+body {position:relative;}
 
-  <style>
-    .body {
-      margin: 0;
-      background-color: black;
-    }
-    .container_top {
+div.secondary-nav .scroll {
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+div.secondary-nav .scroll::-webkit-scrollbar {
+  display: none;
+}
+
+div.secondary-nav .submenu {
+  display:none;
+  position:absolute;
+  left:0;
+  top:100%;
+  width:100%;
+  height: 0;
+  clear: both;
+  background-color: #fbf7fc;
+  box-shadow: 0 .3rem .3rem rgba(0,0,0,.15)!important;
+}
+
+div.secondary-nav .submenu.visible {
+  display:block;
+  height: auto;
+  border-top: 1px solid #e8e8e8;
+}
+
+div.secondary-nav .dropdown {position:inherit;}
+div.secondary-nav .dropdown-item {display: inline-block; font-size:0.8rem; font-weight:500; width:auto; clear:inherit; padding: 12px;}
+div.secondary-nav .dropdown-toggle.visible {background:#fbf7fc}
+div.secondary-nav .dropdown-item.active, div.secondary-nav .dropdown-item:active, div.secondary-nav .dropdown-item:hover  {background:#fff; color:#6a2c79;}
+
+/*Don't Remove this give class/id if required*/
+div.secondary-nav, div.secondary-nav nav {
+  font-size: 0;
+}
+
+div.secondary-nav {
+  background-color: #fff;
+  // border-top: 1px solid #e2e2e3;
+  // border-bottom: 1px solid #e2e2e3;
+  position: relative;
+  z-index: 2;
+  clear: both;
+  width: 100%;
+  /* Force Hardware Acceleration */
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  will-change: transform;
+  -webkit-transition: -webkit-transform .25s;
+  transition: -webkit-transform .25s;
+  transition: transform .25s;
+  transition: transform .25s, -webkit-transform .25s;
+}
+
+div.secondary-nav .vam {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+div.secondary-nav .nav {
+  width: 100%;
+}
+
+div.secondary-nav .nav-item {
+  display: inline-block;
+  vertical-align: middle;
+  // cursor: pointer;
+}
+
+div.secondary-nav .nav-link{
+  padding: 18px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  div.secondary-nav::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 35px;
+    background: linear-gradient(to left, #e3e3e3, rgba(37, 40, 61, 0));
+    pointer-events: none;
+    transition: opacity .2s;
+  }
+  div.secondary-nav .nav-link {padding: 14px 10px;}
+}
+
+div.secondary-nav .nav-link.active {color: #000; box-shadow: inset 0px -3px 0px 0px #fdac00;}
+
+	.flex-container {
+		padding: 10px;
+		display: flex;
+		flex-wrap: nowrap;
+	}
+	h4{
+		padding: 10px;
+		margin-bottom: 0px;
+	}
+	h5{
+		font-size: 15px;
+	}
+	a{
+		font-size: 10px;
+	}
+	.container_top {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -23,90 +130,58 @@
       height: 5%;
       padding: 10px;
     }
-    .container_middle {
-      height: 60%;
-    }
-    .container_middle_2 {
-      height: 5%;
-      overflow-x: auto; /* Enable horizontal scrolling */
-    }
-    .container_bottom {
-      padding-top: 0px;
-    }
-    .nav-link {
-      color: white;
-	  text-align: center; /* Center-align text */
-		
-    }
-    .accordion .card-header {
-      background-color: darkgreen;
-    }
-    .accordion .card-header a {
-      color: white;
-    }
-    .navbar-nav {
-      display: flex;
-      flex-direction: row; /* Horizontal alignment */
-    }
-    .navbar-nav .nav-item {
-		padding-left: 20px;
-		padding-right: 20px; /* Adjust spacing between items */
-		border-radius: 4px; /* Add border radius */
-		white-space: nowrap;
-		overflow: auto;
-    }
 	.nav_container_left{
 		img-color: orange;
 	}
 	.nav_container_right{
 		padding: 5px;
-		border-radius: 5px; /* Add border radius */
+		border-radius: 50px; /* Add border radius */
 		font-size:2.5vw;
 	}
-	@media screen and (min-width: 600px) {
-	  .nav_container_right, .nav_container_left{
-		 font-size: 12px;
-	  }
-	}
-	.flex-container {
-	  display: flex;
-	  flex-wrap: nowrap;
-	}
 	.float-card {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      color: white;
-      padding: 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		color: white;
+		padding: 10px;
+		border: none;
+		border-radius: 50px;
+		cursor: pointer;
     }
 	.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
+	.modal{
+	}
+	.modal-dialog {
+		width:96%;
+		position:fixed;
+		bottom:70px;
+		overflow-y: initial !important
+	}  
+	.modal-body{
+		height: 50vh;
+		overflow-y: auto;
+	}
+	.nav-link{
+		color: darkgreen;
+	}
+</style>
 
-	.btn-group {
-		margin-left: auto;
-	}
-	.card{
-		border-radius:0px;
-	}
-	
-  </style>
 </head>
-<body class="body" data-spy="scroll" data-target=".navbar" data-bs-offset="50">
 
-<div class="container_top  sticky-top bg-success bg-gradient">
-  <div class="nav_container_left" id="nav_container_left">
-    <img src="house-solid.png" style="width: 20px; height: 20px">
+<body data-spy="scroll" data-target="#secondary-nav" data-offset="55">
+  
+<div class="container_top bg-success bg-gradient">
+  <div class="nav_container_left shadow" id="nav_container_left">
+    <img src="new-food.jpg" style="width: 20px; height: 20px">
   </div>
   <div class="nav_container_center fw-bold" id="nav_container_center">
-    SHOP NAME
+    ZIG ZAG KOPITIAM
   </div>
-  <div class="nav_container_right bg-warning bg-gradient fw-bold" id="nav_container_right">
+  <div class="nav_container_right bg-warning bg-gradient shadow fw-bold" id="nav_container_right">
     TABLE 1
   </div>
 </div>
@@ -140,190 +215,201 @@
 	</div>
 </div>
 
-<div class="container_middle_2 sticky-top bg-secondary bg-gradient">
-  <nav class="navbar navbar-expand-sm bg-secondary bg-gradient navbar-dark">
-    <div class="container-fluid">
-      <ul class="navbar-nav">
-        <li id="nav_menu_1" class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#collapse1">Rice</a>
-        </li>
-        <li id="nav_menu_2" class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#collapse2">Noodles</a>
-        </li>
-        <li id="nav_menu_3" class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#collapse3">Soup</a>
-        </li>
-        <li id="nav_menu_4" class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#collapse4">Stir Fried</a>
-        </li>
-        <li id="nav_menu_5" class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#collapse5">Snack</a>
-        </li>
-        <li id="nav_menu_6" class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#collapse6">Drinks</a>
-        </li>
-        <!-- Add more menu items as needed -->
-      </ul>
-    </div>
-  </nav>
+<div id="secondary-nav" class="secondary-nav shadow-sm position-sticky" style="top:0;">
+<div class="container">
+<nav class="vam nav scroll dragger scroller">
+    <li class="nav-item"><a href="#one" class="nav-link">Rice</a></li>
+    <li class="nav-item"><a href="#two" class="nav-link">Noodles</a></li>
+    <li class="nav-item"><a href="#three" class="nav-link">Soup</a></li>
+    <li class="nav-item"><a href="#four" class="nav-link">Stir Fried</a></li>
+    <li class="nav-item"><a href="#five" class="nav-link">Snack</a></li>
+    <li class="nav-item"><a href="#six" class="nav-link">Drinks</a></li>
+</nav>
+  
+</div>
 </div>
 
-<div id="container_bottom" class="container_bottom">  
-    <div id="accordion">
-		<div class="card">
-		  <div class="card-header" data-bs-toggle="collapse" href="#collapse1">
-			<a class="card-link fw-bold" style="text-decoration:none; color: #000;"">Rice</a>
-		  </div>
-		  <div id="collapse1" class="collapse show" data-bs-parent="#accordion">
-		  
-			<div class="flex-container">
-				<div class="" style="width: 65%;">
-				  <div class="card-body">
-					<h5 class="card-title">Chicken Rice</h5>
-					<p class="card-text"><small class="text-muted">RM 8.00</small></p>
-					<a href="#" class="btn btn-primary">+</a>
-				  </div>
-				</div>
-				<div class="" style="width: 35%;">
-					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
-				</div>
+
+
+<div id="tabcontent" data-offset="0">
+
+	<h4 class="bg-secondary bg-gradient bg-opacity-25" id="one">Rice</h4>
+	<div class="flex-container">
+		<div class="" style="width: 65%; display: table;">
+			<div class="card-body" style="display: table-cell; vertical-align: middle;">
+				<h5 class="card-title">Chicken Rice</h5>
+				<p class="card-text"><small class="text-muted">RM 8.00</small></p>
+				<a href="#" class="btn bg-success bg-gradient btn-sm fw-bold shadow">+ ADD</a>
 			</div>
-			<div class="flex-container">
-				<div class="" style="width: 65%;">
-				  <div class="card-body">
-					<h5 class="card-title">Nasi Lemak</h5>
-					<p class="card-text"><small class="text-muted">RM 10.00</small></p>
-					<a href="#" class="btn btn-primary">+</a>
-				  </div>
-				</div>
-				<div class="" style="width: 35%;">
-					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
-				</div>
-			</div>
-			<div class="flex-container">
-				<div class="" style="width: 65%;">
-				  <div class="card-body">
-					<h5 class="card-title">Curry Chicken Rice</h5>
-					<p class="card-text"><small class="text-muted">RM 11.00</small></p>
-					<a href="#" class="btn btn-primary">+</a>
-				  </div>
-				</div>
-				<div class="" style="width: 35%;">
-					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
-				</div>
-			</div>
-			
-		  </div>
 		</div>
-		<div class="card">
-		  <div class="card-header" data-bs-toggle="collapse" href="#collapse2">
-			<a class="collapsed card-link fw-bold" style="text-decoration:none; color: #000;">Noodles</a>
-		  </div>
-		  <div id="collapse2" class="collapse" data-bs-parent="#accordion">
-			
-			<div class="flex-container">
-				<div class="" style="width: 65%;">
-				  <div class="card-body">
-					<h5 class="card-title">Kolo Mee</h5>
-					<p class="card-text"><small class="text-muted">RM 7.00</small></p>
-					<a href="#" class="btn btn-primary">+</a>
-				  </div>
-				</div>
-				<div class="" style="width: 35%;">
-					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
-				</div>
-			</div>
-			
-		  </div>
-		</div>
-		<div class="card">
-		  <div class="card-header" data-bs-toggle="collapse" href="#collapse3">
-			<a class="collapsed card-link fw-bold" style="text-decoration:none; color: #000;">Soup</a>
-		  </div>
-		  <div id="collapse3" class="collapse" data-bs-parent="#accordion">
-			
-			<div class="flex-container">
-				<div class="" style="width: 65%;">
-				  <div class="card-body">
-					<h5 class="card-title">Tomyum Soup</h5>
-					<p class="card-text"><small class="text-muted">RM 15.00</small></p>
-					<a href="#" class="btn btn-primary">+</a>
-				  </div>
-				</div>
-				<div class="" style="width: 35%;">
-					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
-				</div>
-			</div>
-			
-		  </div>
-		</div>
-		<div class="card">
-		  <div class="card-header" data-bs-toggle="collapse" href="#collapse4">
-			<a class="collapsed card-link fw-bold" style="text-decoration:none; color: #000;">Stir Fried</a>
-		  </div>
-		  <div id="collapse4" class="collapse" data-bs-parent="#accordion">
-			
-			<div class="flex-container">
-				<div class="" style="width: 65%;">
-				  <div class="card-body">
-					<h5 class="card-title">Fried Kueh Tiaw</h5>
-					<p class="card-text"><small class="text-muted">RM 8.00</small></p>
-					<a href="#" class="btn btn-primary">+</a>
-				  </div>
-				</div>
-				<div class="" style="width: 35%;">
-					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
-				</div>
-			</div>
-			
-		  </div>
-		</div>
-		<div class="card">
-		  <div class="card-header" data-bs-toggle="collapse" href="#collapse5">
-			<a class="collapsed card-link fw-bold" style="text-decoration:none; color: #000;">Snack</a>
-		  </div>
-		  <div id="collapse5" class="collapse" data-bs-parent="#accordion">
-			
-			<div class="flex-container">
-				<div class="" style="width: 65%;">
-				  <div class="card-body">
-					<h5 class="card-title">French Fried</h5>
-					<p class="card-text"><small class="text-muted">RM 6.00</small></p>
-					<a href="#" class="btn btn-primary">+</a>
-				  </div>
-				</div>
-				<div class="" style="width: 35%;">
-					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
-				</div>
-			</div>
-			
-		  </div>
-		</div>
-		<div class="card">
-		  <div class="card-header" data-bs-toggle="collapse" href="#collapse6">
-			<a class="collapsed card-link fw-bold" style="text-decoration:none; color: #000;">Drinks</a>
-		  </div>
-		  <div id="collapse6" class="collapse" data-bs-parent="#accordion">
-			
-			<div class="flex-container">
-				<div class="" style="width: 65%;">
-				  <div class="card-body">
-					<h5 class="card-title">Coca cola</h5>
-					<p class="card-text"><small class="text-muted">RM 3.00</small></p>
-					<a href="#" class="btn btn-primary">+</a>
-				  </div>
-				</div>
-				<div class="" style="width: 35%;">
-					<img src="new-food.jpg" class="d-block w-100" alt="..." style="padding:10px;">
-				</div>
-			</div>
-			
-		  </div>
+		<div class="" style="width: 35%; padding:10px;">
+			<img src="new-food.jpg" class="shadow d-block w-100" alt="..." style="">
 		</div>
 	</div>
+	<div class="flex-container">
+		<div class="" style="width: 65%; display: table;">
+			<div class="card-body" style="display: table-cell; vertical-align: middle;">
+				<h5 class="card-title">Nasi Lemak</h5>
+				<p class="card-text"><small class="text-muted">RM 10.00</small></p>
+				<a href="#" class="btn bg-success bg-gradient btn-sm fw-bold shadow">+ ADD</a>
+			</div>
+		</div>
+		<div class="" style="width: 35%; padding:10px;">
+			<img src="new-food.jpg" class="shadow d-block w-100" alt="..." style="">
+		</div>
+	</div>
+	<div class="flex-container">
+		<div class="" style="width: 65%; display: table;">
+			<div class="card-body" style="display: table-cell; vertical-align: middle;">
+				<h5 class="card-title">Curry Chicken Rice</h5>
+				<p class="card-text"><small class="text-muted">RM 11.00</small></p>
+				<a href="#" class="btn bg-success bg-gradient btn-sm fw-bold shadow">+ ADD</a>
+			</div>
+		</div>
+		<div class="" style="width: 35%; padding:10px;">
+			<img src="new-food.jpg" class="shadow d-block w-100" alt="..." style="">
+		</div>
+	</div>				
+	<h4 class="bg-secondary bg-gradient bg-opacity-25" id="two">Noodles</h4>
+	<div class="flex-container">
+		<div class="" style="width: 65%; display: table;">
+			<div class="card-body" style="display: table-cell; vertical-align: middle;">
+				<h5 class="card-title">Kolo Mee</h5>
+				<p class="card-text"><small class="text-muted">RM 7.00</small></p>
+				<a href="#" class="btn bg-success bg-gradient btn-sm fw-bold shadow">+ ADD</a>
+			</div>
+		</div>
+		<div class="" style="width: 35%; padding:10px;">
+			<img src="new-food.jpg" class="shadow d-block w-100" alt="..." style="">
+		</div>
+	</div>				
+	<h4 class="bg-secondary bg-gradient bg-opacity-25" id="three">Soup</h4>
+	<div class="flex-container">
+		<div class="" style="width: 65%; display: table;">
+			<div class="card-body" style="display: table-cell; vertical-align: middle;">
+				<h5 class="card-title">Tomyum Soup</h5>
+				<p class="card-text"><small class="text-muted">RM 15.00</small></p>
+				<a href="#" class="btn bg-success bg-gradient btn-sm fw-bold shadow">+ ADD</a>
+			</div>
+		</div>
+		<div class="" style="width: 35%; padding:10px;">
+			<img src="new-food.jpg" class="shadow d-block w-100" alt="..." style="">
+		</div>
+	</div>				
+	<h4 class="bg-secondary bg-gradient bg-opacity-25" id="four">Stir Fried</h4>
+	<div class="flex-container">
+		<div class="" style="width: 65%; display: table;">
+			<div class="card-body" style="display: table-cell; vertical-align: middle;">
+				<h5 class="card-title">Fried Kueh Tiaw</h5>
+				<p class="card-text"><small class="text-muted">RM 8.00</small></p>
+				<a href="#" class="btn bg-success bg-gradient btn-sm fw-bold shadow">+ ADD</a>
+			</div>
+		</div>
+		<div class="" style="width: 35%; padding:10px;">
+			<img src="new-food.jpg" class="shadow d-block w-100" alt="..." style="">
+		</div>
+	</div>				
+	<h4 class="bg-secondary bg-gradient bg-opacity-25" id="five">Snack</h4>
+	<div class="flex-container">
+		<div class="" style="width: 65%; display: table;">
+			<div class="card-body" style="display: table-cell; vertical-align: middle;">
+				<h5 class="card-title">French Fried</h5>
+				<p class="card-text"><small class="text-muted">RM 6.00</small></p>
+				<a href="#" class="btn bg-success bg-gradient btn-sm fw-bold shadow">+ ADD</a>
+			</div>
+		</div>
+		<div class="" style="width: 35%; padding:10px;">
+			<img src="new-food.jpg" class="shadow d-block w-100" alt="..." style="">
+		</div>
+	</div>				
+	<h4 class="bg-secondary bg-gradient bg-opacity-25" id="six">Drinks</h4>
+	<div class="flex-container">
+		<div class="" style="width: 65%; display: table;">
+			<div class="card-body" style="display: table-cell; vertical-align: middle;">
+				<h5 class="card-title">Coca cola</h5>
+				<p class="card-text"><small class="text-muted">RM 3.00</small></p>
+				<a href="#" class="btn bg-success bg-gradient btn-sm fw-bold shadow">+ ADD</a>
+			</div>
+		</div>
+		<div class="" style="width: 35%; padding:10px;">
+			<img src="new-food.jpg" class="shadow d-block w-100" alt="..." style="">
+		</div>
+	</div>
+	<div class="flex-container">
+		<div class="" style="width: 65%; display: table;">
+			<div class="card-body" style="display: table-cell; vertical-align: middle;">
+				<h5 class="card-title">100 PLUS</h5>
+				<p class="card-text"><small class="text-muted">RM 3.00</small></p>
+				<a href="#" class="btn bg-success bg-gradient btn-sm fw-bold shadow">+ ADD</a>
+			</div>
+		</div>
+		<div class="" style="width: 35%; padding:10px;">
+			<img src="new-food.jpg" class="shadow d-block w-100" alt="..." style="">
+		</div>
+	</div>
+	<div class="flex-container">
+		<div class="" style="width: 65%; display: table;">
+			<div class="card-body" style="display: table-cell; vertical-align: middle;">
+				<h5 class="card-title">Green Tea</h5>
+				<p class="card-text"><small class="text-muted">RM 3.00</small></p>
+				<a href="#" class="btn bg-success bg-gradient btn-sm fw-bold shadow">+ ADD</a>
+			</div>
+		</div>
+		<div class="" style="width: 35%; padding:10px;">
+			<img src="new-food.jpg" class="shadow d-block w-100" alt="..." style="">
+		</div>
+	</div>
+	<div class="flex-container">
+		<div class="" style="width: 65%; display: table;">
+			<div class="card-body" style="display: table-cell; vertical-align: middle;">
+				<h5 class="card-title">Chinese Tea</h5>
+				<p class="card-text"><small class="text-muted">RM 3.00</small></p>
+				<a href="#" class="btn bg-success bg-gradient btn-sm fw-bold shadow">+ ADD</a>
+			</div>
+		</div>
+		<div class="" style="width: 35%; padding:10px;">
+			<img src="new-food.jpg" class="shadow d-block w-100" alt="..." style="">
+		</div>
+	</div>
+	<div class="flex-container">
+		<div class="" style="width: 65%; display: table;">
+			<div class="card-body" style="display: table-cell; vertical-align: middle;">
+				<h5 class="card-title">Orange</h5>
+				<p class="card-text"><small class="text-muted">RM 3.00</small></p>
+				<a href="#" class="btn bg-success bg-gradient btn-sm fw-bold shadow">+ ADD</a>
+			</div>
+		</div>
+		<div class="" style="width: 35%; padding:10px;">
+			<img src="new-food.jpg" class="shadow d-block w-100" alt="..." style="">
+		</div>
+	</div>
+	<div class="flex-container">
+		<div class="" style="width: 65%; display: table;">
+			<div class="card-body" style="display: table-cell; vertical-align: middle;">
+				<h5 class="card-title">Sarsi</h5>
+				<p class="card-text"><small class="text-muted">RM 3.00</small></p>
+				<a href="#" class="btn bg-success bg-gradient btn-sm fw-bold shadow">+ ADD</a>
+			</div>
+		</div>
+		<div class="" style="width: 35%; padding:10px;">
+			<img src="new-food.jpg" class="shadow d-block w-100" alt="..." style="">
+		</div>
+	</div>
+	<div class="flex-container">
+		<div class="" style="width: 65%; display: table;">
+			<div class="card-body" style="display: table-cell; vertical-align: middle;">
+				<h5 class="card-title">Sprite</h5>
+				<p class="card-text"><small class="text-muted">RM 3.00</small></p>
+				<a href="#" class="btn bg-success bg-gradient btn-sm fw-bold shadow">+ ADD</a>
+			</div>
+		</div>
+		<div class="" style="width: 35%; padding:10px;">
+			<img src="new-food.jpg" class="shadow d-block w-100" alt="..." style="">
+		</div>
+	</div><br><br><br>
 	
 	<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-bottom">
+	  <div class="modal-dialog">
 		<div class="modal-content">
 		  <div class="modal-header">
 			<h5 class="modal-title" id="cartModalLabel" style="color: #000;">Order List</h5>
@@ -342,130 +428,273 @@
 	</div>
 
 	<!-- Update the button in the HTML body to trigger the modal -->
-	<button class="float-card bg-warning bg-gradient bg-opacity-75" data-bs-toggle="modal" data-bs-target="#cartModal">Order List <span id="cartBadge" class="badge bg-success">0</span></button>
+	<button class="float-card bg-warning bg-gradient bg-opacity-75 shadow" data-bs-toggle="modal" data-bs-target="#cartModal">Order List <span id="cartBadge" class="badge bg-success">0</span></button>
 
 	
+	
 </div>
+  
+</body>
 
 <script>
-  $(document).ready(function(){
-    $('#accordion').on('hidden.bs.collapse', function (e) {
-        var target = $(e.target).attr('id');
-        $('#nav_menu_' + target.substr(target.length - 1)).css('background-color', '');
-    });
 
-    $('#accordion').on('shown.bs.collapse', function (e) {
-        var target = $(e.target).attr('id');
-        $('#nav_menu_' + target.substr(target.length - 1)).css('background-color', 'black');
-    });
-  });
-  
-  $(document).ready(function(){
-    var cartItems = {}; // Object to store cart items and their quantities
-
-    // Add click event listener to the + buttons on food items
-    $('.btn.btn-primary').click(function() {
-        var cardBody = $(this).closest('.card-body');
-        var foodName = cardBody.find('.card-title').text();
-        var foodPrice = parseFloat(cardBody.find('.text-muted').text().replace('RM', '')); // Convert price to float
-        var foodImage = cardBody.closest('.flex-container').find('img').attr('src');
-
-        // Check if item already exists in the cart
-        if (cartItems.hasOwnProperty(foodName)) {
-            // Item exists, increment quantity
-            cartItems[foodName].quantity++;
-        } else {
-            // Item doesn't exist, add to cart
-            cartItems[foodName] = {
-                price: foodPrice,
-                quantity: 1,
-                image: foodImage
-            };
-        }
-
-        // Update cart display
-        updateCart();
-    });
-
-    // Add click event listener to the - buttons on cart items
-		$(document).on('click', '.btn.btn-minus', function() {
-		var foodName = $(this).closest('.cart-item').data('name');
-		if (cartItems.hasOwnProperty(foodName)) {
-			if (cartItems[foodName].quantity === 1) {
-				// Remove item if quantity is 1
-				delete cartItems[foodName];
-			} else {
-				// Decrement quantity
-				cartItems[foodName].quantity--;
-			}
-			// Update cart display
-			updateCart();
+	(function (window, document, undefined) {
+	  'use strict';
+	  
+	  // Select nav items that have submenus
+	  var hasSubmenu = document.querySelectorAll('[data-id]');
+	  var visible = 'visible';
+	  var i = 0;
+	  
+	  // Show the submenu by toggling the relevant class names
+	  function showSubmenu (event) {
+		// We lose reference of this when filtering the nav items
+		var self = this;
+		
+		// Select the relevant submenu, by the data-id attribute
+		var submenu = document.getElementById(self.dataset.id);
+		
+		// Probably best to prevent clicks through
+		event.preventDefault();
+		if(!$(submenu).hasClass(visible)){
+		  $('.nav-link').removeClass(visible);
+		  $('.submenu').removeClass(visible);
 		}
+
+		self.classList.toggle(visible);
+		submenu.classList.toggle(visible);
+	  }
+	  
+	  // Remove the active class
+	  function removeChildClass(el) {
+		// Check if it exists, then remove
+		if ( el.classList.contains(visible) ) {
+		  el.classList.remove(visible);
+		}
+	  }
+	  
+	  // On clicks show submenus
+	  for ( i = 0; i < hasSubmenu.length; i++ ) {
+		hasSubmenu[i].addEventListener('click', showSubmenu);
+	  }
+	})(window, document);
+
+
+	/*---------- DRAGGER ----------*/
+	$(document).ready(function() {
+	  $('.dragger').on('mousedown', function(event) {
+		$(this)
+		  .data('down', true)
+		  .data('x', event.clientX)
+		  .data('scrollLeft', this.scrollLeft)
+		  .addClass("dragging");
+
+		return false;
+	  }).on('mouseup', function(event) {
+		$(this)
+		  .data('down', false)
+		  .removeClass("dragging");
+	  }).on('mousemove', function(event) {
+		if ($(this).data('down') == true) {
+		  this.scrollLeft = $(this).data('scrollLeft') + $(this).data('x') - event.clientX;
+		}
+	  }).on('wheel', function(event, delta) {
+		this.scrollLeft -= (delta * 30);
+	  }).css({
+		'overflow' : 'hidden',
+		'cursor' : '-moz-grab'
+	  });
+	  $(window).mouseout(function (event) {
+		if ($('.team-form-data').data('down')) {
+		  try {
+			if (event.originalTarget.nodeName == 'BODY' || event.originalTarget.nodeName == 'HTML') {
+			  $('.team-form-data').data('down', false);
+			}
+		  } catch (e) {}
+		}
+	  });
 	});
 
 
-    // Add click event listener to the + buttons on cart items
-    $(document).on('click', '.btn.btn-plus', function() {
-        var foodName = $(this).closest('.cart-item').data('name');
-        // Increment quantity
-        cartItems[foodName].quantity++;
-        // Update cart display
-        updateCart();
-    });
+	/*---------- SCROLLER ----------*/
+	jQuery(function ($) {
+		$.fn.hScroll = function (amount) {
+			amount = amount || 120;
+			$(this).bind("DOMMouseScroll mousewheel", function (event) {
+				var oEvent = event.originalEvent, 
+					direction = oEvent.detail ? oEvent.detail * -amount : oEvent.wheelDelta, 
+					position = $(this).scrollLeft();
+				position += direction > 0 ? -amount : amount;
+				$(this).scrollLeft(position);
+				event.preventDefault();
+			})
+		};
+	});
 
-    // Function to update cart display
-    function updateCart() {
-        // Clear previous items
-        $('#cartItems').empty();
+	$(document).ready(function() {
+		$('.scroller').hScroll(); // You can pass (optionally) scrolling amount
+	});
 
-		// Initialize total price
-		var totalPrice = 0;
-        
-        // Loop through cart items
-        for (var item in cartItems) {
-            if (cartItems.hasOwnProperty(item)) {
-                var quantity = cartItems[item].quantity;
-                var price = cartItems[item].price;
-                var SubtotalItemPrice = quantity * price;
-                // Add item to cart modal
-				// Add item to total price
-				totalPrice += SubtotalItemPrice;
+	/*---- ANCHOR LINK ANIMATION WITH OFFSET ----*/
+	$(".secondary-nav a[href^='#']").on('click', function(event) {
+	  var target = this.hash;
+
+	  event.preventDefault();
+
+	  var navOffset = $('.secondary-nav').height();
+
+	  return $('html, body').animate({
+		scrollTop: $(this.hash).offset().top - navOffset
+	  }, 300, function() {
+		return window.history.pushState(null, null, target);
+	  });
+	});
+
+	$(".secondary-nav li").click(function() {
+	  centerLI(this, '.vam');
+	  // Dropdown Toggle
+	  if(!$(this).hasClass('dropdown')){
+		$('.nav-link').removeClass('visible');
+		$('.submenu').removeClass('visible');
+	  }
+	});
+
+	//http://stackoverflow.com/a/33296765/350421
+	 function centerLI(target, outer) {
+	   var out = $(outer);
+	   var tar = $(target);
+	   var x = out.width() - 50;
+	   var y = tar.outerWidth(true);
+	   var z = tar.index();
+	   var q = 0;
+	   var m = out.find('li');
+	   for (var i = 0; i < z; i++) {
+		 q += $(m[i]).outerWidth(true);
+	   }
+	   //out.scrollLeft(Math.max(0, q - (x - y)/2));
+	   out.animate({
+		 scrollLeft: Math.max(0, q - (x - y) / 2)
+	   }, 500);
+
+	 }
+
+	// Dropdown Close on Body click
+	$(document).mouseup(function(e) 
+	{
+		var container = $("#secondary-nav");
+
+		// if the target of the click isn't the container nor a descendant of the container
+		if (!container.is(e.target) && container.has(e.target).length === 0) 
+		{
+			$('.nav-link').removeClass('visible');
+			$('.submenu').removeClass('visible');
+		}
+	});
+
+	$(document).ready(function(){
+		var cartItems = {}; // Object to store cart items and their quantities
+
+		// Add click event listener to the + buttons on food items
+		$('.btn.btn-sm').click(function() {
+			event.preventDefault();
+			var cardBody = $(this).closest('.card-body');
+			var foodName = cardBody.find('.card-title').text();
+			var foodPrice = parseFloat(cardBody.find('.text-muted').text().replace('RM', '')); // Convert price to float
+			var foodImage = cardBody.closest('.flex-container').find('img').attr('src');
+
+			// Check if item already exists in the cart
+			if (cartItems.hasOwnProperty(foodName)) {
+				// Item exists, increment quantity
+				cartItems[foodName].quantity++;
+			} else {
+				// Item doesn't exist, add to cart
+				cartItems[foodName] = {
+					price: foodPrice,
+					quantity: 1,
+					image: foodImage
+				};
+			}
+
+			// Update cart display
+			updateCart();
+		});
+
+		// Add click event listener to the - buttons on cart items
+			$(document).on('click', '.btn.btn-minus', function() {
+			var foodName = $(this).closest('.cart-item').data('name');
+			if (cartItems.hasOwnProperty(foodName)) {
+				if (cartItems[foodName].quantity === 1) {
+					// Remove item if quantity is 1
+					delete cartItems[foodName];
+				} else {
+					// Decrement quantity
+					cartItems[foodName].quantity--;
+				}
+				// Update cart display
+				updateCart();
+			}
+		});
+
+
+		// Add click event listener to the + buttons on cart items
+		$(document).on('click', '.btn.btn-plus', function() {
+			var foodName = $(this).closest('.cart-item').data('name');
+			// Increment quantity
+			cartItems[foodName].quantity++;
+			// Update cart display
+			updateCart();
+		});
+
+		// Function to update cart display
+		function updateCart() {
+			// Clear previous items
+			$('#cartItems').empty();
+
+			// Initialize total price
+			var totalPrice = 0;
 			
-                var cartItem = 
-					'<div class="d-flex align-items-center mb-3 cart-item" data-name="' + item + '">' +
-						'<img src="' + cartItems[item].image + '" alt="' + item + '" class="me-3" style="width: 50px;">' +
-						'<div class="text-center">' +
-							'<h6 class="mb-0" style="color: #000;">' + item + '</h6>' +
-							'<span class="text-muted">RM ' + price.toFixed(2) + '</span>' +
-						'</div>' +
-						'<div class="text-center" role="group" d-flex align-items-center" style="width:23%">' +
-							'<div class="btn-group" role="group" style="width:100%">' +
-								'<button type="button" class="btn btn-minus btn-sm btn-secondary" style="width:33.3%;">-</button>' +
-								'<span class="quantity-number text-center" style="width:33.3%; vertical-align: middle;">' + quantity + '</span>' +
-								'<button type="button" class="btn btn-plus btn-sm btn-secondary" style="width:33.3%;">+</button>' +
-							'</div>' +
-							'<div>' +
-								'<span class="text-muted">RM ' + SubtotalItemPrice.toFixed(2) + '</span>' +
-							'</div>' +
-						'</div>' +
-					'</div>';
-
+			// Loop through cart items
+			for (var item in cartItems) {
+				if (cartItems.hasOwnProperty(item)) {
+					var quantity = cartItems[item].quantity;
+					var price = cartItems[item].price;
+					var SubtotalItemPrice = quantity * price;
+					// Add item to cart modal
+					// Add item to total price
+					totalPrice += SubtotalItemPrice;
 				
-				$('#cartItems').append(cartItem);
-            }
-        }
-		
-		// Update total price in the modal
-		$('#totalPrice').text('RM ' + totalPrice.toFixed(2));
-	
-        // Update cart badge to show total number of items
-		$('#cartBadge').text(Object.values(cartItems).reduce((acc, item) => acc + item.quantity, 0));
+					var cartItem = 
+						'<div class="d-flex align-items-center mb-3 cart-item" data-name="' + item + '">' +
+							'<img src="' + cartItems[item].image + '" alt="' + item + '" class="me-3" style="width: 50px;">' +
+							'<div class="text-center">' +
+								'<h6 class="mb-0" style="color: #000;">' + item + '</h6>' +
+								'<span class="text-muted">RM ' + price.toFixed(2) + '</span>' +
+							'</div>' +
+							'<div class="text-center" role="group" d-flex align-items-center" style="width:23%">' +
+								'<div class="btn-group" role="group" style="width:100%">' +
+									'<button type="button" class="btn btn-minus btn-sm btn-secondary" style="width:33.3%;">-</button>' +
+									'<span class="quantity-number text-center" style="width:33.3%; vertical-align: middle;">' + quantity + '</span>' +
+									'<button type="button" class="btn btn-plus btn-sm btn-secondary" style="width:33.3%;">+</button>' +
+								'</div>' +
+								'<div>' +
+									'<span class="text-muted">RM ' + SubtotalItemPrice.toFixed(2) + '</span>' +
+								'</div>' +
+							'</div>' +
+						'</div>';
 
-    }
-});
+					
+					$('#cartItems').append(cartItem);
+				}
+			}
+			
+			// Update total price in the modal
+			$('#totalPrice').text('RM ' + totalPrice.toFixed(2));
+		
+			// Update cart badge to show total number of items
+			$('#cartBadge').text(Object.values(cartItems).reduce((acc, item) => acc + item.quantity, 0));
+
+		}
+	});
 
 </script>
-
-
-</body>
 </html>
