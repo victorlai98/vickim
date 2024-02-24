@@ -14,7 +14,6 @@
     .body {
       margin: 0;
       background-color: black;
-      color: white;
     }
     .container_top {
       display: flex;
@@ -50,17 +49,18 @@
       flex-direction: row; /* Horizontal alignment */
     }
     .navbar-nav .nav-item {
-		padding-left: 10px;
-		padding-right: 10px; /* Adjust spacing between items */
-	  border-radius: 4px; /* Add border radius */
+		padding-left: 20px;
+		padding-right: 20px; /* Adjust spacing between items */
+		border-radius: 4px; /* Add border radius */
+		white-space: nowrap;
+		overflow: auto;
     }
 	.nav_container_left{
 		img-color: orange;
 	}
 	.nav_container_right{
-		background-color: orange;
 		padding: 5px;
-		border-radius: 2px; /* Add border radius */
+		border-radius: 5px; /* Add border radius */
 		font-size:2.5vw;
 	}
 	@media screen and (min-width: 600px) {
@@ -76,7 +76,6 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: darkgreen;
       color: white;
       padding: 15px;
       border: none;
@@ -92,18 +91,22 @@
 	.btn-group {
 		margin-left: auto;
 	}
+	.card{
+		border-radius:0px;
+	}
+	
   </style>
 </head>
 <body class="body" data-spy="scroll" data-target=".navbar" data-bs-offset="50">
 
-<div class="container_top  sticky-top">
+<div class="container_top  sticky-top bg-success bg-gradient">
   <div class="nav_container_left" id="nav_container_left">
     <img src="house-solid.png" style="width: 20px; height: 20px">
   </div>
-  <div class="nav_container_center" id="nav_container_center">
+  <div class="nav_container_center fw-bold" id="nav_container_center">
     SHOP NAME
   </div>
-  <div class="nav_container_right" id="nav_container_right">
+  <div class="nav_container_right bg-warning bg-gradient fw-bold" id="nav_container_right">
     TABLE 1
   </div>
 </div>
@@ -137,8 +140,8 @@
 	</div>
 </div>
 
-<div class="container_middle_2 sticky-top">
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<div class="container_middle_2 sticky-top bg-secondary bg-gradient">
+  <nav class="navbar navbar-expand-sm bg-secondary bg-gradient navbar-dark">
     <div class="container-fluid">
       <ul class="navbar-nav">
         <li id="nav_menu_1" class="nav-item">
@@ -169,7 +172,7 @@
     <div id="accordion">
 		<div class="card">
 		  <div class="card-header" data-bs-toggle="collapse" href="#collapse1">
-			<a class="card-link">Rice</a>
+			<a class="card-link fw-bold" style="text-decoration:none; color: #000;"">Rice</a>
 		  </div>
 		  <div id="collapse1" class="collapse show" data-bs-parent="#accordion">
 		  
@@ -214,7 +217,7 @@
 		</div>
 		<div class="card">
 		  <div class="card-header" data-bs-toggle="collapse" href="#collapse2">
-			<a class="collapsed card-link">Noodles</a>
+			<a class="collapsed card-link fw-bold" style="text-decoration:none; color: #000;">Noodles</a>
 		  </div>
 		  <div id="collapse2" class="collapse" data-bs-parent="#accordion">
 			
@@ -235,7 +238,7 @@
 		</div>
 		<div class="card">
 		  <div class="card-header" data-bs-toggle="collapse" href="#collapse3">
-			<a class="collapsed card-link">Soup</a>
+			<a class="collapsed card-link fw-bold" style="text-decoration:none; color: #000;">Soup</a>
 		  </div>
 		  <div id="collapse3" class="collapse" data-bs-parent="#accordion">
 			
@@ -256,7 +259,7 @@
 		</div>
 		<div class="card">
 		  <div class="card-header" data-bs-toggle="collapse" href="#collapse4">
-			<a class="collapsed card-link">Stir Fried</a>
+			<a class="collapsed card-link fw-bold" style="text-decoration:none; color: #000;">Stir Fried</a>
 		  </div>
 		  <div id="collapse4" class="collapse" data-bs-parent="#accordion">
 			
@@ -277,7 +280,7 @@
 		</div>
 		<div class="card">
 		  <div class="card-header" data-bs-toggle="collapse" href="#collapse5">
-			<a class="collapsed card-link">Snack</a>
+			<a class="collapsed card-link fw-bold" style="text-decoration:none; color: #000;">Snack</a>
 		  </div>
 		  <div id="collapse5" class="collapse" data-bs-parent="#accordion">
 			
@@ -298,7 +301,7 @@
 		</div>
 		<div class="card">
 		  <div class="card-header" data-bs-toggle="collapse" href="#collapse6">
-			<a class="collapsed card-link">Drinks</a>
+			<a class="collapsed card-link fw-bold" style="text-decoration:none; color: #000;">Drinks</a>
 		  </div>
 		  <div id="collapse6" class="collapse" data-bs-parent="#accordion">
 			
@@ -330,9 +333,8 @@
 			<!-- Cart items will be dynamically added here -->
 		</div>
 		<div class="modal-footer">
-			<div>Total Price: <span id="totalPrice" class="text-muted">RM 0.00</span></div>
-			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Order More</button>
-			<button type="button" class="btn btn-primary">Checkout</button>
+			<div>Total Price : <span id="totalPrice" class="text-muted">RM 0.00</span></div>
+			<button type="button" class="btn btn_checkout btn-success bg-gradient">Checkout</button>
 		</div>
 
 		</div>
@@ -340,7 +342,7 @@
 	</div>
 
 	<!-- Update the button in the HTML body to trigger the modal -->
-	<button class="float-card bg-opacity-10" data-bs-toggle="modal" data-bs-target="#cartModal">Order List <span id="cartBadge" class="badge bg-warning">0</span></button>
+	<button class="float-card bg-warning bg-gradient bg-opacity-75" data-bs-toggle="modal" data-bs-target="#cartModal">Order List <span id="cartBadge" class="badge bg-success">0</span></button>
 
 	
 </div>
@@ -354,7 +356,7 @@
 
     $('#accordion').on('shown.bs.collapse', function (e) {
         var target = $(e.target).attr('id');
-        $('#nav_menu_' + target.substr(target.length - 1)).css('background-color', 'orange');
+        $('#nav_menu_' + target.substr(target.length - 1)).css('background-color', 'black');
     });
   });
   
@@ -416,36 +418,46 @@
         // Clear previous items
         $('#cartItems').empty();
 
-        var totalPrice = 0;
+		// Initialize total price
+		var totalPrice = 0;
+        
         // Loop through cart items
         for (var item in cartItems) {
             if (cartItems.hasOwnProperty(item)) {
                 var quantity = cartItems[item].quantity;
                 var price = cartItems[item].price;
-                var totalItemPrice = quantity * price;
+                var SubtotalItemPrice = quantity * price;
                 // Add item to cart modal
-                var cartItem = '<div class="d-flex align-items-center mb-3 cart-item" data-name="' + item + '">' +
-					'<img src="' + cartItems[item].image + '" alt="' + item + '" class="me-3" style="width: 50px;">' +
-					'<div><h6 class="mb-0" style="color: #000;">' + item + '</h6>' +
-					'<div class="btn-group ms-auto" role="group">' +
-					'<button type="button" class="btn btn-minus btn-sm btn-outline-secondary">-</button>' +
-					'<span class="mx-2" style="color: #000;">' + quantity + '</span>' +
-					'<button type="button" class="btn btn-plus btn-sm btn-outline-secondary">+</button>' +
-					'</div>' +
-					'<span class="text-muted">' + totalItemPrice.toFixed(2) + ' RM</span>' +
-					'</div>' +
+				// Add item to total price
+				totalPrice += SubtotalItemPrice;
+			
+                var cartItem = 
+					'<div class="d-flex align-items-center mb-3 cart-item" data-name="' + item + '">' +
+						'<img src="' + cartItems[item].image + '" alt="' + item + '" class="me-3" style="width: 50px;">' +
+						'<div class="text-center">' +
+							'<h6 class="mb-0" style="color: #000;">' + item + '</h6>' +
+							'<span class="text-muted">RM ' + price.toFixed(2) + '</span>' +
+						'</div>' +
+						'<div class="text-center" role="group" d-flex align-items-center" style="width:23%">' +
+							'<div class="btn-group" role="group" style="width:100%">' +
+								'<button type="button" class="btn btn-minus btn-sm btn-secondary" style="width:33.3%;">-</button>' +
+								'<span class="quantity-number text-center" style="width:33.3%; vertical-align: middle;">' + quantity + '</span>' +
+								'<button type="button" class="btn btn-plus btn-sm btn-secondary" style="width:33.3%;">+</button>' +
+							'</div>' +
+							'<div>' +
+								'<span class="text-muted">RM ' + SubtotalItemPrice.toFixed(2) + '</span>' +
+							'</div>' +
+						'</div>' +
 					'</div>';
 
-				// Add subtotal price
-				var subtotalPrice = '<div class="text-end"><strong>Subtotal: ' + totalPrice.toFixed(2) + ' RM</strong></div>';
-
+				
 				$('#cartItems').append(cartItem);
-				$('#cartItems').append(subtotalPrice);
             }
         }
-
-        // Update total price and cart badge
-        $('#totalPrice').text(totalPrice.toFixed(2) + ' RM');
+		
+		// Update total price in the modal
+		$('#totalPrice').text('RM ' + totalPrice.toFixed(2));
+	
         // Update cart badge to show total number of items
 		$('#cartBadge').text(Object.values(cartItems).reduce((acc, item) => acc + item.quantity, 0));
 
