@@ -173,11 +173,10 @@
 		width:96%;
 		position:fixed;
 		bottom:70px;
-		overflow-y: initial !important
 	}  
 	.modal-body{
 		height: auto;
-		max-height: 400px;
+		max-height: 70vh;
 		overflow-y: auto;
 	}
 	.nav-link{
@@ -635,7 +634,7 @@
 
 	  return $('html, body').animate({
 		scrollTop: $(this.hash).offset().top - navOffset
-	  }, 300, function() {
+	  }, 50, function() {
 		return window.history.pushState(null, null, target);
 	  });
 	});
@@ -723,24 +722,20 @@ document.getElementById('confirmAdd').addEventListener('click', function() {
   // Create cart item
   const cartItem = `
     <div class="d-flex mb-3 cart-item" data-name="${name}" >
-      <img src="${image}" alt="${name}" class="me-3" style="width: 50px;">
-      <div class="text-left" style="width:60%;">
-		<div class="d-flex" style="">
-			<p class="mb-0" style="color: #000; padding-right: 10px;">${name}</p>
-			<p class="text-muted" style="margin-bottom: 0;">RM ${price.toFixed(2)}</p>
-		</div>
-		<div>
-			<p class="mb-0 text-muted" style="width:90%; color: #000; overflow-x:auto; white-space: nowrap;">Remark: ${remark}</p>
-		</div>
+      <img src="${image}" alt="${name}" class="me-1" style="width: 50px;">
+      <div class="text-left" style="width:54%;">
+			<p class="mb-0 h6" style="color: #000; padding-right: 10px;"><small>${name}</small></p>
+			<p class="mb-0 text-muted small" style="margin-bottom: 0;">RM ${price.toFixed(2)}</p>
+			<p class="mb-0 text-muted small" style="width:90%; color: #000; overflow-x:auto; white-space: nowrap;"><em>Remark: ${remark}</em></p>
       </div>
-      <div class="text-center" role="group" style="width:23%; padding:6px;">
+      <div class="text-center" role="group" style="width:28%; padding:6px;">
         <div class="btn-group text-center" role="group" style="width:100%">
-          <button type="button" class="btn btn-minus btn-sm btn-secondary bg-gradient" style="width:33.3%;">-</button>
-          <span class="quantity-number text-center bg-secondary bg-opacity-25" style="width:33.3%;">1</span>
+          <button type="button" class="btn btn-minus btn-sm btn-secondary bg-gradient" style="width:33.3%;" data-toggle="confirmation" data-title="DELETE ITEM">-</button>
+          <span class="quantity-number text-center bg-secondary bg-opacity-25 small" style="width:33.3%;">1</span>
           <button type="button" class="btn btn-plus btn-sm btn-success bg-gradient" style="width:33.3%;">+</button>
         </div>
         <div>
-          <span class="subtotal text-muted">RM ${price.toFixed(2)}</span>
+          <span class="subtotal text-muted small">RM ${price.toFixed(2)}</span>
         </div>
       </div>
     </div>
@@ -807,19 +802,22 @@ document.addEventListener('click', function(event) {
     let quantity = parseInt(quantityElement.textContent);
 
 	if (quantity === 1) {
-		// Remove cartItem if quantity is 1
+	
+		if (confirm("DELETE ITEM") == true) {
+			// Update total price by adding the item's price
+			const totalPrice = parseFloat(totalPriceElement.textContent.replace('RM ', ''));
+			const updatedTotalPrice = totalPrice - price;
+			totalPriceElement.textContent = 'RM ' + updatedTotalPrice.toFixed(2);
+			
+			// Update cart badge
+			  const cartBadge = document.getElementById('cartBadge');
+			  const itemCount = parseInt(cartBadge.textContent) || 0;
+			  cartBadge.textContent = itemCount - 1;
+			
+			cartItem.remove();
+		  } else {
+		  }
 		
-		// Update total price by adding the item's price
-		const totalPrice = parseFloat(totalPriceElement.textContent.replace('RM ', ''));
-		const updatedTotalPrice = totalPrice - price;
-		totalPriceElement.textContent = 'RM ' + updatedTotalPrice.toFixed(2);
-		
-		// Update cart badge
-		  const cartBadge = document.getElementById('cartBadge');
-		  const itemCount = parseInt(cartBadge.textContent) || 0;
-		  cartBadge.textContent = itemCount - 1;
-		
-		cartItem.remove();
     } else {
 		// Minus quantity
 		quantity--;
