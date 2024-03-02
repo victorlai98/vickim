@@ -12,11 +12,18 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	<style>
-		body {position:relative;}
+		body {
+			position:relative;
+			max-width:720px  !important;
+			width: 100%;
+			height:auto;
+			padding: 0px 0px 0px 0px !important;
+		}
 
 		div.secondary-nav .scroll {
 			white-space: nowrap;
-			overflow-x: auto;
+			overflow-x: auto; /* Enable horizontal scrolling */
+			overflow-y: hidden; /* Disable vertical scrolling */
 			-webkit-overflow-scrolling: touch;
 			-ms-overflow-style: -ms-autohiding-scrollbar;
 		}
@@ -73,7 +80,6 @@
 
 		div.secondary-nav .vam {
 			display: inline-block;
-			vertical-align: middle;
 		}
 
 		div.secondary-nav .nav {
@@ -186,12 +192,12 @@
 	</style>
 </head>
 
-<body data-spy="scroll" data-target="#secondary-nav" data-offset="55">
+<body class="container" data-spy="scroll" data-target="#secondary-nav" data-offset="55">
 
 	<div class="nav_container_right text-center bg-warning bg-gradient shadow fw-bold" id="nav_container_right">TABLE 1</div>
 	  
 	<div class="container_top bg-success bg-gradient d-flex justify-content-center">
-		<div class="nav_container_center fw-bold" id="nav_container_center">
+		<div class="nav_container_center fw-bold" id="nav_container_center" onclick="clickCounter()">
 			ZIG ZAG KOPITIAM
 		</div>
 	</div>
@@ -714,6 +720,16 @@
 			}
 		}
 	});
+	
+	var count = 0;
+	
+	function clickCounter() {
+		count++;
+			
+			if(count === 5){
+				window.location.href = "admin.html";
+			}
+	}
 
 </script>
 </html>
