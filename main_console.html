@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -48,12 +49,12 @@
         display: inline-block;
     }
 
-    .contactForm {
+    .foodItemForm {
         font-size: 12px;
     }
 </style>
 </head>
-<body style="background:#e6e6e6;color:black;">
+<body style="background:#f7f7f7;color:black;">
 
 	<div class="w3-sidebar w3-light-grey w3-card-4 w3-animate-left" id="mySidebar">
 		<div class="w3-bar w3-dark-grey" style="height:60px;">
@@ -84,17 +85,85 @@
 		<!-- Content areas -->
 			<div id="home_subContent" style="display: block;">
 				<!-- Home content here -->
-				<p>Home Content</p>
-			</div>
+				<h6 class="text-primary text-center" style="margin-bottom: 10px; margin-top: 10px"></h6>
+
+					<div class="container">
+						<div class="card text-center">
+							<h5 class="card-header">
+								Today Sales
+							</h5>
+							<div class="card-body">
+								<h6 class="card-title">Total Sales</h6>
+								<p class="card-text">RM 500.00</p>
+								<div class="text-center" id="mySalesChart" style="width:100%; height:auto;"></div>
+								
+							</div>
+							<div class="card-footer text-muted">
+								<a href="#" class="btn btn-primary" style="width:100%;">View Report</a>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="container">
+						<div class="card text-center">
+							<h5 class="card-header">
+								Top Sales Food
+							</h5>
+							<div class="card-body">
+								<h6 class="card-title">Total Order</h6>
+								<p class="card-text">103</p>
+								<div  class="text-center" id="myFoodChart" style="width:100%; height:auto;"></div>
+								
+							</div>
+							<div class="card-footer text-muted">
+								<a href="#" class="btn btn-primary" style="width:100%;">View Report</a>
+							</div>
+						</div>
+					</div>
+					<hr>
+					
+				</div>
 			<div id="gallery_subContent" style="display: none;">
 				<!-- Gallery content here -->
-				<p>Gallery Content</p>
+				<h6 class="text-primary text-center" style="margin-bottom: 10px; margin-top: 10px">Add Gallery Image</h6>
+
+					<form class="container galleryItemForm" id="galleryItemForm" enctype="multipart/form-data" style="width: 100%">
+						<div class="card">
+							<div class="card-body">
+								<div class="form-group">
+									<label for="Gallery_Img">Gallery Image</label>
+									<input type="file" class="form-control-file" id="Gallery_Img" accept="image/*">
+								</div>
+							</div>
+							<button type="submit" class="btn btn-primary btn-sm" style="margin: 10px">Submit</button>
+						</div>
+					</form>
+					<hr>
+					<div id="galleryItems" class="container ">
+					<h6 class="text-primary text-center" style="margin: 10px">All Gallery Image</h6>
+						<div class="form-group">
+							<input type="text" class="form-control" id="searchInput" placeholder="Search...">
+						</div>
+						<table class="table table-bordered">
+							<thead>
+								<tr class="text-center bg-secondary bg-gradient sticky-top" style="color:white;">
+									<th scope="col" data-sort="sku">SKU <span class="arrow-up">&#9650;</span><span
+											class="arrow-down">&#9660;</span></th>
+									<th scope="col">Image</th>
+								</tr>
+							</thead>
+							<tbody id="galleryItemsTableBody">
+								<!-- Food items will be displayed here -->
+							</tbody>
+						</table>
+					</div>
+					
 			</div>
 			<div id="food_subContent" style="display: none;">
 				<!-- Food content here -->
 				<h6 class="text-primary text-center" style="margin-bottom: 10px; margin-top: 10px">Add Food Item</h6>
 
-					<form class="container contactForm" id="contactForm" enctype="multipart/form-data" style="width: 100%">
+					<form class="container foodItemForm" id="foodItemForm" enctype="multipart/form-data" style="width: 100%">
 						<div class="card">
 							<div class="card-body">
 								<div class="form-group">
@@ -119,9 +188,7 @@
 							<button type="submit" class="btn btn-primary btn-sm" style="margin: 10px">Submit</button>
 						</div>
 					</form>
-
 					<hr>
-
 					<!-- Modal for Editing Food Item -->
 					<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
@@ -227,6 +294,51 @@ function showContent(contentId) {
 	document.getElementById(contentId + '_subContent').style.display = 'block';
 }
 
+google.charts.load('current',{packages:['corechart']});
+google.charts.setOnLoadCallback(drawSalesChart);
+
+function drawSalesChart() {
+// Set Data
+const data = google.visualization.arrayToDataTable([
+  ['Price', 'Size'],
+  [50,7],[60,8],[70,8],[80,9],[90,9],
+  [100,9],[110,10],[120,11],
+  [130,14],[140,14],[150,15]
+]);
+// Set Options
+const options = {
+  title: 'Today Sales',
+  hAxis: {title: 'Time'},
+  vAxis: {title: 'RM'},
+  legend: 'none'
+};
+// Draw
+const saleschart = new google.visualization.LineChart(document.getElementById('mySalesChart'));
+saleschart.draw(data, options);
+}
+
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawFoodChart);
+
+function drawFoodChart() {
+const data = google.visualization.arrayToDataTable([
+  ['Chicken Rice', 'Mhl'],
+  ['Laksa',54.8],
+  ['French Fried',48.6],
+  ['100 Plus',44.4],
+  ['Coca Cola',23.9],
+  ['Fried Kueh Tiaw',14.5]
+]);
+
+const options = {
+  title:'Top Sales Food',
+  is3D:true
+};
+
+const foodchart = new google.visualization.PieChart(document.getElementById('myFoodChart'));
+  foodchart.draw(data, options);
+}
+
 let firebaseConfig = {
             apiKey: "AIzaSyAomp24GM3Yvve-7ttWc_HhGWNUCbZUBPI",
             authDomain: "qr-food-ordering-ab95d.firebaseapp.com",
@@ -241,9 +353,11 @@ let firebaseConfig = {
 
         let foodCategoryRef = firebase.database().ref('Food_Category');
         let foodItemRef = firebase.database().ref('Food_Item');
+        let galleryItemRef = firebase.database().ref('Food_Gallery');
         let storageRef = firebase.storage().ref();
 
-        document.getElementById('contactForm').addEventListener('submit', submitForm);
+        document.getElementById('foodItemForm').addEventListener('submit', submitForm);
+		document.getElementById('galleryItemForm').addEventListener('submit', submitGalleryForm);
 
         function submitForm(e) {
             e.preventDefault();
@@ -265,15 +379,36 @@ let firebaseConfig = {
                 console.error('Error uploading image: ', error);
             });
 
-            document.getElementById('contactForm').reset();
+            document.getElementById('foodItemForm').reset();
         }
+		
+		// Function to handle form submission
+		function submitGalleryForm(e) {
+			e.preventDefault();
+
+			// Get values
+			let Gallery_Img = document.getElementById('Gallery_Img').files[0];
+
+			// Upload image to Firebase Storage
+			let imgRef = storageRef.child('Food_Gallery/' + Gallery_Img.name);
+			imgRef.put(Gallery_Img).then(function (snapshot) {
+				return snapshot.ref.getDownloadURL();
+			}).then(function (downloadURL) {
+				// Save image URL to Firebase Database
+				saveGallery(downloadURL);
+			}).catch(function (error) {
+				console.error('Error uploading image: ', error);
+			});
+
+			document.getElementById('galleryItemForm').reset();
+		}
 
         // Function to get form values
         function getInputVal(id) {
             return document.getElementById(id).value;
         }
 
-        // Save message to Firebase
+        // Save food item to Firebase
         function saveMessage(Food_Category, Food_Name, Food_Price, Food_Img) {
             let query = foodItemRef.orderByKey().limitToLast(1);
             query.once('value', function (snapshot) {
@@ -292,6 +427,59 @@ let firebaseConfig = {
                 });
             });
         }
+		
+		// Save gallery item to Firebase
+        function saveGallery(Gallery_Img) {
+			let query = galleryItemRef.orderByKey().limitToLast(1);
+			query.once('value', function (snapshot) {
+				snapshot.forEach(function (childSnapshot) {
+					var lastKey = parseInt(childSnapshot.key) + 1;
+					var newKey = String(lastKey).padStart(6, '0'); // Ensure 6 digits with leading zeros
+					let newGalleryItemRef = firebase.database().ref('Food_Gallery').child(newKey);
+
+					newGalleryItemRef.set(Gallery_Img); // Set the URL directly
+					displayGalleryItems(); // Call display function after saving
+				});
+			});
+		}
+		
+		// Function to display gallery items
+		function displayGalleryItems() {
+			galleryItemRef.on('value', function(snapshot) {
+				let galleryItemsTableBody = document.getElementById('galleryItemsTableBody');
+				galleryItemsTableBody.innerHTML = ''; // Clear existing rows
+				snapshot.forEach(function(childSnapshot) {
+					let galleryItem = childSnapshot.val();
+					let galleryrow = document.createElement('tr');
+					galleryrow.innerHTML = `
+						<td class="bg-gradient bg-opacity-25 text-center" style="color:;">
+							${childSnapshot.key}<br>
+							<a onclick="deleteItem('${childSnapshot.key}')" style="font-weight:bold; color:red;">DELETE</a>
+						</td>
+						<td class="text-center"><img src="${galleryItem}" alt="Food Image" style="max-width: 100px;"></td>
+					`;
+					galleryItemsTableBody.appendChild(galleryrow);
+				});
+			});
+		}
+		
+		// Function to delete a gallery item
+		function deleteItem(key) {
+			// Prompt the user for confirmation before deleting
+			let confirmation = confirm("Are you sure you want to delete this item?");
+			if (confirmation) {
+				// Remove the item from the Firebase Realtime Database
+				firebase.database().ref('Food_Gallery').child(key).remove()
+				.then(function() {
+					console.log("Gallery item deleted successfully");
+					// Optionally, you can also update the UI after deleting the item
+					displayGalleryItems();
+				})
+				.catch(function(error) {
+					console.error("Error deleting gallery item: ", error);
+				});
+			}
+		}
 
         // Populate food category dropdown
         function populateFoodCategories() {
@@ -424,6 +612,7 @@ let firebaseConfig = {
         populateFoodCategories();
         populateEditFoodCategories();
         displayFoodItems();
+		displayGalleryItems();
 </script>
 
 </body>
