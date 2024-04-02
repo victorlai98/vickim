@@ -152,12 +152,10 @@
 											<label for="editFood_Img">Food Image</label>
 											<input type="file" class="form-control-file" id="editFood_Img" accept="image/*">
 										</div>
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-primary" id="saveChangesBtn">Save Changes</button>
+										<button type="button" class="btn btn-danger" id="deleteItemBtn">Delete Item</button>
 									</form>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									<button type="submit" class="btn btn-primary" id="saveChangesBtn">Save Changes</button>
-									<button type="button" class="btn btn-danger" id="deleteItemBtn">Delete Item</button>
 								</div>
 							</div>
 						</div>
@@ -290,6 +288,7 @@ let firebaseConfig = {
                         Food_Price: Food_Price,
                         Food_Img: Food_Img,
                     });
+					displayFoodItems();
                 });
             });
         }
@@ -304,6 +303,19 @@ let firebaseConfig = {
                     option.value = categoryName;
                     option.textContent = categoryName;
                     document.getElementById('Food_Category').appendChild(option);
+                });
+            });
+        }
+		
+		function populateEditFoodCategories() {
+            foodCategoryRef.once('value', function (snapshot) {
+                snapshot.forEach(function (childSnapshot) {
+                    let categoryId = childSnapshot.key;
+                    let categoryName = childSnapshot.val();
+                    let option = document.createElement('option');
+                    option.value = categoryName;
+                    option.textContent = categoryName;
+                    document.getElementById('editFood_Category').appendChild(option);
                 });
             });
         }
@@ -347,12 +359,14 @@ let firebaseConfig = {
                 $('#editFood_Category').val(foodItem.Food_Category);
                 $('#editFood_Price').val(foodItem.Food_Price);
                 $('#editModal').modal('show');
+				$('#saveChangesBtn').data('key', key);
             });
         }
 
         // Handle submit action for the edit form
         $('#editForm').submit(function (e) {
             e.preventDefault();
+			let key = $('#saveChangesBtn').data('key'); // Retrieve key from data attribute
             let editedFood_Category = $('#editFood_Category').val();
             let editedFood_Name = $('#editFood_Name').val();
             let editedFood_Price = $('#editFood_Price').val();
@@ -386,7 +400,7 @@ let firebaseConfig = {
             }).then(function () {
                 $('#editModal').modal('hide');
                 // Optionally, you can reload the table to reflect the changes
-                // displayFoodItems();
+                displayFoodItems();
             }).catch(function (error) {
                 console.error('Error editing food item: ', error);
             });
@@ -395,10 +409,11 @@ let firebaseConfig = {
         // Function to handle deleting a food item
         $('#deleteItemBtn').click(function () {
             if (confirm('Are you sure you want to delete this item?')) {
+				let key = $('#saveChangesBtn').data('key'); // Retrieve key from data attribute
                 foodItemRef.child(key).remove().then(function () {
                     $('#editModal').modal('hide');
                     // Optionally, you can reload the table to reflect the changes
-                    // displayFoodItems();
+                    displayFoodItems();
                 }).catch(function (error) {
                     console.error('Error deleting food item: ', error);
                 });
@@ -407,6 +422,7 @@ let firebaseConfig = {
 
         // Call function to populate dropdown and display food items on page load
         populateFoodCategories();
+        populateEditFoodCategories();
         displayFoodItems();
 </script>
 
