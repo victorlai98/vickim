@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 	<head>
@@ -62,6 +61,13 @@
 			padding: 20px; /* Adjust padding as needed */
 		}
 
+		/* Style for loading spinner */
+		.spinner-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100%;
+		}
 
     </style>
 	
@@ -96,7 +102,7 @@
 		
 		<!-- Modal -->
 		<div class="modal fade" id="addPictureModal" tabindex="-1" role="dialog" aria-labelledby="addPictureModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
+			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="addPictureModalLabel">Add Picture</h5>
@@ -130,7 +136,6 @@
 					<p class="lead" style="color:#fff;">Take only memories leave only footprints</p>
 					<p class="lead" style="color:#fff;">带走回忆 留下脚印</p>
 					<p>
-
 						<a id="addPicture" class="my-2" data-toggle="modal" data-target="#addPictureModal"><img src="camera-solid.png" style="height:30px; width:auto;"></a>        
 					</p>
 				</div>
@@ -148,7 +153,7 @@
 		
 		<!-- Add the modal for displaying album details -->
 		<div class="modal fade" id="albumDetailsModal" tabindex="-1" role="dialog" aria-labelledby="albumDetailsModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
+			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="albumDetailsModalLabel">Album Details</h5>
@@ -163,6 +168,32 @@
 						<a id="downloadButton" class="btn btn-primary" download>Download</a>
 						<button id="deleteButton" type="button" class="btn btn-danger">Delete</button>
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Loading Modal -->
+		<div class="modal" id="loadingModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="spinner-container">
+							<div class="spinner-border text-primary" role="status">
+								<span class="sr-only">Loading...</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Success Modal -->
+		<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						Picture added successfully!
 					</div>
 				</div>
 			</div>
@@ -208,6 +239,10 @@
 				$('#addPictureForm').submit(function(event) {
 					event.preventDefault(); // Prevent default form submission
 
+					// Show loading modal
+					$('#addPictureModal').modal('hide');
+					$('#loadingModal').modal('show');
+
 					// Get file and text input values
 					var file = $('#imageFile')[0].files[0];
 					var albumText = $('#albumText').val();
@@ -236,7 +271,9 @@
 								$('#imageFile').val('');
 								$('#albumText').val('');
 								// Close the modal
-								$('#addPictureModal').modal('hide');
+								$('#loadingModal').modal('hide');
+								// Show success modal
+								$('#successModal').modal('show');
 							});
 						});
 					} else {
@@ -261,7 +298,6 @@
 
 						$('#Albums').empty();
 
-						// Process albums
 						// Process albums
 						albums.forEach(function(album) {
 							// Convert timestamp to a Date object
@@ -323,10 +359,13 @@
 								});
 								// Set delete button click event
 								$('#deleteButton').off('click').on('click', function() {
-									// Delete the album from the database
-									database.ref('albums/' + albumKey).remove();
-									// Hide the modal
-									$('#albumDetailsModal').modal('hide');
+									// Display a confirmation alert
+									if (confirm("Are you sure you want to delete this album?")) {
+										// If the user confirms, delete the album from the database
+										database.ref('albums/' + albumKey).remove();
+										// Hide the modal
+										$('#albumDetailsModal').modal('hide');
+									}
 								});
 								// Show the modal
 								$('#albumDetailsModal').modal('show');
