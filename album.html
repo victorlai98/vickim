@@ -1,0 +1,346 @@
+
+<!doctype html>
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+	
+    <title>VK Album</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	
+    <style>
+		.bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Style for the header with background image */
+		#heroBackground {
+			position: relative;
+			background: url('https://firebasestorage.googleapis.com/v0/b/vkapp-22162.appspot.com/o/images%2Fwallhaven-0w9zk6.jpg?alt=media&token=a80985dc-edde-489e-be86-897f304cfc23') center/cover no-repeat;
+			width:100%;
+			height: auto; /* Adjust as needed */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			overflow: hidden; /* Ensure content is not visible outside the container */
+		}
+
+		/* Overlay with blur effect */
+		.overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.1); /* Adjust opacity as needed */
+			backdrop-filter: blur(3px); /* Adjust blur intensity as needed */
+		}
+
+		/* Style for the header content */
+		.header-content {
+			position: relative;
+			z-index: 1; /* Ensure header content is in front of the background */
+			color: white; /* Set text color to white */
+			padding: 20px; /* Adjust padding as needed */
+		}
+
+
+    </style>
+	
+	</head>
+ 
+	<body>
+		<header>
+			<div class="collapse bg-dark" id="navbarHeader">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-8 col-md-7 py-4">
+							<h4 class="text-white">关于</h4>
+							<p class="text-muted">VK 相册 - 记录美好瞬间</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="navbar navbar-dark bg-dark shadow-sm">
+					<div class="container d-flex justify-content-between">
+						<a href="#" class="navbar-brand d-flex align-items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+							<strong>VK Album</strong>
+						</a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</header>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="addPictureModal" tabindex="-1" role="dialog" aria-labelledby="addPictureModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="addPictureModalLabel">Add Picture</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="addPictureForm">
+							<div class="form-group">
+								<label for="imageFile">Choose Image</label>
+								<input type="file" class="form-control-file" id="imageFile">
+							</div>
+							<div class="form-group">
+								<label for="albumText">Album Text</label>
+								<input type="text" class="form-control" id="albumText">
+							</div>
+							<button type="submit" class="btn btn-primary">Add Picture</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<main role="main">
+
+			<section class="text-center" id="heroBackground">
+				<div class="overlay"></div>
+				<div class="header-content">
+					<h3>VK 相册</h3>
+					<p class="lead" style="color:#fff;">Take only memories leave only footprints</p>
+					<p class="lead" style="color:#fff;">带走回忆 留下脚印</p>
+					<p>
+
+						<a id="addPicture" class="my-2" data-toggle="modal" data-target="#addPictureModal"><img src="camera-solid.png" style="height:30px; width:auto;"></a>        
+					</p>
+				</div>
+			</section>
+
+
+			<div class="album py-5 bg-light">
+				<div class="container">
+					<div class="row" id="Albums">
+					</div>
+				</div>
+			</div>
+
+		</main>
+		
+		<!-- Add the modal for displaying album details -->
+		<div class="modal fade" id="albumDetailsModal" tabindex="-1" role="dialog" aria-labelledby="albumDetailsModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="albumDetailsModalLabel">Album Details</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<img id="albumImage" class="img-fluid">
+					</div>
+					<div class="modal-footer">
+						<a id="downloadButton" class="btn btn-primary" download>Download</a>
+						<button id="deleteButton" type="button" class="btn btn-danger">Delete</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer class="text-muted">
+			<div class="container text-center">
+				<p>Copyright &copy; 2024 Victor & Kimberly. All rights reserved.</p>
+			</div>
+		</footer>
+
+		<!-- Bootstrap JS and jQuery -->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Firebase -->
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+
+		<script>
+			// Your web app's Firebase configuration
+			let firebaseConfig = {
+				apiKey: "AIzaSyAFcXHOxmh3v3kGcpiEh4XV--X8Z25NHoQ",
+				authDomain: "vkapp-22162.firebaseapp.com",
+				databaseURL: "https://vkapp-22162-default-rtdb.firebaseio.com",
+				projectId: "vkapp-22162",
+				storageBucket: "vkapp-22162.appspot.com",
+				messagingSenderId: "941859892617",
+				appId: "1:941859892617:web:0d4ef1300cd38043624558",
+				measurementId: "G-QW95378M42"
+			};
+
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+
+			// Database reference
+			var database = firebase.database();
+			var storage = firebase.storage();
+
+			$(document).ready(function() {
+				// Handle form submission
+				$('#addPictureForm').submit(function(event) {
+					event.preventDefault(); // Prevent default form submission
+
+					// Get file and text input values
+					var file = $('#imageFile')[0].files[0];
+					var albumText = $('#albumText').val();
+
+					if (file && albumText) {
+						// Upload image to Firebase Storage
+						var storageRef = storage.ref('images/' + file.name);
+						var uploadTask = storageRef.put(file);
+
+						uploadTask.on('state_changed', function(snapshot) {
+							// Observe state change events such as progress, pause, and resume
+						}, function(error) {
+							// Handle unsuccessful uploads
+							console.error('Error uploading image:', error);
+						}, function() {
+							// Handle successful uploads on complete
+							uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+								// Save image URL, album text, and album time to Firebase Database
+								var currentTime = firebase.database.ServerValue.TIMESTAMP;
+								database.ref('albums').push({
+									imageUrl: downloadURL,
+									albumText: albumText,
+									albumTime: currentTime
+								});
+								// Clear form inputs
+								$('#imageFile').val('');
+								$('#albumText').val('');
+								// Close the modal
+								$('#addPictureModal').modal('hide');
+							});
+						});
+					} else {
+						// If file or album text is not provided
+						alert('Please select an image and enter album text.');
+					}
+				});
+				
+				function displayAlbum() {
+					// Initialize albums array
+					var albums = [];
+
+					database.ref('albums').on('value', function(snapshot) {
+
+						albums = [];
+
+						snapshot.forEach(function(childSnapshot) {
+							var album = childSnapshot.val();
+							album.key = childSnapshot.key; // Add key to the album object
+							albums.push(album); // Add album to the albums array
+						});
+
+						$('#Albums').empty();
+
+						// Process albums
+						// Process albums
+						albums.forEach(function(album) {
+							// Convert timestamp to a Date object
+							var date = new Date(album.albumTime);
+
+							// Extract day, month, year, hour, minute, and meridian (AM/PM)
+							var day = date.getDate();
+							var month = date.getMonth() + 1; // Months are zero-based, so add 1
+							var year = date.getFullYear();
+							var hour = date.getHours();
+							var minute = date.getMinutes();
+							var meridian = hour < 12 ? 'AM' : 'PM';
+
+							// Convert hour from 24-hour to 12-hour format
+							hour = hour % 12;
+							hour = hour ? hour : 12; // Handle midnight (0 hours)
+
+							// Add leading zeros to single-digit day, month, hour, and minute
+							day = ('0' + day).slice(-2);
+							month = ('0' + month).slice(-2);
+							hour = ('0' + hour).slice(-2);
+							minute = ('0' + minute).slice(-2);
+
+							// Construct the date string with month at the center
+							var formattedDate = month + '/' + day + '/' + year + ' ' + hour + ':' + minute + ':00 ' + meridian;
+
+							// Construct the HTML for the album card
+							var albumCard = '<div class="col-md-4">';
+							albumCard += '<div class="card mb-4 shadow-sm">';
+							albumCard += '<a href="#" class="album-details" data-album-key="' + album.key + '">';
+							albumCard += '<img src="' + album.imageUrl + '" class="card-img-top" alt="Album Image">';
+							albumCard += '</a>';
+							albumCard += '<div class="card-body">';
+							albumCard += '<p class="card-text">' + album.albumText + '</p>';
+							albumCard += '<div class="d-flex justify-content-between align-items-center">';
+							albumCard += '<small class="text-muted">' + formattedDate + '</small>';
+							albumCard += '</div>';
+							albumCard += '</div>';
+							albumCard += '</div>';
+							albumCard += '</div>';
+
+							// Append the album card to the Albums container
+							$('#Albums').append(albumCard);
+
+							// Add event listener for clicking the picture to show modal
+							$('.album-details').click(function(event) {
+								event.preventDefault();
+								var albumKey = $(this).data('album-key');
+								var album = albums.find(function(item) {
+									return item.key === albumKey;
+								});
+								// Set modal content
+								$('#albumDetailsModal').find('.modal-body').html('<img src="' + album.imageUrl + '" class="img-fluid" alt="Album Image">');
+								$('#albumDetailsModal').find('.modal-title').text(album.albumText);
+								// Set download button URL
+								$('#downloadButton').attr({
+									'href': album.imageUrl,
+									'download': 'album_image.jpg'
+								});
+								// Set delete button click event
+								$('#deleteButton').off('click').on('click', function() {
+									// Delete the album from the database
+									database.ref('albums/' + albumKey).remove();
+									// Hide the modal
+									$('#albumDetailsModal').modal('hide');
+								});
+								// Show the modal
+								$('#albumDetailsModal').modal('show');
+							});
+
+						});
+
+					});
+				}
+
+				// Call function to display albums
+				displayAlbum();
+		
+			});
+		</script>
+	</body>
+</html>
