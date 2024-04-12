@@ -113,14 +113,15 @@
 					<div class="modal-body">
 						<form id="addPictureForm">
 							<div class="form-group">
-								<label for="imageFile">Choose Image</label>
-								<input type="file" class="form-control-file" id="imageFile">
+								<div class="custom-file">
+								  <input type="file" class="custom-file-input" id="imageFile">
+								  <label class="custom-file-label" for="imageFile">Choose Picture</label>
+								</div>
 							</div>
 							<div class="form-group">
-								<label for="albumText">Album Text</label>
-								<input type="text" class="form-control" id="albumText">
+								<input type="text" class="form-control" id="albumText" placeholder="Caption">
 							</div>
-							<button type="submit" class="btn btn-primary">Add Picture</button>
+							<button type="submit" class="btn btn-secondary btn-block">ADD</button>
 						</form>
 					</div>
 				</div>
@@ -140,8 +141,7 @@
 					</p>
 				</div>
 			</section>
-
-
+			
 			<div class="album py-5 bg-light">
 				<div class="container">
 					<div class="row" id="Albums">
@@ -164,10 +164,11 @@
 					<div class="modal-body">
 						<img id="albumImage" class="img-fluid">
 					</div>
-					<div class="modal-footer">
-						<a id="downloadButton" class="btn btn-primary" download>Download</a>
-						<button id="deleteButton" type="button" class="btn btn-danger">Delete</button>
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<div class="modal-footer text-center">
+						<div class="btn-group" role="group" style="width:100%;">
+							<button id="downloadButton" class="btn btn-primary" style="">Download</button>
+							<button id="deleteButton" type="button" class="btn btn-danger" style="">Delete</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -322,7 +323,7 @@
 							minute = ('0' + minute).slice(-2);
 
 							// Construct the date string with month at the center
-							var formattedDate = month + '/' + day + '/' + year + ' ' + hour + ':' + minute + ':00 ' + meridian;
+							var formattedDate = month + '/' + day + '/' + year + ' ' + hour + ':' + minute + meridian;
 
 							// Construct the HTML for the album card
 							var albumCard = '<div class="col-md-4">';
@@ -333,7 +334,7 @@
 							albumCard += '<div class="card-body">';
 							albumCard += '<p class="card-text">' + album.albumText + '</p>';
 							albumCard += '<div class="d-flex justify-content-between align-items-center">';
-							albumCard += '<small class="text-muted">' + formattedDate + '</small>';
+							albumCard += '<small class="text-muted"><i class="far fa-clock"></i> ' + formattedDate + '</small>';
 							albumCard += '</div>';
 							albumCard += '</div>';
 							albumCard += '</div>';
