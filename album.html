@@ -284,98 +284,101 @@
 				});
 				
 				function displayAlbum() {
-					// Initialize albums array
-					var albums = [];
+				// Initialize albums array
+				var albums = [];
 
-					database.ref('albums').on('value', function(snapshot) {
+				database.ref('albums').on('value', function(snapshot) {
+					albums = [];
 
-						albums = [];
-
-						snapshot.forEach(function(childSnapshot) {
-							var album = childSnapshot.val();
-							album.key = childSnapshot.key; // Add key to the album object
-							albums.push(album); // Add album to the albums array
-						});
-
-						$('#Albums').empty();
-
-						// Process albums
-						albums.forEach(function(album) {
-							// Convert timestamp to a Date object
-							var date = new Date(album.albumTime);
-
-							// Extract day, month, year, hour, minute, and meridian (AM/PM)
-							var day = date.getDate();
-							var month = date.getMonth() + 1; // Months are zero-based, so add 1
-							var year = date.getFullYear();
-							var hour = date.getHours();
-							var minute = date.getMinutes();
-							var meridian = hour < 12 ? 'AM' : 'PM';
-
-							// Convert hour from 24-hour to 12-hour format
-							hour = hour % 12;
-							hour = hour ? hour : 12; // Handle midnight (0 hours)
-
-							// Add leading zeros to single-digit day, month, hour, and minute
-							day = ('0' + day).slice(-2);
-							month = ('0' + month).slice(-2);
-							hour = ('0' + hour).slice(-2);
-							minute = ('0' + minute).slice(-2);
-
-							// Construct the date string with month at the center
-							var formattedDate = month + '/' + day + '/' + year + ' ' + hour + ':' + minute + meridian;
-
-							// Construct the HTML for the album card
-							var albumCard = '<div class="col-md-4">';
-							albumCard += '<div class="card mb-4 shadow-sm">';
-							albumCard += '<a href="#" class="album-details" data-album-key="' + album.key + '">';
-							albumCard += '<img src="' + album.imageUrl + '" class="card-img-top" alt="Album Image">';
-							albumCard += '</a>';
-							albumCard += '<div class="card-body">';
-							albumCard += '<p class="card-text">' + album.albumText + '</p>';
-							albumCard += '<div class="d-flex justify-content-between align-items-center">';
-							albumCard += '<small class="text-muted"><i class="far fa-clock"></i> ' + formattedDate + '</small>';
-							albumCard += '</div>';
-							albumCard += '</div>';
-							albumCard += '</div>';
-							albumCard += '</div>';
-
-							// Append the album card to the Albums container
-							$('#Albums').append(albumCard);
-
-							// Add event listener for clicking the picture to show modal
-							$('.album-details').click(function(event) {
-								event.preventDefault();
-								var albumKey = $(this).data('album-key');
-								var album = albums.find(function(item) {
-									return item.key === albumKey;
-								});
-								// Set modal content
-								$('#albumDetailsModal').find('.modal-body').html('<img src="' + album.imageUrl + '" class="img-fluid" alt="Album Image">');
-								$('#albumDetailsModal').find('.modal-title').text(album.albumText);
-								// Set download button URL
-								$('#downloadButton').attr({
-									'href': album.imageUrl,
-									'download': 'album_image.jpg'
-								});
-								// Set delete button click event
-								$('#deleteButton').off('click').on('click', function() {
-									// Display a confirmation alert
-									if (confirm("Are you sure you want to delete this album?")) {
-										// If the user confirms, delete the album from the database
-										database.ref('albums/' + albumKey).remove();
-										// Hide the modal
-										$('#albumDetailsModal').modal('hide');
-									}
-								});
-								// Show the modal
-								$('#albumDetailsModal').modal('show');
-							});
-
-						});
-
+					snapshot.forEach(function(childSnapshot) {
+						var album = childSnapshot.val();
+						album.key = childSnapshot.key; // Add key to the album object
+						albums.push(album); // Add album to the albums array
 					});
-				}
+
+					// Sort albums by albumTime in descending order (from newest to oldest)
+					albums.sort(function(a, b) {
+						return b.albumTime - a.albumTime;
+					});
+
+					$('#Albums').empty();
+
+					// Process albums
+					albums.forEach(function(album) {
+						// Convert timestamp to a Date object
+						var date = new Date(album.albumTime);
+
+						// Extract day, month, year, hour, minute, and meridian (AM/PM)
+						var day = date.getDate();
+						var month = date.getMonth() + 1; // Months are zero-based, so add 1
+						var year = date.getFullYear();
+						var hour = date.getHours();
+						var minute = date.getMinutes();
+						var meridian = hour < 12 ? 'AM' : 'PM';
+
+						// Convert hour from 24-hour to 12-hour format
+						hour = hour % 12;
+						hour = hour ? hour : 12; // Handle midnight (0 hours)
+
+						// Add leading zeros to single-digit day, month, hour, and minute
+						day = ('0' + day).slice(-2);
+						month = ('0' + month).slice(-2);
+						hour = ('0' + hour).slice(-2);
+						minute = ('0' + minute).slice(-2);
+
+						// Construct the date string with month at the center
+						var formattedDate = month + '/' + day + '/' + year + ' ' + hour + ':' + minute + meridian;
+
+						// Construct the HTML for the album card
+						var albumCard = '<div class="col-md-4">';
+						albumCard += '<div class="card mb-4 shadow-sm">';
+						albumCard += '<a href="#" class="album-details" data-album-key="' + album.key + '">';
+						albumCard += '<img src="' + album.imageUrl + '" class="card-img-top" alt="Album Image">';
+						albumCard += '</a>';
+						albumCard += '<div class="card-body">';
+						albumCard += '<p class="card-text">' + album.albumText + '</p>';
+						albumCard += '<div class="d-flex justify-content-between align-items-center">';
+						albumCard += '<small class="text-muted"><i class="far fa-clock"></i> ' + formattedDate + '</small>';
+						albumCard += '</div>';
+						albumCard += '</div>';
+						albumCard += '</div>';
+						albumCard += '</div>';
+
+						// Append the album card to the Albums container
+						$('#Albums').append(albumCard);
+
+						// Add event listener for clicking the picture to show modal
+						$('.album-details').click(function(event) {
+							event.preventDefault();
+							var albumKey = $(this).data('album-key');
+							var album = albums.find(function(item) {
+								return item.key === albumKey;
+							});
+							// Set modal content
+							$('#albumDetailsModal').find('.modal-body').html('<img src="' + album.imageUrl + '" class="img-fluid" alt="Album Image">');
+							$('#albumDetailsModal').find('.modal-title').text(album.albumText);
+							// Set download button URL
+							$('#downloadButton').attr({
+								'href': album.imageUrl,
+								'download': 'album_image.jpg'
+							});
+							// Set delete button click event
+							$('#deleteButton').off('click').on('click', function() {
+								// Display a confirmation alert
+								if (confirm("Are you sure you want to delete this album?")) {
+									// If the user confirms, delete the album from the database
+									database.ref('albums/' + albumKey).remove();
+									// Hide the modal
+									$('#albumDetailsModal').modal('hide');
+								}
+							});
+							// Show the modal
+							$('#albumDetailsModal').modal('show');
+						});
+					});
+				});
+			}
+
 
 				// Call function to display albums
 				displayAlbum();
