@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation 婚宴邀请函</title>
+	<link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background: url('IMG_1671.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @media (max-width: 600px) {
+            body {
+                background: url('IMG_1672.jpg') no-repeat center center fixed;
+                background-size: cover;
+                height: 100vh !important;
+            }
+        }
+        .weddingCard {
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background-color: rgba(253, 244, 237, 0.8);
+            transition: transform 0.5s ease;
+            transform-style: preserve-3d;
+            position: relative; /* Added */
+        }
+        .flip {
+            transform: rotateY(180deg);
+        }
+        .flip .front-content {
+            transform: rotateY(180deg); /* Added */
+            display: none; /* Added */
+        }
+        .flip .back-content {
+            transform: rotateY(180deg); /* Added */
+            display: block; /* Added */
+            position: relative;
+            backface-visibility: visible;
+            -webkit-backface-visibility: visible; /* Safari */
+        }
+        .back-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden; /* Safari */
+            transform: rotateY(180deg); /* Initially hide back content */
+        }
+        .mail-icon {
+            font-size: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .dancing-script {
+            font-family: "Dancing Script", cursive;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+        .heart-beat {
+            font-size: 48px;
+            color: red;
+            animation: heartbeatFlip 2s infinite;
+        }
+        @keyframes heartbeatFlip {
+            0%, 100% { transform: scale(0.9) rotateY(0); }
+            50% { transform: scale(1.2) rotateY(180deg); }
+        }
+        .title-text {
+            font-size:7vw; 
+        }
+        @media screen and (min-width: 600px) {
+            .title-text {
+                font-size: 40px;
+            }
+        }
+        .btn-default {
+            width: 100%;
+            background-color: #f95656;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: scale 0.2 ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .btn-secondary {
+            width: 100%;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: scale 0.2 ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .btn:focus {
+            outline: none !important;
+        }
+
+        .btn-default:hover {
+            scale: 1.01;
+            background-color: #f95656;
+        }
+		/* Falling hearts */
+		.heart-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+			z-index: 2;
+        }
+        .heart {
+            position: absolute;
+            color: #f95656;
+            font-size: 18px;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+		/* Touch Me Icon */
+        .touch-me-icon {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: #f95656;
+            cursor: pointer;
+            animation: bounce 1.5s infinite;
+			z-index:4;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: scale(0.9);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+
+	<div class="heart-container"></div>
+    <div class="container" id="weddingCard" style="height: 100%; display: flex; align-items: center; justify-content: center;">
+		<div class="envlope-wrapper">
+			<div id="envelope" class="close">
+			<img class="touch-me-icon" src="touchme.png" style="width:40px;">
+				<div class="front flap"></div>
+				<div class="front pocket"></div>
+				<div class="letter">
+					<div class="words line1"></div>
+					<div class="words line2"></div>
+					<div class="words line3"></div>
+					<div class="words line4"></div>
+				</div>
+				<div class="letter_hearts">
+					<div class="mini_hearts a1"></div>
+					<div class="mini_hearts a2"></div>
+					<div class="mini_hearts a3"></div>
+				</div>
+			</div>
+			
+		</div>
+        <div class="card weddingCard" style="display:none;">
+            <div class="card-body text-center front-content">
+				<p class="dancing-script title-text" style="color: #f95656; font-weight:bold; margin-bottom:0px;">Wedding <i class="fa fa-heart heart-beat" style="font-size:48px;color:#f95656"></i> Invitation</p>
+				<div onclick="flipCard()" id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="padding:10px;">
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<img src="IMG_1672.jpg" style="height:auto; width:100%; max-width:400px; min-height:200px;">
+							<div class="carousel-caption">
+								<!--<p>We are Married 我们结婚啦 ！</p> -->
+							</div>
+						</div>
+						<div class="carousel-item">
+							<img src="IMG_1672.jpg" style="height:auto; width:100%; max-width:400px; min-height:200px;">
+							<div class="carousel-caption">
+								<!--<p>We invite you to our Wedding Feast 我们诚邀您与家人一同参与婚宴</p> -->
+							</div>
+						</div>
+						<div class="carousel-item">
+							<img src="IMG_1672.jpg" style="height:auto; width:100%; max-width:400px; min-height:200px;">
+							<div class="carousel-caption">
+								<!--<p>See you 15 June 2024 不见不散</p> -->
+							</div>
+						</div>
+						<img class="touch-me-icon" src="touchme.png" style="width:40px;">
+					</div>
+				</div>
+
+				<div class="">
+					<p class="dancing-script" style="font-size:25px; font-weight:bold; margin-bottom:0px;">Victor Lai Khing Hian</p>
+					<img src="ring.png" style="width:40px;">
+					<p class="dancing-script" style="font-size:25px; font-weight:bold;">Kimberly Chang Yii</p>
+					<p style="font-family:impact; font-size:15px; margin-bottom:0px;"><i class="fa fa-clock-o"></i>&nbsp&nbsp 15 June 2024, 5:00 PM (SAT)</p>
+					<a href="https://maps.app.goo.gl/8rW32GmGz9ihRyvM8" target="_blank" style="text-decoration: none; color: inherit;">
+						<p style="font-family:impact; font-size:15px; margin-bottom:0px;">
+							<i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;Zig Zag Kopitiam, Kuching
+						</p>
+					</a>
+				</div>
+			</div>
+
+            <div class="card-body text-center back-content">
+                <form id="rsvp-form" style="">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name / 名字:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email / 邮箱</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone / 手机号</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="attendance" class="form-label">Will you attend? / 是否出席</label>
+                        <select class="form-select text-center" id="attendance" name="attendance" required>
+                            <option value="yes">Yes / 会</option>
+                            <option value="no">No / 不会</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="count" class="form-label">How many persons / 出席人数</label>
+                        <input type="number" class="form-control" id="count" name="count" min="1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="blessings" class="form-label">Blessings / 祝福语</label>
+                        <textarea class="form-control" id="blessings" name="blessings"></textarea>
+                    </div>
+                    <div class="row justify-content-between btn-toolbar" role="toolbar" style="padding-right:15px; padding-left:15px; align-items: center; justify-content: center;">
+                        <button type="button" onclick="flipCard()" class="btn btn-secondary" style="height:45px; width:18%;"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                        <button id="submitBtn" type="submit" class="btn btn-default btn-block" style="height:45px; width:80%;">SEND 发送</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+	<script  src="./script.js"></script>
+    <script>
+        function flipCard() {
+            var card = document.querySelector('.weddingCard');
+            card.classList.toggle('flip');
+        }
+
+        document.getElementById('rsvp-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert('RSVP Submitted! Thank you.');
+        });
+		
+		function createHeart() {
+            var heartContainer = document.querySelector('.heart-container');
+            var heart = document.createElement('i');
+            heart.classList.add('fa', 'fa-heart', 'heart');
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = 0;
+            heartContainer.appendChild(heart);
+            setTimeout(function () {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 500);
+		
+    </script>
+
+</body>
+</html>
