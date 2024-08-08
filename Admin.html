@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="./">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Admin</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link href="https://unpkg.com/@webpixels/css@1.1.5/dist/index.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<style>
+		.tab-pane {
+			display: none;
+		}
+
+		.tab-pane.active {
+			display: block;
+		}
+
+		.nav-link.active {
+			font-weight: bold;
+		}
+
+		label{
+			font-size:12px;
+		}
+		
+		.pagination { 
+			cursor: pointer; 
+		}
+		 
+		.pagination .page-item.active .page-link {
+			background-color: #525f7f; /* Background color */
+			color: #ffffff; /* Text color */
+			border-color: #525f7f; /* Border color */
+		}
+		.pagination .page-item.active .page-link:hover {
+			background-color: #e9ecef; /* Background color on hover */
+			border-color: #e9ecef; /* Border color on hover */
+			color: #000; /* Text color */
+		}
+		.pagination .page-item .page-link:hover {
+			background-color: #e9ecef; /* Background color on hover */
+			border-color: #dee2e6; /* Border color on hover */
+		}
+		.btn-custom{
+			background-color: #525f7f; /* Background color */
+			color: #ffffff; /* Text color */
+			border-color: #525f7f; /* Border color */
+		}
+		.btn-custom:hover{
+			background-color: #e9ecef; /* Background color on hover */
+			border-color: #e9ecef; /* Border color on hover */
+			color: #000; /* Text color */
+		}
+	</style>
+  </head>
+  <body>
+	<!-- Dashboard -->
+	<div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
+		<!-- Vertical Navbar -->
+		<nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
+			<div class="container-fluid">
+				<!-- Toggler -->
+				<button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<!-- Brand -->
+				<a class="navbar-brand nav-link py-lg-2 mb-lg-5 px-lg-6 me-0" href="#" data-target="dashboard">
+					Admin Management
+				</a>
+				<!-- User menu (mobile) -->
+				<div class="navbar-user d-lg-none">
+					<!-- Dropdown -->
+					<div class="dropdown">
+						<!-- Toggle -->
+						<a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<div class="avatar-parent-child">
+								<img alt="Image Placeholder" src="profile.png" class="avatar avatar- rounded-circle">
+								<span class="avatar-child avatar-badge bg-success"></span>
+							</div>
+						</a>
+						<!-- Menu -->
+						<div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
+							<a href="#" class="dropdown-item">Settings</a>
+							<hr class="dropdown-divider">
+							<a href="#" class="dropdown-item">Logout</a>
+						</div>
+					</div>
+				</div>
+				<!-- Collapse -->
+				<div class="collapse navbar-collapse" id="sidebarCollapse">
+					<!-- Navigation -->
+					<ul class="navbar-nav" id="myTab" role="tablist">
+						<li class="nav-item" role="presentation" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
+							<a class="nav-link active block" id="dashboard-tab"data-bs-toggle="tab" data-bs-target="#dashboard-tab-pane" type="button" role="tab" aria-controls="dashboard-tab-pane" aria-selected="true">
+								<i class="bi bi-house"></i> Dashboard
+							</a>
+						</li>
+						<li class="nav-item" role="presentation" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
+							<a class="nav-link" id="Enrollment-tab" data-bs-toggle="tab" data-bs-target="#Enrollment-tab-pane" type="button" role="tab" aria-controls="Enrollment-tab-pane" aria-selected="false">
+								<i class="bi bi-person-add"></i> Enrollment
+							</a>
+						</li>
+						<li class="nav-item" role="presentation" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
+							<a class="nav-link" id="Billing-tab" data-bs-toggle="tab" data-bs-target="#Billing-tab-pane" type="button" role="tab" aria-controls="Billing-tab-pane" aria-selected="false">
+								<i class="bi bi-receipt"></i> Billing
+							</a>
+						</li>
+						<li class="nav-item" role="presentation" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
+							<a class="nav-link" id="Report-tab" data-bs-toggle="tab" data-bs-target="#Report-tab-pane" type="button" role="tab" aria-controls="Report-tab-pane" aria-selected="false">
+								<i class="bi bi-file-earmark-bar-graph"></i> Report
+							</a>
+						</li>
+						<li class="nav-item" role="presentation" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
+							<a class="nav-link" id="Users-tab" data-bs-toggle="tab" data-bs-target="#Users-tab-pane" type="button" role="tab" aria-controls="Users-tab-pane" aria-selected="false">
+								<i class="bi bi-people"></i> Users
+							</a>
+						</li>
+						<hr class="navbar-divider my-5 opacity-20">
+						<div class="mt-auto"></div>
+						<li class="nav-item" role="presentation" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
+							<a class="nav-link block" id="Account-tab" data-bs-toggle="tab" data-bs-target="#Account-tab-pane" type="button" role="tab" aria-controls="Account-tab-pane" aria-selected="true">
+								<i class="bi bi-person-square"></i> Account
+							</a>
+						</li>
+						<li class="nav-item" role="presentation" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
+							<a class="nav-link block" id="Logout-tab" data-bs-toggle="tab" data-bs-target="#Logout-tab-pane" type="button" role="tab" aria-controls="Logout-tab-pane" aria-selected="true">
+								<i class="bi bi-box-arrow-left"></i> Logout
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- Main content -->
+		<div class="h-screen flex-grow-1 overflow-y-lg-auto">
+			<!-- Content -->
+			<div class="tab-content">
+				<div class="tab-pane fade show active h-screen flex-grow-1 overflow-y-lg-auto" id="dashboard-tab-pane" role="tabpanel" aria-labelledby="dashboard-tab" tabindex="0">
+					<!-- Header -->
+					<header class="bg-surface-primary border-bottom pt-6">
+						<div class="container-fluid">
+							<div class="mb-npx">
+								<div class="row align-items-center">
+									<div class="col-sm-6 col-12 mb-4 mb-sm-0">
+										<!-- Title -->
+										<h1 class="h2 mb-0 ls-tight">Dashboard</h1>
+									</div>
+									<!-- Actions -->
+									<!--<div class="col-sm-6 col-12 text-sm-end">
+										<div class="mx-n1">
+											<a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+												<span class="pe-2">
+													<i class="bi bi-pencil"></i>
+												</span>
+												<span>Edit</span>
+											</a>
+											<a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+												<span class="pe-2">
+													<i class="bi bi-plus"></i>
+												</span>
+												<span>Create</span>
+											</a>
+										</div>
+									</div> -->
+								</div>
+								<ul class="nav nav-tabs mt-4 overflow-x border-0" id="myTab" role="tablist">
+									<li class="nav-item" role="presentation">
+										<button class="nav-link active" id="AllDetails-tab" data-bs-toggle="tab" data-bs-target="#AllDetails-tab-pane" type="button" role="tab" aria-controls="AllDetails-tab-pane" aria-selected="true">All Details</button>
+									</li>
+									<li class="nav-item" role="presentation">
+										<button class="nav-link" id="EnrollmentStatus-tab" data-bs-toggle="tab" data-bs-target="#EnrollmentStatus-tab-pane" type="button" role="tab" aria-controls="EnrollmentStatus-tab-pane" aria-selected="false">Enrollment Status</button>
+									</li>
+									<li class="nav-item" role="presentation">
+										<button class="nav-link" id="CourseStatus-tab" data-bs-toggle="tab" data-bs-target="#CourseStatus-tab-pane" type="button" role="tab" aria-controls="CourseStatus-tab-pane" aria-selected="false">Course Status</button>
+									</li>
+									<li class="nav-item" role="presentation">
+										<button class="nav-link" id="BillingStatus-tab" data-bs-toggle="tab" data-bs-target="#BillingStatus-tab-pane" type="button" role="tab" aria-controls="BillingStatus-tab-pane" aria-selected="false" >Billing Status</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</header>
+					
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="AllDetails-tab-pane" role="tabpanel" aria-labelledby="AllDetails-tab" tabindex="0">
+							<!-- Main -->
+							<main class="py-6 bg-surface-secondary">
+								<div class="container-fluid">
+									<!-- Card stats -->
+									<div class="row g-6 mb-6">
+										<div class="col-xl-3 col-sm-6 col-12">
+											<div class="card shadow border-0">
+												<div class="card-body">
+													<div class="row">
+														<div class="col">
+															<span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Income</span>
+															<span class="h3 font-bold mb-0">$xxxx.xx</span>
+														</div>
+														<div class="col-auto">
+															<div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+																<i class="bi bi-credit-card"></i>
+															</div>
+														</div>
+													</div>
+													<div class="mt-2 mb-0 text-sm">
+														<span class="badge badge-pill bg-soft-success text-success me-2">
+																<i class="bi bi-arrow-up me-1"></i>13%
+														</span>
+														<span class="text-nowrap text-xs text-muted">Since last month</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-xl-3 col-sm-6 col-12">
+											<div class="card shadow border-0">
+												<div class="card-body">
+													<div class="row">
+														<div class="col">
+															<span class="h6 font-semibold text-muted text-sm d-block mb-2">New Enroll</span>
+															<span class="h3 font-bold mb-0">35</span>
+														</div>
+														<div class="col-auto">
+															<div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
+																<i class="bi bi-people"></i>
+															</div>
+														</div>
+													</div>
+													<div class="mt-2 mb-0 text-sm">
+														<span class="badge badge-pill bg-soft-success text-success me-2">
+															<i class="bi bi-arrow-up me-1"></i>30%
+														</span>													
+														<span class="text-nowrap text-xs text-muted">Since last month</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-xl-3 col-sm-6 col-12">
+											<div class="card shadow border-0">
+												<div class="card-body">
+													<div class="row">
+														<div class="col">
+															<span class="h6 font-semibold text-muted text-sm d-block mb-2">Course Hours</span>
+															<span class="h3 font-bold mb-0">1.400</span>
+														</div>
+														<div class="col-auto">
+															<div class="icon icon-shape bg-info text-white text-lg rounded-circle">
+																<i class="bi bi-clock-history"></i>
+															</div>
+														</div>
+													</div>
+													<div class="mt-2 mb-0 text-sm">
+														<span class="badge badge-pill bg-soft-danger text-danger me-2">
+															<i class="bi bi-arrow-down me-1"></i>-5%
+														</span>
+														<span class="text-nowrap text-xs text-muted">Since last month</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-xl-3 col-sm-6 col-12">
+											<div class="card shadow border-0">
+												<div class="card-body">
+													<div class="row">
+														<div class="col">
+															<span class="h6 font-semibold text-muted text-sm d-block mb-2">Payment Status</span>
+															<span class="h3 font-bold mb-0">90%</span>
+														</div>
+														<div class="col-auto">
+															<div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
+																<i class="bi bi-minecart-loaded"></i>
+															</div>
+														</div>
+													</div>
+													<div class="mt-2 mb-0 text-sm">
+														<span class="badge badge-pill bg-soft-warning text-warning me-2">
+															<i class="bi bi-exclamation-lg me-1"></i>10%
+														</span>
+														<span class="text-nowrap text-xs text-muted">Pending</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card shadow border-0 mb-7">
+										<div class="card-header">
+											<div class="row align-items-center">
+												<div class="col">
+													<h5 class="mb-0">All Details</h5>
+												</div>
+												<div class="col-auto py-3">
+													<button class="btn btn-custom shadow" id="exportExcel">Export Excel</button>
+												</div>
+												<div class="col-auto py-3">
+													<div class="input-group justify-content-end shadow">
+														<span class="input-group-text" id="basic-addon1">Search</span>
+														<input type="text" class="form-control" id="searchInput" placeholder="" aria-label="Search" aria-describedby="basic-addon1">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="table-responsive">
+											<table class="table table-hover table-nowrap" id="dataTable">
+												<thead class="thead-light">
+													<tr>
+														<th scope="col">Name</th>
+														<th scope="col">ID</th>
+														<th scope="col">COURSE</th>
+														<th scope="col">BILLING</th>
+														<th scope="col">STATUS</th>
+														<th scope="col">ACTION</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+															<a class="text-heading font-semibold" href="#">
+																Robert Fox
+															</a>
+														</td>
+														<td>10000001</td>
+														<td>
+															<a class="text-heading font-semibold" href="#">
+																Dribbble
+															</a>
+														</td>
+														<td>$3.500</td>
+														<td>
+															<span class="badge badge-lg badge-dot">
+																<i class="bg-success"></i>Active
+															</span>
+														</td>
+														<td class="text-end">
+															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
+																<i class="bi bi-trash"></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+															<a class="text-heading font-semibold" href="#">
+																Darlene Robertson
+															</a>
+														</td>
+														<td>
+															10000002
+														</td>
+														<td>
+															<a class="text-heading font-semibold" href="#">
+																Netguru
+															</a>
+														</td>
+														<td>
+															$2.750
+														</td>
+														<td>
+															<span class="badge badge-lg badge-dot">
+																<i class="bg-warning"></i>Postponed
+															</span>
+														</td>
+														<td class="text-end">
+															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
+																<i class="bi bi-trash"></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+															<a class="text-heading font-semibold" href="#">
+																Theresa Webb
+															</a>
+														</td>
+														<td>
+															10000003
+														</td>
+														<td>
+															<a class="text-heading font-semibold" href="#">
+																Figma
+															</a>
+														</td>
+														<td>
+															$4.200
+														</td>
+														<td>
+															<span class="badge badge-lg badge-dot">
+																<i class="bg-danger"></i>Inactive
+															</span>
+														</td>
+														<td class="text-end">
+															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
+																<i class="bi bi-trash"></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+															<a class="text-heading font-semibold" href="#">
+																Theresa Webb
+															</a>
+														</td>
+														<td>
+															10000003
+														</td>
+														<td>
+															<a class="text-heading font-semibold" href="#">
+																Figma
+															</a>
+														</td>
+														<td>
+															$4.200
+														</td>
+														<td>
+															<span class="badge badge-lg badge-dot">
+																<i class="bg-danger"></i>Inactive
+															</span>
+														</td>
+														<td class="text-end">
+															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
+																<i class="bi bi-trash"></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+															<a class="text-heading font-semibold" href="#">
+																Theresa Webb
+															</a>
+														</td>
+														<td>
+															10000003
+														</td>
+														<td>
+															<a class="text-heading font-semibold" href="#">
+																Figma
+															</a>
+														</td>
+														<td>
+															$4.200
+														</td>
+														<td>
+															<span class="badge badge-lg badge-dot">
+																<i class="bg-danger"></i>Inactive
+															</span>
+														</td>
+														<td class="text-end">
+															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
+																<i class="bi bi-trash"></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+															<a class="text-heading font-semibold" href="#">
+																Theresa Webb
+															</a>
+														</td>
+														<td>
+															10000003
+														</td>
+														<td>
+															<a class="text-heading font-semibold" href="#">
+																Figma
+															</a>
+														</td>
+														<td>
+															$4.200
+														</td>
+														<td>
+															<span class="badge badge-lg badge-dot">
+																<i class="bg-danger"></i>Inactive
+															</span>
+														</td>
+														<td class="text-end">
+															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
+																<i class="bi bi-trash"></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+															<a class="text-heading font-semibold" href="#">
+																Theresa Webb
+															</a>
+														</td>
+														<td>
+															10000003
+														</td>
+														<td>
+															<a class="text-heading font-semibold" href="#">
+																Figma
+															</a>
+														</td>
+														<td>
+															$4.200
+														</td>
+														<td>
+															<span class="badge badge-lg badge-dot">
+																<i class="bg-danger"></i>Inactive
+															</span>
+														</td>
+														<td class="text-end">
+															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
+																<i class="bi bi-trash"></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+															<a class="text-heading font-semibold" href="#">
+																Theresa Webb
+															</a>
+														</td>
+														<td>
+															10000003
+														</td>
+														<td>
+															<a class="text-heading font-semibold" href="#">
+																Figma
+															</a>
+														</td>
+														<td>
+															$4.200
+														</td>
+														<td>
+															<span class="badge badge-lg badge-dot">
+																<i class="bg-danger"></i>Inactive
+															</span>
+														</td>
+														<td class="text-end">
+															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
+																<i class="bi bi-trash"></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+															<a class="text-heading font-semibold" href="#">
+																Theresa Webb
+															</a>
+														</td>
+														<td>
+															10000003
+														</td>
+														<td>
+															<a class="text-heading font-semibold" href="#">
+																Figma
+															</a>
+														</td>
+														<td>
+															$4.200
+														</td>
+														<td>
+															<span class="badge badge-lg badge-dot">
+																<i class="bg-danger"></i>Inactive
+															</span>
+														</td>
+														<td class="text-end">
+															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
+																<i class="bi bi-trash"></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+															<a class="text-heading font-semibold" href="#">
+																Theresa Webb
+															</a>
+														</td>
+														<td>
+															10000003
+														</td>
+														<td>
+															<a class="text-heading font-semibold" href="#">
+																Figma
+															</a>
+														</td>
+														<td>
+															$4.200
+														</td>
+														<td>
+															<span class="badge badge-lg badge-dot">
+																<i class="bg-danger"></i>Inactive
+															</span>
+														</td>
+														<td class="text-end">
+															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
+																<i class="bi bi-trash"></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+															<a class="text-heading font-semibold" href="#">
+																Theresa Webb
+															</a>
+														</td>
+														<td>
+															10000003
+														</td>
+														<td>
+															<a class="text-heading font-semibold" href="#">
+																Figma
+															</a>
+														</td>
+														<td>
+															$4.200
+														</td>
+														<td>
+															<span class="badge badge-lg badge-dot">
+																<i class="bg-danger"></i>Inactive
+															</span>
+														</td>
+														<td class="text-end">
+															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
+																<i class="bi bi-trash"></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+															<a class="text-heading font-semibold" href="#">
+																Theresa Webb
+															</a>
+														</td>
+														<td>
+															10000003
+														</td>
+														<td>
+															<a class="text-heading font-semibold" href="#">
+																Figma
+															</a>
+														</td>
+														<td>
+															$4.200
+														</td>
+														<td>
+															<span class="badge badge-lg badge-dot">
+																<i class="bg-danger"></i>Inactive
+															</span>
+														</td>
+														<td class="text-end">
+															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
+																<i class="bi bi-trash"></i>
+															</button>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div class="card-footer border-0 py-5">
+											<div class="row align-items-center">
+												<div class="col py-3 text-center">
+													<span class="text-muted text-sm" id="paginationInfo">Showing 1 to 10 of 250 Entries</span>
+												</div>
+												<div class="col py-3">
+													<nav aria-label="Page navigation">
+														<ul class="pagination justify-content-center" id="paginationControls">
+															<!-- Pagination buttons will be generated here -->
+														</ul>
+													</nav>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="modal fade" id="ViewModal" tabindex="-1" aria-labelledby="ViewModalLabel" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+											<div class="modal-header">
+												<h1 class="modal-title fs-5" id="ViewModalLabel">Enrollment Details</h1>
+												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+												<form>
+												<div class="form-floating mb-3">
+													<input type="text" class="form-control" id="enrollmentName" placeholder="Enrollment's Full Name">
+													<label for="enrollmentName">Name</label>
+												</div>
+												<div class="form-floating mb-3">
+													<input type="text" class="form-control" id="enrollmentID" placeholder="Enrollment's ID">
+													<label for="enrollmentID">ID</label>
+												</div>
+												<div class="form-floating mb-3">
+													<input type="text" class="form-control" id="enrollmentCourse" placeholder="Course Details">
+													<label for="enrollmentCourse">Course</label>
+												</div>
+												<div class="input-group mb-3">
+													<div class="input-group-text">RM</div>
+													<div class="form-floating">
+														<input type="text" class="form-control" id="enrollmentBilling" placeholder="Billing Details">
+														<label for="enrollmentBilling">Billing</label>
+													</div>
+												</div>
+												<div class="form-floating mb-3">
+													<select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+														<option value="1">Active</option>
+														<option value="2">Inactive</option>
+														<option value="3">Pause</option>
+													</select>
+													<label for="floatingSelect">Status</label>
+												</div>
+												</form>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-success" data-bs-dismiss="modal">SAVE RECORD</button>
+											</div>
+											</div>
+										</div>
+									</div>
+									<div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="ViewModalLabel" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+											<div class="modal-header">
+												<h1 class="modal-title fs-5" id="ViewModalLabel">Confirmation</h1>
+												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+												Are you confirm to delete this item?
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-danger" data-bs-dismiss="modal">DELETE</button>
+											</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</main>	
+						</div>
+						<div class="tab-pane fade" id="EnrollmentStatus-tab-pane" role="tabpanel" aria-labelledby="EnrollmentStatus-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Enrollment List</h5>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="CourseStatus-tab-pane" role="tabpanel" aria-labelledby="CourseStatus-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Course List</h5>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="BillingStatus-tab-pane" role="tabpanel" aria-labelledby="BillingStatus-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Billing List</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="tab-pane fade show h-screen flex-grow-1 overflow-y-lg-auto" id="Enrollment-tab-pane" role="tabpanel" aria-labelledby="Enrollment-tab" tabindex="0">
+					<!-- Header -->
+					<header class="bg-surface-primary border-bottom pt-6">
+						<div class="container-fluid">
+							<div class="mb-npx">
+								<div class="row align-items-center">
+									<div class="col-sm-6 col-12 mb-4 mb-sm-0">
+										<!-- Title -->
+										<h1 class="h2 mb-0 ls-tight">Enrollment</h1>
+									</div>
+									<!-- Actions -->
+									<div class="col-sm-6 col-12 text-sm-end">
+										<div class="mx-n1">
+											<a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+												<span class="pe-2">
+													<i class="bi bi-pencil"></i>
+												</span>
+												<span>Edit</span>
+											</a>
+											<a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+												<span class="pe-2">
+													<i class="bi bi-plus"></i>
+												</span>
+												<span>Create</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<!-- Nav -->
+								<ul class="nav nav-tabs mt-4 overflow-x border-0" id="myTab" role="tablist">
+									<li class="nav-item" role="presentation">
+										<button class="nav-link active" id="NewEnroll-tab" data-bs-toggle="tab" data-bs-target="#NewEnroll-tab-pane" type="button" role="tab" aria-controls="NewEnroll-tab-pane" aria-selected="true">Add New Enroll</button>
+									</li>
+									<li class="nav-item" role="presentation">
+										<button class="nav-link" id="EnrollSetting-tab" data-bs-toggle="tab" data-bs-target="#EnrollSetting-tab-pane" type="button" role="tab" aria-controls="EnrollSetting-tab-pane" aria-selected="false">Enroll Setting</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</header>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="NewEnroll-tab-pane" role="tabpanel" aria-labelledby="NewEnroll-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Add New Enroll</h5>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade show" id="EnrollSetting-tab-pane" role="tabpanel" aria-labelledby="EnrollSetting-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Enroll Setting</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade show h-screen flex-grow-1 overflow-y-lg-auto" id="Billing-tab-pane" role="tabpanel" aria-labelledby="Billing-tab" tabindex="0">
+					<!-- Header -->
+					<header class="bg-surface-primary border-bottom pt-6">
+						<div class="container-fluid">
+							<div class="mb-npx">
+								<div class="row align-items-center">
+									<div class="col-sm-6 col-12 mb-4 mb-sm-0">
+										<!-- Title -->
+										<h1 class="h2 mb-0 ls-tight">Billing</h1>
+									</div>
+									<!-- Actions -->
+									<div class="col-sm-6 col-12 text-sm-end">
+										<div class="mx-n1">
+											<a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+												<span class="pe-2">
+													<i class="bi bi-pencil"></i>
+												</span>
+												<span>Edit</span>
+											</a>
+											<a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+												<span class="pe-2">
+													<i class="bi bi-plus"></i>
+												</span>
+												<span>Create</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<!-- Nav -->
+								<ul class="nav nav-tabs mt-4 overflow-x border-0" id="myTab" role="tablist">
+									<li class="nav-item" role="presentation">
+										<button class="nav-link active" id="NewBilling-tab" data-bs-toggle="tab" data-bs-target="#NewBilling-tab-pane" type="button" role="tab" aria-controls="NewBilling-tab-pane" aria-selected="true">Add New Billing</button>
+									</li>
+									<li class="nav-item" role="presentation">
+										<button class="nav-link" id="BillingSetting-tab" data-bs-toggle="tab" data-bs-target="#BillingSetting-tab-pane" type="button" role="tab" aria-controls="BillingSetting-tab-pane" aria-selected="false">Billing Setting</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</header>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="NewBilling-tab-pane" role="tabpanel" aria-labelledby="NewBilling-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Add New Billing</h5>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade show" id="BillingSetting-tab-pane" role="tabpanel" aria-labelledby="BillingSetting-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Billing Setting</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade show h-screen flex-grow-1 overflow-y-lg-auto" id="Report-tab-pane" role="tabpanel" aria-labelledby="Report-tab" tabindex="0">
+					<!-- Header -->
+					<header class="bg-surface-primary border-bottom pt-6">
+						<div class="container-fluid">
+							<div class="mb-npx">
+								<div class="row align-items-center">
+									<div class="col-sm-6 col-12 mb-4 mb-sm-0">
+										<!-- Title -->
+										<h1 class="h2 mb-0 ls-tight">Report</h1>
+									</div>
+									<!-- Actions -->
+									<div class="col-sm-6 col-12 text-sm-end">
+										<div class="mx-n1">
+											<a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+												<span class="pe-2">
+													<i class="bi bi-pencil"></i>
+												</span>
+												<span>Edit</span>
+											</a>
+											<a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+												<span class="pe-2">
+													<i class="bi bi-plus"></i>
+												</span>
+												<span>Create</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<!-- Nav -->
+								<ul class="nav nav-tabs mt-4 overflow-x border-0" id="myTab" role="tablist">
+									<li class="nav-item" role="presentation">
+										<button class="nav-link active" id="EnrollmentReport-tab" data-bs-toggle="tab" data-bs-target="#EnrollmentReport-tab-pane" type="button" role="tab" aria-controls="EnrollmentReport-tab-pane" aria-selected="true">Enrollment Report</button>
+									</li>
+									<li class="nav-item" role="presentation">
+										<button class="nav-link" id="BillingReport-tab" data-bs-toggle="tab" data-bs-target="#BillingReport-tab-pane" type="button" role="tab" aria-controls="BillingReport-tab-pane" aria-selected="false">Billing Report</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</header>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="EnrollmentReport-tab-pane" role="tabpanel" aria-labelledby="EnrollmentReport-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Enrollment Report</h5>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade show" id="BillingReport-tab-pane" role="tabpanel" aria-labelledby="BillingReport-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Billing Report</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade show h-screen flex-grow-1 overflow-y-lg-auto" id="Users-tab-pane" role="tabpanel" aria-labelledby="Users-tab" tabindex="0">
+					<!-- Header -->
+					<header class="bg-surface-primary border-bottom pt-6">
+						<div class="container-fluid">
+							<div class="mb-npx">
+								<div class="row align-items-center">
+									<div class="col-sm-6 col-12 mb-4 mb-sm-0">
+										<!-- Title -->
+										<h1 class="h2 mb-0 ls-tight">Users</h1>
+									</div>
+									<!-- Actions -->
+									<div class="col-sm-6 col-12 text-sm-end">
+										<div class="mx-n1">
+											<a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+												<span class="pe-2">
+													<i class="bi bi-pencil"></i>
+												</span>
+												<span>Edit</span>
+											</a>
+											<a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+												<span class="pe-2">
+													<i class="bi bi-plus"></i>
+												</span>
+												<span>Create</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<!-- Nav -->
+								<ul class="nav nav-tabs mt-4 overflow-x border-0" id="myTab" role="tablist">
+									<li class="nav-item" role="presentation">
+										<button class="nav-link active" id="UsersList-tab" data-bs-toggle="tab" data-bs-target="#UsersList-tab-pane" type="button" role="tab" aria-controls="UsersList-tab-pane" aria-selected="true">Users List</button>
+									</li>
+									<li class="nav-item" role="presentation">
+										<button class="nav-link" id="UsersSetting-tab" data-bs-toggle="tab" data-bs-target="#UsersSetting-tab-pane" type="button" role="tab" aria-controls="UsersSetting-tab-pane" aria-selected="false">Users Setting</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</header>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="UsersList-tab-pane" role="tabpanel" aria-labelledby="UsersList-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Users List</h5>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade show" id="UsersSetting-tab-pane" role="tabpanel" aria-labelledby="UsersSetting-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Users Setting</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade show h-screen flex-grow-1 overflow-y-lg-auto" id="Account-tab-pane" role="tabpanel" aria-labelledby="Account-tab" tabindex="0">
+					<!-- Header -->
+					<header class="bg-surface-primary border-bottom pt-6">
+						<div class="container-fluid">
+							<div class="mb-npx">
+								<div class="row align-items-center">
+									<div class="col-sm-6 col-12 mb-4 mb-sm-0">
+										<!-- Title -->
+										<h1 class="h2 mb-0 ls-tight">Account</h1>
+									</div>
+									<!-- Actions -->
+									<div class="col-sm-6 col-12 text-sm-end">
+										<div class="mx-n1">
+											<a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+												<span class="pe-2">
+													<i class="bi bi-pencil"></i>
+												</span>
+												<span>Edit</span>
+											</a>
+											<a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+												<span class="pe-2">
+													<i class="bi bi-plus"></i>
+												</span>
+												<span>Create</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<!-- Nav -->
+								<ul class="nav nav-tabs mt-4 overflow-x border-0" id="myTab" role="tablist">
+									<li class="nav-item" role="presentation">
+										<button class="nav-link active" id="ProfileSetting-tab" data-bs-toggle="tab" data-bs-target="#ProfileSetting-tab-pane" type="button" role="tab" aria-controls="ProfileSetting-tab-pane" aria-selected="true">Profile Setting</button>
+									</li>
+									<li class="nav-item" role="presentation">
+										<button class="nav-link" id="PasswordSetting-tab" data-bs-toggle="tab" data-bs-target="#PasswordSetting-tab-pane" type="button" role="tab" aria-controls="PasswordSetting-tab-pane" aria-selected="false">Password Setting</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</header>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="ProfileSetting-tab-pane" role="tabpanel" aria-labelledby="ProfileSetting-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Profile Setting</h5>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade show" id="PasswordSetting-tab-pane" role="tabpanel" aria-labelledby="PasswordSetting-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Password Setting</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+	<script>
+		const rowsPerPage = 10;
+		let currentPage = 1;
+
+		document.addEventListener('DOMContentLoaded', () => {
+			const table = document.querySelector('#dataTable');
+			const tbody = table.querySelector('tbody');
+			const searchInput = document.querySelector('#searchInput');
+			const paginationControls = document.querySelector('#paginationControls');
+			const paginationInfo = document.querySelector('#paginationInfo');
+			const exportExcelButton = document.querySelector('#exportExcel');
+			let allRows = Array.from(tbody.querySelectorAll('tr'));
+
+			function renderTable() {
+				const filteredRows = allRows.filter(row => {
+					const cells = Array.from(row.querySelectorAll('td'));
+					return cells.some(cell => cell.textContent.toLowerCase().includes(searchInput.value.toLowerCase()));
+				});
+				const totalRows = filteredRows.length;
+				const totalPages = Math.ceil(totalRows / rowsPerPage);
+				const start = (currentPage - 1) * rowsPerPage;
+				const end = start + rowsPerPage;
+
+				tbody.innerHTML = filteredRows.slice(start, end).map(row => row.outerHTML).join('');
+				paginationInfo.textContent = `Showing ${start + 1} to ${Math.min(end, totalRows)} of ${totalRows} Entries`;
+				renderPaginationControls(totalPages);
+			}
+
+			function renderPaginationControls(totalPages) {
+				paginationControls.innerHTML = `
+					<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+						<a class="page-link" data-action="prev">Previous</a>
+					</li>
+					${Array.from({ length: totalPages }, (_, i) => `
+						<li class="page-item ${currentPage === i + 1 ? 'active' : ''}">
+							<a class="page-link" data-page="${i + 1}">${i + 1}</a>
+						</li>
+					`).join('')}
+					<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+						<a class="page-link" data-action="next">Next</a>
+					</li>
+				`;
+			}
+
+			function handlePagination(event) {
+				const target = event.target;
+				if (target.classList.contains('page-link')) {
+					if (target.dataset.action === 'prev' && currentPage > 1) {
+						currentPage--;
+					} else if (target.dataset.action === 'next' && currentPage < document.querySelectorAll('#paginationControls .page-item').length - 2) {
+						currentPage++;
+					} else if (target.dataset.page) {
+						currentPage = parseInt(target.dataset.page, 10);
+					}
+					renderTable();
+				}
+			}
+
+			function handleSearch() {
+				currentPage = 1;
+				renderTable();
+			}
+
+			function handleExportExcel() {
+				const wb = XLSX.utils.table_to_book(table, {sheet:"Sheet1"});
+				XLSX.writeFile(wb, 'data.xlsx');
+			}
+
+			searchInput.addEventListener('input', handleSearch);
+			paginationControls.addEventListener('click', handlePagination);
+			exportExcelButton.addEventListener('click', handleExportExcel);
+
+			// Initial render
+			renderTable();
+		});
+	</script>
+
+  </body>
+</html>
