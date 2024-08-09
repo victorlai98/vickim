@@ -68,7 +68,7 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<!-- Brand -->
-				<a class="navbar-brand nav-link py-lg-2 mb-lg-5 px-lg-6 me-0" href="#" data-target="dashboard">
+				<a class="navbar-brand nav-link py-lg-2 mb-lg-5 px-lg-6 me-0" href="admin.html" data-target="dashboard">
 					Admin Management
 				</a>
 				<!-- User menu (mobile) -->
@@ -105,6 +105,11 @@
 							</a>
 						</li>
 						<li class="nav-item" role="presentation" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
+							<a class="nav-link" id="Course-tab" data-bs-toggle="tab" data-bs-target="#Course-tab-pane" type="button" role="tab" aria-controls="Course-tab-pane" aria-selected="false">
+								<i class="bi bi-receipt"></i> Course
+							</a>
+						</li>
+						<li class="nav-item" role="presentation" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
 							<a class="nav-link" id="Billing-tab" data-bs-toggle="tab" data-bs-target="#Billing-tab-pane" type="button" role="tab" aria-controls="Billing-tab-pane" aria-selected="false">
 								<i class="bi bi-receipt"></i> Billing
 							</a>
@@ -117,6 +122,12 @@
 						<li class="nav-item" role="presentation" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
 							<a class="nav-link" id="Users-tab" data-bs-toggle="tab" data-bs-target="#Users-tab-pane" type="button" role="tab" aria-controls="Users-tab-pane" aria-selected="false">
 								<i class="bi bi-people"></i> Users
+							</a>
+						</li>
+						<hr class="navbar-divider my-5 opacity-20">
+						<li class="nav-item" role="presentation" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
+							<a class="nav-link" id="Payment-tab" data-bs-toggle="tab" data-bs-target="#Payment-tab-pane" type="button" role="tab" aria-controls="Payment-tab-pane" aria-selected="false">
+								<i class="bi bi-people"></i> Payment
 							</a>
 						</li>
 						<hr class="navbar-divider my-5 opacity-20">
@@ -335,7 +346,7 @@
 															</span>
 														</td>
 														<td class="text-end">
-															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<a class="btn btn-sm btn-primary shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">Edit</a>
 															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
 																<i class="bi bi-trash"></i>
 															</button>
@@ -365,7 +376,7 @@
 															</span>
 														</td>
 														<td class="text-end">
-															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<a class="btn btn-sm btn-primary shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">Edit</a>
 															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
 																<i class="bi bi-trash"></i>
 															</button>
@@ -395,7 +406,7 @@
 															</span>
 														</td>
 														<td class="text-end">
-															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<a class="btn btn-sm btn-primary shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">Edit</a>
 															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
 																<i class="bi bi-trash"></i>
 															</button>
@@ -425,7 +436,7 @@
 															</span>
 														</td>
 														<td class="text-end">
-															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<a class="btn btn-sm btn-primary shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">Edit</a>
 															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
 																<i class="bi bi-trash"></i>
 															</button>
@@ -455,7 +466,7 @@
 															</span>
 														</td>
 														<td class="text-end">
-															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<a class="btn btn-sm btn-primary shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">Edit</a>
 															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
 																<i class="bi bi-trash"></i>
 															</button>
@@ -485,7 +496,7 @@
 															</span>
 														</td>
 														<td class="text-end">
-															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<a class="btn btn-sm btn-primary shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">Edit</a>
 															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
 																<i class="bi bi-trash"></i>
 															</button>
@@ -515,7 +526,7 @@
 															</span>
 														</td>
 														<td class="text-end">
-															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<a class="btn btn-sm btn-primary shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">Edit</a>
 															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
 																<i class="bi bi-trash"></i>
 															</button>
@@ -545,7 +556,7 @@
 															</span>
 														</td>
 														<td class="text-end">
-															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<a class="btn btn-sm btn-primary shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">Edit</a>
 															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
 																<i class="bi bi-trash"></i>
 															</button>
@@ -575,7 +586,7 @@
 															</span>
 														</td>
 														<td class="text-end">
-															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<a class="btn btn-sm btn-primary shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">Edit</a>
 															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
 																<i class="bi bi-trash"></i>
 															</button>
@@ -605,7 +616,7 @@
 															</span>
 														</td>
 														<td class="text-end">
-															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<a class="btn btn-sm btn-primary shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">Edit</a>
 															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
 																<i class="bi bi-trash"></i>
 															</button>
@@ -635,7 +646,7 @@
 															</span>
 														</td>
 														<td class="text-end">
-															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<a class="btn btn-sm btn-primary shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">Edit</a>
 															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
 																<i class="bi bi-trash"></i>
 															</button>
@@ -665,7 +676,7 @@
 															</span>
 														</td>
 														<td class="text-end">
-															<a class="btn btn-sm btn-neutral shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">View</a>
+															<a class="btn btn-sm btn-primary shadow" data-bs-toggle="modal" data-bs-target="#ViewModal">Edit</a>
 															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#DeleteModal">
 																<i class="bi bi-trash"></i>
 															</button>
@@ -721,14 +732,14 @@
 													<select class="form-select" id="floatingSelect" aria-label="Floating label select example">
 														<option value="1">Active</option>
 														<option value="2">Inactive</option>
-														<option value="3">Pause</option>
+														<option value="3">Postpone</option>
 													</select>
 													<label for="floatingSelect">Status</label>
 												</div>
 												</form>
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-success" data-bs-dismiss="modal">SAVE RECORD</button>
+												<button type="button" class="btn btn-success" data-bs-dismiss="modal" id="saveRecordBtn">SAVE RECORD</button>
 											</div>
 											</div>
 										</div>
@@ -787,23 +798,6 @@
 										<!-- Title -->
 										<h1 class="h2 mb-0 ls-tight">Enrollment</h1>
 									</div>
-									<!-- Actions -->
-									<div class="col-sm-6 col-12 text-sm-end">
-										<div class="mx-n1">
-											<a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
-												<span class="pe-2">
-													<i class="bi bi-pencil"></i>
-												</span>
-												<span>Edit</span>
-											</a>
-											<a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
-												<span class="pe-2">
-													<i class="bi bi-plus"></i>
-												</span>
-												<span>Create</span>
-											</a>
-										</div>
-									</div>
 								</div>
 								<!-- Nav -->
 								<ul class="nav nav-tabs mt-4 overflow-x border-0" id="myTab" role="tablist">
@@ -818,10 +812,210 @@
 						</div>
 					</header>
 					<div class="tab-content" id="myTabContent">
-						<div class="tab-pane fade show active" id="NewEnroll-tab-pane" role="tabpanel" aria-labelledby="NewEnroll-tab" tabindex="0">
-							<div class="card shadow border-0 mb-7">
-								<div class="card-header">
-									<h5 class="mb-0">Add New Enroll</h5>
+						<div class="tab-pane fade show active bg-surface-secondary" id="NewEnroll-tab-pane" role="tabpanel" aria-labelledby="NewEnroll-tab" tabindex="0">
+							<main class="py-6">
+								<div class="container-fluid">
+									<div class="card shadow border-0">
+										<div class="card-header">
+											<h5 class="mb-0">New Enrollment</h5>
+										</div>
+										<div class="card-body">
+											<form>
+												<div class="form-floating mb-3">
+													<input type="text" class="form-control" id="newEnrollmentName" placeholder="Enrollment's Full Name">
+													<label for="newEnrollmentName">Name</label>
+												</div>
+												<div class="form-floating mb-3">
+													<input type="text" class="form-control" id="newEnrollmentID" placeholder="Enrollment's ID" disabled readonly>
+													<label for="newEnrollmentID">ID #Auto Generate</label>
+												</div>
+												<div class="form-floating mb-3" style="padding-left:5px;">
+													<div class="form-text"> Please Select Course</div>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" value="CN - Chinese" id="courseCN">
+														<label class="form-check-label" for="courseCN">
+															CN - Chinese
+														</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" value="EN - English" id="courseEN">
+														<label class="form-check-label" for="courseEN">
+															EN - English
+														</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" value="BM - Bahasa Melayu" id="courseBM">
+														<label class="form-check-label" for="courseBM">
+															BM - Bahasa Melayu
+														</label>
+													</div>
+												</div>
+												<div class="input-group mb-3">
+													<div class="input-group-text">RM</div>
+													<div class="form-floating">
+														<input type="text" class="form-control" id="newEnrollmentBilling" placeholder="Billing Details">
+														<label for="newEnrollmentBilling">Billing</label>
+													</div>
+												</div>
+												<div class="form-floating mb-3">
+													<select class="form-select" id="newEnrollmentStatus" aria-label="Floating label select example">
+														<option value="1">Active</option>
+														<option value="2">Inactive</option>
+														<option value="3">Postpone</option>
+													</select>
+													<label for="newEnrollmentStatus">Status</label>
+												</div>
+											</form>
+										</div>
+										<div class="card-footer">
+											<div class="row align-items-center text-center">
+												<div class="col-6">
+													<button class="btn btn-secondary shadow" style="width:100%;" id="clearNewEnrollmentBtn">CLEAR</button>
+												</div>
+												<div class="col-6">
+													<button type="submit" class="btn btn-success shadow" style="width:100%;" id="newEnrollmentBtn">ENROLL</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>	
+							</main>	
+							<div class="container-fluid">
+								<div class="card shadow border-0 mb-7">
+									<div class="card-header">
+										<div class="row align-items-center">
+											<div class="col">
+												<h5 class="mb-0">Enrollment Details</h5>
+											</div>
+											<div class="col-auto py-3">
+												<button class="btn btn-custom shadow" id="newEnrollmentExportExcel">Export Excel</button>
+											</div>
+											<div class="col-auto py-3">
+												<div class="input-group justify-content-end shadow">
+													<span class="input-group-text" id="basic-addon1">Search</span>
+													<input type="text" class="form-control" id="newEnrollmentSearchInput" placeholder="" aria-label="Search" aria-describedby="basic-addon1">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card-body">	
+										<div class="table-responsive">
+											<table class="table table-hover table-nowrap" id="newEnrollmentDataTable">
+												<thead class="thead-light">
+													<tr>
+														<th scope="col">Name</th>
+														<th scope="col">ID</th>
+														<th scope="col">COURSE</th>
+														<th scope="col">BILLING</th>
+														<th scope="col">STATUS</th>
+														<th scope="col">ACTION</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+															<a class="text-heading font-semibold" href="#">
+																Robert Fox
+															</a>
+														</td>
+														<td>10000001</td>
+														<td>
+															<a class="text-heading font-semibold" href="#">
+																Dribbble
+															</a>
+														</td>
+														<td>$3.500</td>
+														<td>
+															<span class="badge badge-lg badge-dot">
+																<i class="bg-success"></i>Active
+															</span>
+														</td>
+														<td class="text-end">
+															<a class="btn btn-sm btn-primary shadow" data-bs-toggle="modal" data-bs-target="#newEnrollmentViewModal">Edit</a>
+															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#newEnrollmentDeleteModal">
+																<i class="bi bi-trash"></i>
+															</button>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="card-footer border-0 py-5">
+										<div class="row align-items-center">
+											<div class="col py-3 text-center">
+												<span class="text-muted text-sm" id="newEnrollmentPaginationInfo">Showing 1 to 10 of 250 Entries</span>
+											</div>
+											<div class="col py-3">
+												<nav aria-label="Page navigation">
+													<ul class="pagination justify-content-center" id="newEnrollmentPaginationControls">
+														<!-- Pagination buttons will be generated here -->
+													</ul>
+												</nav>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>	
+							<div class="modal fade" id="newEnrollmentViewModal" tabindex="-1" aria-labelledby="ViewModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered">
+									<div class="modal-content">
+									<div class="modal-header">
+										<h1 class="modal-title fs-5" id="ViewModalLabel">Enrollment Details</h1>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<form>
+										<div class="form-floating mb-3">
+											<input type="text" class="form-control" id="enrollmentName" placeholder="Enrollment's Full Name">
+											<label for="enrollmentName">Name</label>
+										</div>
+										<div class="form-floating mb-3">
+											<input type="text" class="form-control" id="enrollmentID" placeholder="Enrollment's ID">
+											<label for="enrollmentID">ID</label>
+										</div>
+										<div class="form-floating mb-3">
+											<input type="text" class="form-control" id="enrollmentCourse" placeholder="Course Details">
+											<label for="enrollmentCourse">Course</label>
+										</div>
+										<div class="input-group mb-3">
+											<div class="input-group-text">RM</div>
+											<div class="form-floating">
+												<input type="text" class="form-control" id="enrollmentBilling" placeholder="Billing Details">
+												<label for="enrollmentBilling">Billing</label>
+											</div>
+										</div>
+										<div class="form-floating mb-3">
+											<select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+												<option value="1">Active</option>
+												<option value="2">Inactive</option>
+												<option value="3">Postpone</option>
+											</select>
+											<label for="floatingSelect">Status</label>
+										</div>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-success" data-bs-dismiss="modal" id="saveEnrollmentBtn">SAVE RECORD</button>
+									</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal fade" id="newEnrollmentDeleteModal" tabindex="-1" aria-labelledby="ViewModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered">
+									<div class="modal-content">
+									<div class="modal-header">
+										<h1 class="modal-title fs-5" id="ViewModalLabel">Confirmation</h1>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										Are you confirm to delete this item?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-danger" data-bs-dismiss="modal">DELETE</button>
+									</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -829,6 +1023,206 @@
 							<div class="card shadow border-0 mb-7">
 								<div class="card-header">
 									<h5 class="mb-0">Enroll Setting</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade show h-screen flex-grow-1 overflow-y-lg-auto" id="Course-tab-pane" role="tabpanel" aria-labelledby="Course-tab" tabindex="0">
+					<!-- Header -->
+					<header class="bg-surface-primary border-bottom pt-6">
+						<div class="container-fluid">
+							<div class="mb-npx">
+								<div class="row align-items-center">
+									<div class="col-sm-6 col-12 mb-4 mb-sm-0">
+										<!-- Title -->
+										<h1 class="h2 mb-0 ls-tight">Course</h1>
+									</div>
+								</div>
+								<!-- Nav -->
+								<ul class="nav nav-tabs mt-4 overflow-x border-0" id="myTab" role="tablist">
+									<li class="nav-item" role="presentation">
+										<button class="nav-link active" id="NewCourse-tab" data-bs-toggle="tab" data-bs-target="#NewCourse-tab-pane" type="button" role="tab" aria-controls="NewCourse-tab-pane" aria-selected="true">Add New Course</button>
+									</li>
+									<li class="nav-item" role="presentation">
+										<button class="nav-link" id="CourseSetting-tab" data-bs-toggle="tab" data-bs-target="#CourseSetting-tab-pane" type="button" role="tab" aria-controls="CourseSetting-tab-pane" aria-selected="false">Course Setting</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</header>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active bg-surface-secondary" id="NewCourse-tab-pane" role="tabpanel" aria-labelledby="NewCourse-tab" tabindex="0">
+							<main class="py-6">
+								<div class="container-fluid">
+									<div class="card shadow border-0">
+										<div class="card-header">
+											<h5 class="mb-0">New Course</h5>
+										</div>
+										<div class="card-body">
+											<form>
+												<div class="form-floating mb-3">
+													<input type="text" class="form-control" id="newCourseName" placeholder="Enrollment's Full Name">
+													<label for="newCourseName">Name</label>
+												</div>
+												<div class="mb-3">
+													<input type="text" class="form-control" id="newCourseID" placeholder="Course ID #Auto Generate" disabled readonly>
+												</div>
+												<div class="input-group mb-3">
+													<div class="input-group-text">RM</div>
+													<div class="form-floating">
+														<input type="number" class="form-control" id="newCoursePrice" placeholder="Billing Details">
+														<label for="newCoursePrice">Montly Payment</label>
+													</div>
+												</div>
+												<div class="form-floating mb-3">
+													<select class="form-select" id="newCourseStatus" aria-label="Floating label select example">
+														<option value="1">Active</option>
+														<option value="2">Inactive</option>
+													</select>
+													<label for="newCourseStatus">Course Status</label>
+												</div>
+											</form>
+										</div>
+										<div class="card-footer">
+											<div class="row align-items-center text-center">
+												<div class="col-6">
+													<button class="btn btn-secondary shadow" style="width:100%;" id="clearNewCourseBtn">CLEAR</button>
+												</div>
+												<div class="col-6">
+													<button type="submit" class="btn btn-success shadow" style="width:100%;" id="newCourseBtn">ADD COURSE</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>	
+							</main>	
+							<div class="container-fluid">
+								<div class="card shadow border-0 mb-7">
+									<div class="card-header">
+										<div class="row align-items-center">
+											<div class="col">
+												<h5 class="mb-0">Course Details</h5>
+											</div>
+											<div class="col-auto py-3">
+												<button class="btn btn-custom shadow" id="newCourseExportExcel">Export Excel</button>
+											</div>
+											<div class="col-auto py-3">
+												<div class="input-group justify-content-end shadow">
+													<span class="input-group-text" id="basic-addon1">Search</span>
+													<input type="text" class="form-control" id="newCourseSearchInput" placeholder="" aria-label="Search" aria-describedby="basic-addon1">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card-body">	
+										<div class="table-responsive">
+											<table class="table table-hover table-nowrap" id="newCourseDataTable">
+												<thead class="thead-light">
+													<tr>
+														<th scope="col">Name</th>
+														<th scope="col">ID</th>
+														<th scope="col">MONTHLY PAYMENT</th>
+														<th scope="col">STATUS</th>
+														<th scope="col">ACTION</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>CN-Chinese</td>
+														<td>C100001</td>
+														<td>RM 320</td>
+														<td>
+															<span class="badge badge-lg badge-dot">
+																<i class="bg-success"></i>Active
+															</span>
+														</td>
+														<td class="text-end">
+															<a class="btn btn-sm btn-primary shadow" data-bs-toggle="modal" data-bs-target="#newCourseViewModal">Edit</a>
+															<button type="button" class="btn btn-sm btn-square btn-danger text-danger-hover shadow"  data-bs-toggle="modal" data-bs-target="#newCourseDeleteModal">
+																<i class="bi bi-trash"></i>
+															</button>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="card-footer border-0 py-5">
+										<div class="row align-items-center">
+											<div class="col py-3 text-center">
+												<span class="text-muted text-sm" id="newCoursePaginationInfo">Showing 1 to 10 of 250 Entries</span>
+											</div>
+											<div class="col py-3">
+												<nav aria-label="Page navigation">
+													<ul class="pagination justify-content-center" id="newCoursePaginationControls">
+														<!-- Pagination buttons will be generated here -->
+													</ul>
+												</nav>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>	
+							<div class="modal fade" id="newCourseViewModal" tabindex="-1" aria-labelledby="ViewModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered">
+									<div class="modal-content">
+									<div class="modal-header">
+										<h1 class="modal-title fs-5" id="ViewModalLabel">Course Details</h1>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<form>
+											<div class="form-floating mb-3">
+												<input type="text" class="form-control" id="newCourseName" placeholder="Enrollment's Full Name">
+												<label for="newCourseName">Name</label>
+											</div>
+											<div class="mb-3">
+												<input type="text" class="form-control" id="newCourseID" placeholder="Course ID #Auto Generate" disabled readonly>
+											</div>
+											<div class="input-group mb-3">
+												<div class="input-group-text">RM</div>
+												<div class="form-floating">
+													<input type="number" class="form-control" id="newCoursePrice" placeholder="Billing Details">
+													<label for="newCoursePrice">Montly Payment</label>
+												</div>
+											</div>
+											<div class="form-floating mb-3">
+												<select class="form-select" id="newCourseStatus" aria-label="Floating label select example">
+													<option value="1">Active</option>
+													<option value="2">Inactive</option>
+												</select>
+												<label for="newCourseStatus">Course Status</label>
+											</div>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-success" data-bs-dismiss="modal" id="saveRecordBtn">SAVE RECORD</button>
+									</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal fade" id="newCourseDeleteModal" tabindex="-1" aria-labelledby="ViewModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered">
+									<div class="modal-content">
+									<div class="modal-header">
+										<h1 class="modal-title fs-5" id="ViewModalLabel">Confirmation</h1>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										Are you confirm to delete this item?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-danger" data-bs-dismiss="modal">DELETE</button>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade show" id="CourseSetting-tab-pane" role="tabpanel" aria-labelledby="CourseSetting-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Course Setting</h5>
 								</div>
 							</div>
 						</div>
@@ -844,28 +1238,9 @@
 										<!-- Title -->
 										<h1 class="h2 mb-0 ls-tight">Billing</h1>
 									</div>
-									<!-- Actions -->
-									<div class="col-sm-6 col-12 text-sm-end">
-										<div class="mx-n1">
-											<a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
-												<span class="pe-2">
-													<i class="bi bi-pencil"></i>
-												</span>
-												<span>Edit</span>
-											</a>
-											<a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
-												<span class="pe-2">
-													<i class="bi bi-plus"></i>
-												</span>
-												<span>Create</span>
-											</a>
-										</div>
-									</div>
-								</div>
-								<!-- Nav -->
 								<ul class="nav nav-tabs mt-4 overflow-x border-0" id="myTab" role="tablist">
 									<li class="nav-item" role="presentation">
-										<button class="nav-link active" id="NewBilling-tab" data-bs-toggle="tab" data-bs-target="#NewBilling-tab-pane" type="button" role="tab" aria-controls="NewBilling-tab-pane" aria-selected="true">Add New Billing</button>
+										<button class="nav-link active" id="BillingType-tab" data-bs-toggle="tab" data-bs-target="#BillingType-tab-pane" type="button" role="tab" aria-controls="BillingType-tab-pane" aria-selected="true">Billing Type</button>
 									</li>
 									<li class="nav-item" role="presentation">
 										<button class="nav-link" id="BillingSetting-tab" data-bs-toggle="tab" data-bs-target="#BillingSetting-tab-pane" type="button" role="tab" aria-controls="BillingSetting-tab-pane" aria-selected="false">Billing Setting</button>
@@ -875,10 +1250,10 @@
 						</div>
 					</header>
 					<div class="tab-content" id="myTabContent">
-						<div class="tab-pane fade show active" id="NewBilling-tab-pane" role="tabpanel" aria-labelledby="NewBilling-tab" tabindex="0">
+						<div class="tab-pane fade show active" id="BillingType-tab-pane" role="tabpanel" aria-labelledby="BillingType-tab" tabindex="0">
 							<div class="card shadow border-0 mb-7">
 								<div class="card-header">
-									<h5 class="mb-0">Add New Billing</h5>
+									<h5 class="mb-0">Billing Type</h5>
 								</div>
 							</div>
 						</div>
@@ -1005,6 +1380,63 @@
 						</div>
 					</div>
 				</div>
+				<div class="tab-pane fade show h-screen flex-grow-1 overflow-y-lg-auto" id="Payment-tab-pane" role="tabpanel" aria-labelledby="Payment-tab" tabindex="0">
+					<!-- Header -->
+					<header class="bg-surface-primary border-bottom pt-6">
+						<div class="container-fluid">
+							<div class="mb-npx">
+								<div class="row align-items-center">
+									<div class="col-sm-6 col-12 mb-4 mb-sm-0">
+										<!-- Title -->
+										<h1 class="h2 mb-0 ls-tight">Payment</h1>
+									</div>
+									<!-- Actions -->
+									<div class="col-sm-6 col-12 text-sm-end">
+										<div class="mx-n1">
+											<a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+												<span class="pe-2">
+													<i class="bi bi-pencil"></i>
+												</span>
+												<span>Edit</span>
+											</a>
+											<a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+												<span class="pe-2">
+													<i class="bi bi-plus"></i>
+												</span>
+												<span>Create</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<!-- Nav -->
+								<ul class="nav nav-tabs mt-4 overflow-x border-0" id="myTab" role="tablist">
+									<li class="nav-item" role="presentation">
+										<button class="nav-link active" id="PaymentList-tab" data-bs-toggle="tab" data-bs-target="#PaymentList-tab-pane" type="button" role="tab" aria-controls="PaymentList-tab-pane" aria-selected="true">Payment</button>
+									</li>
+									<li class="nav-item" role="presentation">
+										<button class="nav-link" id="PaymentSetting-tab" data-bs-toggle="tab" data-bs-target="#PaymentSetting-tab-pane" type="button" role="tab" aria-controls="PaymentSetting-tab-pane" aria-selected="false">Payment Setting</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</header>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="PaymentList-tab-pane" role="tabpanel" aria-labelledby="PaymentList-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Payment</h5>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade show" id="PaymentSetting-tab-pane" role="tabpanel" aria-labelledby="PaymentSetting-tab" tabindex="0">
+							<div class="card shadow border-0 mb-7">
+								<div class="card-header">
+									<h5 class="mb-0">Payment Setting</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="tab-pane fade show h-screen flex-grow-1 overflow-y-lg-auto" id="Account-tab-pane" role="tabpanel" aria-labelledby="Account-tab" tabindex="0">
 					<!-- Header -->
 					<header class="bg-surface-primary border-bottom pt-6">
@@ -1071,6 +1503,8 @@
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 	<script>
+	
+		// Dashboard Section
 		const rowsPerPage = 10;
 		let currentPage = 1;
 
@@ -1099,19 +1533,40 @@
 			}
 
 			function renderPaginationControls(totalPages) {
-				paginationControls.innerHTML = `
-					<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-						<a class="page-link" data-action="prev">Previous</a>
-					</li>
-					${Array.from({ length: totalPages }, (_, i) => `
-						<li class="page-item ${currentPage === i + 1 ? 'active' : ''}">
-							<a class="page-link" data-page="${i + 1}">${i + 1}</a>
-						</li>
-					`).join('')}
-					<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
-						<a class="page-link" data-action="next">Next</a>
-					</li>
-				`;
+				const paginationControls = document.getElementById('paginationControls');
+				paginationControls.innerHTML = ''; // Clear existing content
+
+				// Create previous button
+				const prevButton = document.createElement('li');
+				prevButton.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+				const prevLink = document.createElement('a');
+				prevLink.className = 'page-link';
+				prevLink.dataset.action = 'prev';
+				prevLink.textContent = 'Previous';
+				prevButton.appendChild(prevLink);
+				paginationControls.appendChild(prevButton);
+
+				// Create page number buttons
+				for (let i = 1; i <= totalPages; i++) {
+					const pageItem = document.createElement('li');
+					pageItem.className = `page-item ${currentPage === i ? 'active' : ''}`;
+					const pageLink = document.createElement('a');
+					pageLink.className = 'page-link';
+					pageLink.dataset.page = i;
+					pageLink.textContent = i;
+					pageItem.appendChild(pageLink);
+					paginationControls.appendChild(pageItem);
+				}
+
+				// Create next button
+				const nextButton = document.createElement('li');
+				nextButton.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+				const nextLink = document.createElement('a');
+				nextLink.className = 'page-link';
+				nextLink.dataset.action = 'next';
+				nextLink.textContent = 'Next';
+				nextButton.appendChild(nextLink);
+				paginationControls.appendChild(nextButton);
 			}
 
 			function handlePagination(event) {
@@ -1135,7 +1590,7 @@
 
 			function handleExportExcel() {
 				const wb = XLSX.utils.table_to_book(table, {sheet:"Sheet1"});
-				XLSX.writeFile(wb, 'data.xlsx');
+				XLSX.writeFile(wb, 'AllDetails.xlsx');
 			}
 
 			searchInput.addEventListener('input', handleSearch);
@@ -1144,6 +1599,103 @@
 
 			// Initial render
 			renderTable();
+		});
+		
+		//New Enrollment Section
+		const newEnrollmentRowsPerPage = 10;
+		let newEnrollmentCurrentPage = 1;
+
+		document.addEventListener('DOMContentLoaded', () => {
+			const table = document.querySelector('#newEnrollmentDataTable');
+			const tbody = table.querySelector('tbody');
+			const newEnrollmentSearchInput = document.querySelector('#newEnrollmentSearchInput');
+			const newEnrollmentPaginationControls = document.querySelector('#newEnrollmentPaginationControls');
+			const newEnrollmentPaginationInfo = document.querySelector('#newEnrollmentPaginationInfo');
+			const newEnrollmentExportExcelButton = document.querySelector('#newEnrollmentExportExcel');
+			let allRows = Array.from(tbody.querySelectorAll('tr'));
+
+			function renderNewENrollmentTable() {
+				const filteredRows = allRows.filter(row => {
+					const cells = Array.from(row.querySelectorAll('td'));
+					return cells.some(cell => cell.textContent.toLowerCase().includes(newEnrollmentSearchInput.value.toLowerCase()));
+				});
+				const totalRows = filteredRows.length;
+				const totalPages = Math.ceil(totalRows / newEnrollmentRowsPerPage);
+				const start = (newEnrollmentCurrentPage - 1) * newEnrollmentRowsPerPage;
+				const end = start + newEnrollmentRowsPerPage;
+
+				tbody.innerHTML = filteredRows.slice(start, end).map(row => row.outerHTML).join('');
+				newEnrollmentPaginationInfo.textContent = `Showing ${start + 1} to ${Math.min(end, totalRows)} of ${totalRows} Entries`;
+				rendernewEnrollmentPaginationControls(totalPages);
+			}
+
+			function rendernewEnrollmentPaginationControls(totalPages) {
+				const newEnrollmentPaginationControls = document.getElementById('newEnrollmentPaginationControls');
+				newEnrollmentPaginationControls.innerHTML = ''; // Clear existing content
+
+				// Create previous button
+				const prevButton = document.createElement('li');
+				prevButton.className = `page-item ${newEnrollmentCurrentPage === 1 ? 'disabled' : ''}`;
+				const prevLink = document.createElement('a');
+				prevLink.className = 'page-link';
+				prevLink.dataset.action = 'prev';
+				prevLink.textContent = 'Previous';
+				prevButton.appendChild(prevLink);
+				newEnrollmentPaginationControls.appendChild(prevButton);
+
+				// Create page number buttons
+				for (let i = 1; i <= totalPages; i++) {
+					const pageItem = document.createElement('li');
+					pageItem.className = `page-item ${newEnrollmentCurrentPage === i ? 'active' : ''}`;
+					const pageLink = document.createElement('a');
+					pageLink.className = 'page-link';
+					pageLink.dataset.page = i;
+					pageLink.textContent = i;
+					pageItem.appendChild(pageLink);
+					newEnrollmentPaginationControls.appendChild(pageItem);
+				}
+
+				// Create next button
+				const nextButton = document.createElement('li');
+				nextButton.className = `page-item ${newEnrollmentCurrentPage === totalPages ? 'disabled' : ''}`;
+				const nextLink = document.createElement('a');
+				nextLink.className = 'page-link';
+				nextLink.dataset.action = 'next';
+				nextLink.textContent = 'Next';
+				nextButton.appendChild(nextLink);
+				newEnrollmentPaginationControls.appendChild(nextButton);
+			}
+
+			function handlePagination(event) {
+				const target = event.target;
+				if (target.classList.contains('page-link')) {
+					if (target.dataset.action === 'prev' && newEnrollmentCurrentPage > 1) {
+						newEnrollmentCurrentPage--;
+					} else if (target.dataset.action === 'next' && newEnrollmentCurrentPage < document.querySelectorAll('#newEnrollmentPaginationControls .page-item').length - 2) {
+						newEnrollmentCurrentPage++;
+					} else if (target.dataset.page) {
+						newEnrollmentCurrentPage = parseInt(target.dataset.page, 10);
+					}
+					renderNewENrollmentTable();
+				}
+			}
+
+			function handleSearch() {
+				newEnrollmentCurrentPage = 1;
+				renderNewENrollmentTable();
+			}
+
+			function handlenewEnrollmentExportExcel() {
+				const wb = XLSX.utils.table_to_book(table, {sheet:"Sheet1"});
+				XLSX.writeFile(wb, 'EnrollmentDetails.xlsx');
+			}
+
+			newEnrollmentSearchInput.addEventListener('input', handleSearch);
+			newEnrollmentPaginationControls.addEventListener('click', handlePagination);
+			newEnrollmentExportExcelButton.addEventListener('click', handlenewEnrollmentExportExcel);
+
+			// Initial render
+			renderNewENrollmentTable();
 		});
 	</script>
 
