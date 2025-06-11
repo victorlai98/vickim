@@ -6,7 +6,7 @@
     <title>LAI KHING HIAN (Victor) - Resume</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dom-to-image@2.6.0/dist/dom-to-image.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;900;700&display=swap');
         
@@ -388,51 +388,56 @@
                 }
             });
             
-            // Download functionality
+            // Download functionality using dom-to-image
             document.getElementById('downloadBtn').addEventListener('click', function() {
                 var resumeElement = document.querySelector('.a4-size');
-                var body = document.body;
+                var downloadBtn = document.getElementById('downloadBtn');
                 
                 // Hide the download button before capturing
-                document.getElementById('downloadBtn').style.display = 'none';
+                downloadBtn.style.display = 'none';
                 
-                // Add download mode class to remove all margins/padding
-                body.classList.add('download-mode');
+                // Show loading state
+                var loadingIndicator = document.createElement('div');
+                loadingIndicator.innerHTML = 'Generating image...';
+                loadingIndicator.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:white;padding:20px;border-radius:10px;z-index:9999;';
+                document.body.appendChild(loadingIndicator);
                 
-                // Force reflow to apply styles
-                resumeElement.offsetHeight;
-                
-                html2canvas(resumeElement, {
-                    scale: 4,  // Higher scale for better quality
-                    useCORS: true,
-                    allowTaint: true,
-                    backgroundColor: '#ffffff',
-                    width: resumeElement.scrollWidth,
-                    height: resumeElement.scrollHeight,
-                    windowWidth: resumeElement.scrollWidth,
-                    windowHeight: resumeElement.scrollHeight,
-                    x: 0,
-                    y: 0,
-                    scrollX: 0,
-                    scrollY: 0,
-                    removeContainer: true,
-                    imageTimeout: 0,
-                    logging: false
-                }).then(function(canvas) {
+                // Use dom-to-image for better results
+                domtoimage.toPng(resumeElement, {
+                    quality: 1.0,
+                    bgcolor: '#ffffff',
+                    width: resumeElement.offsetWidth,
+                    height: resumeElement.offsetHeight,
+                    style: {
+                        margin: '0',
+                        padding: '0',
+                        transform: 'scale(1)',
+                        transformOrigin: 'top left'
+                    }
+                })
+                .then(function (dataUrl) {
                     var link = document.createElement('a');
-                    link.download = `Victor Lai Resume.png`;
-                    link.href = canvas.toDataURL('image/png', 1.0);
+                    link.download = 'Victor Lai Resume.png';
+                    link.href = dataUrl;
                     link.click();
                     
-                    // Remove download mode class and show button again
-                    body.classList.remove('download-mode');
-                    document.getElementById('downloadBtn').style.display = 'flex';
-                }).catch(function(error) {
-                    console.error('Error generating PNG:', error);
-                    // Cleanup on error
-                    body.classList.remove('download-mode');
-                    document.getElementById('downloadBtn').style.display = 'flex';
+                    // Cleanup
+                    document.body.removeChild(loadingIndicator);
+                    downloadBtn.style.display = 'flex';
+                })
+                .catch(function (error) {
+                    console.error('dom-to-image failed, trying alternative method:', error);
+                    document.body.removeChild(loadingIndicator);
+                    
+                    // Fallback: Try print method
+                    tryPrintMethod();
                 });
+                
+                // Alternative print-based method
+                function tryPrintMethod() {
+                    alert('Image generation failed. Please use Ctrl+P to print or save as PDF instead.');
+                    downloadBtn.style.display = 'flex';
+                }
             });
         });
     </script>
