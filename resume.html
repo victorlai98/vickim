@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LAI KHING HIAN (Victor) - Professional Resume</title>
+    <title>LAI KHING HIAN (Victor) - Resume</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;900;700&display=swap');
         
         * {
             font-family: 'Inter', sans-serif;
@@ -86,7 +87,7 @@
         }
         
         .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #9eb3bb  0%, #33394b  100%);
         }
         
         .hover-scale:hover {
@@ -95,7 +96,7 @@
         }
         
         .tech-tag {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            background: linear-gradient(45deg, #9eb3bb , #33394b );
             transition: all 0.3s ease;
         }
         
@@ -103,11 +104,56 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
         }
+        
+        .floating-download {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #9eb3bb 0%, #33394b 100%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .floating-download:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .floating-download i {
+            color: white;
+            font-size: 24px;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(158, 179, 187, 0.5);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            }
+        }
+        
+        @media print {
+            .floating-download {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-100">
     <div class="a4-size">
-        <!-- Header Section -->
         <header class="gradient-bg text-white p-8 slide-in-left">
             <div class="flex items-center space-x-6">
                 <div class="bounce-in">
@@ -116,176 +162,176 @@
                 <div class="flex-1">
                     <h1 class="text-4xl font-bold mb-2">LAI KHING HIAN</h1>
                     <h2 class="text-2xl font-light mb-4">(Victor)</h2>
-                    <p class="text-lg opacity-90">IT Support Professional & Web Developer</p>
+                    <p class="text-lg opacity-90">IT Support & Web Developer</p>
                 </div>
             </div>
         </header>
 
-        <!-- Contact Section -->
-        <section class="bg-gray-50 px-8 py-6 slide-in-right">
+        <section class="bg-gray-50 px-8 py-3 slide-in-right">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="flex items-center space-x-3 hover-scale">
-                    <i class="fas fa-envelope text-blue-600 text-xl"></i>
-                    <span class="text-gray-700">khinghian1998@gmail.com</span>
+                    <i class="fas fa-envelope text-xl"></i>
+                    <a class="text-gray-700" href="mailto:khinghian1998@gmail.com">khinghian1998@gmail.com</a>
                 </div>
-                <div class="flex items-center space-x-3 hover-scale">
-                    <i class="fab fa-whatsapp text-green-600 text-xl"></i>
-                    <span class="text-gray-700">60178022832</span>
+                <div class="flex items-center justify-center space-x-3 hover-scale">
+                    <i class="fab fa-whatsapp text-green-900 text-xl"></i>
+                    <a class="text-gray-700" href="https://wa.me/60178022832">60178022832</a>
                 </div>
-                <div class="flex items-center space-x-3 hover-scale">
-                    <i class="fas fa-map-marker-alt text-red-600 text-xl"></i>
-                    <span class="text-gray-700 text-sm">NO 139 SIBURAN COMM.CENTRE<br>TAMAN RASAJA 94200 KUCHING</span>
+                <div class="flex flex-col items-center space-y-2 hover-scale">
+                    <div class="text-center">
+                        <div class="bg-white p-2 rounded-lg shadow-md">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://victorlai98.github.io/vickim/resume.html" alt="E-Resume QR Code" class="w-20 h-20">
+                        </div>
+                        <span class="text-gray-700 text-xs mt-1 block">E-Resume</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Main Content -->
         <div class="flex">
-            <!-- Left Column -->
             <div class="w-1/3 bg-gray-800 text-white p-6">
-                <!-- Education -->
                 <section class="mb-8 fade-in">
-                    <h3 class="text-xl font-bold mb-4 text-blue-400 border-b border-blue-400 pb-2">
+                    <h3 class="text-xl font-bold mb-4  border-b border-blue-400 pb-2">
                         <i class="fas fa-graduation-cap mr-2"></i>EDUCATION
                     </h3>
                     <div class="space-y-3">
                         <h4 class="font-semibold text-lg">Diploma in Digital Technology</h4>
                         <p class="text-gray-300">Politeknik Kuching Sarawak</p>
-                        <p class="text-blue-300">06/2017 - 05/2020</p>
-                        <p class="text-yellow-400 font-semibold">CGPA: 3.68</p>
-                        <div class="mt-3 space-y-1">
+                        <p class="text-blue-100">06/2017 - 05/2020</p>
+                        <p class="text-yellow-600 font-semibold">CGPA: 3.68</p>
+                        <div class="mt-3">
                             <div class="tech-tag text-xs px-2 py-1 rounded text-white inline-block mr-1 mb-1">Mobile App Development</div>
                             <div class="tech-tag text-xs px-2 py-1 rounded text-white inline-block mr-1 mb-1">Website Development</div>
                             <div class="tech-tag text-xs px-2 py-1 rounded text-white inline-block mr-1 mb-1">Digital Multimedia</div>
                             <div class="tech-tag text-xs px-2 py-1 rounded text-white inline-block mr-1 mb-1">Software Testing</div>
-                            <div class="tech-tag text-xs px-2 py-1 rounded text-white inline-block mr-1 mb-1">Software Operating</div>
+                            <div class="tech-tag text-xs px-2 py-1 rounded text-white inline-block mr-1 mb-1">Hardware Setup</div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Skills -->
                 <section class="mb-8 fade-in">
-                    <h3 class="text-xl font-bold mb-4 text-blue-400 border-b border-blue-400 pb-2">
+                    <h3 class="text-xl font-bold mb-4 border-b border-blue-400 pb-2">
                         <i class="fas fa-cogs mr-2"></i>SKILLS
                     </h3>
                     <div class="space-y-3">
-                        <div class="skill-item">
-                            <span class="text-sm font-medium">Webpage Development</span>
-                            <div class="w-full bg-gray-700 rounded-full h-2 mt-1">
-                                <div class="skill-bar bg-blue-500 h-2 rounded-full" style="width: 90%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="text-sm font-medium">Hardware Problem Solving</span>
-                            <div class="w-full bg-gray-700 rounded-full h-2 mt-1">
-                                <div class="skill-bar bg-green-500 h-2 rounded-full" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="text-sm font-medium">Video Editing</span>
-                            <div class="w-full bg-gray-700 rounded-full h-2 mt-1">
-                                <div class="skill-bar bg-purple-500 h-2 rounded-full" style="width: 70%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="text-sm font-medium">Graphic Design</span>
-                            <div class="w-full bg-gray-700 rounded-full h-2 mt-1">
-                                <div class="skill-bar bg-pink-500 h-2 rounded-full" style="width: 75%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="text-sm font-medium">Teamwork</span>
-                            <div class="w-full bg-gray-700 rounded-full h-2 mt-1">
-                                <div class="skill-bar bg-orange-500 h-2 rounded-full" style="width: 95%;"></div>
-                            </div>
-                        </div>
+                                                 <div class="skill-item">
+                             <span class="text-sm font-medium">Webpage Development</span>
+                             <div class="w-full bg-gray-100 rounded-full h-2 mt-1">
+                                 <div class="skill-bar h-2 rounded-full" style="width: 90%; background: linear-gradient(90deg, #3b82f6, #1e40af);"></div>
+                             </div>
+                         </div>
+                         <div class="skill-item">
+                             <span class="text-sm font-medium">Hardware Problem Solving</span>
+                             <div class="w-full bg-gray-100 rounded-full h-2 mt-1">
+                                 <div class="skill-bar h-2 rounded-full" style="width: 85%; background: linear-gradient(90deg, #10b981, #047857);"></div>
+                             </div>
+                         </div>
+                         
+                         <div class="skill-item">
+                             <span class="text-sm font-medium">Teamwork</span>
+                             <div class="w-full bg-gray-100 rounded-full h-2 mt-1">
+                                 <div class="skill-bar h-2 rounded-full" style="width: 95%; background: linear-gradient(90deg, #9eb3bb, #33394b);"></div>
+                             </div>
+                         </div>
+                         <div class="skill-item">
+                             <span class="text-sm font-medium">Fast Leaner</span>
+                             <div class="w-full bg-gray-100 rounded-full h-2 mt-1">
+                                 <div class="skill-bar h-2 rounded-full" style="width: 95%; background: linear-gradient(90deg, #9eb3bb, #33394b);"></div>
+                             </div>
+                         </div>
                     </div>
                 </section>
 
-                <!-- Interests -->
                 <section class="fade-in">
-                    <h3 class="text-xl font-bold mb-4 text-blue-400 border-b border-blue-400 pb-2">
+                    <h3 class="text-xl font-bold border-b border-blue-400 pb-2">
                         <i class="fas fa-heart mr-2"></i>INTERESTS
                     </h3>
-                    <div class="space-y-2">
+                    <div class="space-y-2 mt-3">
                         <div class="flex items-center space-x-2">
-                            <i class="fas fa-laptop-code text-blue-400"></i>
+                            <i class="fas fa-laptop-code text-blue-600"></i>
                             <span class="text-sm">Technology Trends</span>
                         </div>
                         <div class="flex items-center space-x-2">
-                            <i class="fas fa-microchip text-green-400"></i>
+                            <i class="fas fa-microchip text-green-600"></i>
                             <span class="text-sm">IT Software & Hardware</span>
                         </div>
                     </div>
                 </section>
             </div>
 
-            <!-- Right Column -->
             <div class="w-2/3 p-6">
-                <!-- Work Experience -->
                 <section class="mb-8 slide-in-right">
-                    <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b-2 border-blue-500 pb-2">
-                        <i class="fas fa-briefcase mr-2 text-blue-500"></i>WORK EXPERIENCE
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b-2 border-blue-900 pb-2">
+                        <i class="fas fa-briefcase mr-2 text-blue-900"></i>WORK EXPERIENCE
                     </h3>
                     
-                    <!-- Current Job -->
                     <div class="mb-8 bg-white rounded-lg shadow-md p-6 hover-scale">
                         <div class="flex justify-between items-start mb-3">
                             <h4 class="text-xl font-bold text-gray-800">IT Support</h4>
-                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Current</span>
+                            <span class="bg-green-900 text-green-100 px-3 py-1 rounded-full text-sm font-medium">Current</span>
                         </div>
-                        <p class="text-blue-600 font-semibold mb-2">Farley Mall Sdn Bhd</p>
-                        <p class="text-gray-600 mb-4">11/2021 - Present</p>
+                        <p class="text-blue-900 font-semibold mb-2">Farley Mall Sdn Bhd</p>
+                        <p class="text-gray-900 mb-4">11/2021 - Present</p>
                         
-                        <div class="space-y-2 text-sm text-gray-700">
-                            <div class="flex items-start space-x-2">
-                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                                <span>CCTV, WiFi, door access, network switch setup and installation</span>
-                            </div>
-                            <div class="flex items-start space-x-2">
-                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                                <span>Event projector, PC hardware, speaker setup and installation</span>
-                            </div>
-                            <div class="flex items-start space-x-2">
-                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                                <span>Cashier POS system and F&B system setup</span>
-                            </div>
-                            <div class="flex items-start space-x-2">
-                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                                <span>Hardware problem solving and maintenance</span>
-                            </div>
-                            <div class="flex items-start space-x-2">
-                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                                <span>Pay & Go carpark system maintenance</span>
-                            </div>
-                        </div>
+                                                 <div class="space-y-2 text-sm text-gray-700">
+                             <div class="flex items-start space-x-2">
+                                 <i class="fas fa-check-circle text-green-900 mt-1"></i>
+                                 <span>CCTV, WiFi, Door Access, Network Switch setup and installation</span>
+                             </div>
+                             <div class="flex items-start space-x-2">
+                                 <i class="fas fa-check-circle text-green-900 mt-1"></i>
+                                 <span>Event Projector, PC Hardware, Speaker setup and installation</span>
+                             </div>
+                             <div class="flex items-start space-x-2">
+                                 <i class="fas fa-check-circle text-green-900 mt-1"></i>
+                                 <span>Cashier POS system and F&B system setup</span>
+                             </div>
+                             <div class="flex items-start space-x-2">
+                                 <i class="fas fa-check-circle text-green-900 mt-1"></i>
+                                 <span>Hardware problem solving and maintenance</span>
+                             </div>
+                             <div class="flex items-start space-x-2">
+                                 <i class="fas fa-check-circle text-green-900 mt-1"></i>
+                                 <span>Pay & Go carpark system maintenance</span>
+                             </div>
+                             <div class="flex items-start space-x-2">
+                                 <i class="fas fa-check-circle text-green-900 mt-1"></i>
+                                 <span>Office printer maintenance</span>
+                             </div>
+                             <div class="flex items-start space-x-2">
+                                 <i class="fas fa-check-circle text-green-900 mt-1"></i>
+                                 <span>Weighing scale maintenance and license renew</span>
+                             </div>
+                             <div class="flex items-start space-x-2">
+                                 <i class="fas fa-check-circle text-green-900 mt-1"></i>
+                                 <span>Event attendance collection system setup (Real-Time attendance update preview with Google Sheet)</span>
+                             </div>
+                         </div>
                         
                         <div class="mt-4">
                             <h5 class="font-semibold text-gray-800 mb-2">Web Development Projects:</h5>
                             <div class="grid grid-cols-2 gap-2">
-                                <div class="tech-tag text-xs px-2 py-1 rounded text-white">Hardware Stock Balance</div>
                                 <div class="tech-tag text-xs px-2 py-1 rounded text-white">Staff ID Generator</div>
-                                <div class="tech-tag text-xs px-2 py-1 rounded text-white">Invitation Card System</div>
-                                <div class="tech-tag text-xs px-2 py-1 rounded text-white">Event Registration</div>
-                                <div class="tech-tag text-xs px-2 py-1 rounded text-white">Staff Point System</div>
-                                <div class="tech-tag text-xs px-2 py-1 rounded text-white">Issue Report Feedback</div>
+                                <div class="tech-tag text-xs px-2 py-1 rounded text-white">Invitation Card Webpage</div>
+                                <div class="tech-tag text-xs px-2 py-1 rounded text-white">Event Registration Webpage</div>
+                                <div class="tech-tag text-xs px-2 py-1 rounded text-white">Staff Point Check Webpage</div>
+                                <div class="tech-tag text-xs px-2 py-1 rounded text-white">Issue Report Webpage</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Previous Job -->
                     <div class="bg-white rounded-lg shadow-md p-6 hover-scale">
                         <h4 class="text-xl font-bold text-gray-800 mb-2">Software Tester</h4>
-                        <p class="text-blue-600 font-semibold mb-2">Sarawak Information System Sdn Bhd</p>
-                        <p class="text-gray-600 mb-4">12/2019 - 04/2020 | Sians Samarahan Office</p>
+                        <p class="text-blue-900 font-semibold mb-2">Sarawak Information System Sdn Bhd</p>
+                        <p class="text-gray-900 mb-4">12/2019 - 04/2020 | Sians Samarahan Office</p>
                         
                         <div class="space-y-2 text-sm text-gray-700">
                             <div class="flex items-start space-x-2">
-                                <i class="fas fa-check-circle text-blue-500 mt-1"></i>
+                                <i class="fas fa-check-circle text-blue-900 mt-1"></i>
                                 <span>IT Solution Support</span>
                             </div>
                             <div class="flex items-start space-x-2">
-                                <i class="fas fa-check-circle text-blue-500 mt-1"></i>
+                                <i class="fas fa-check-circle text-blue-900 mt-1"></i>
                                 <span>Software Testing (App / Website)</span>
                             </div>
                         </div>
@@ -294,19 +340,21 @@
             </div>
         </div>
 
-        <!-- Footer -->
         <footer class="bg-gray-800 text-white text-center py-4 fade-in">
             <p class="text-sm">
-                <i class="fas fa-code text-blue-400"></i>
+                <i class="fas fa-code text-blue-600"></i>
                 Ready to bring innovative IT solutions to your team
             </p>
         </footer>
     </div>
 
+    <!-- Floating Download Button -->
+    <div class="floating-download" id="downloadBtn" title="Download Resume as PNG">
+        <i class="fas fa-download"></i>
+    </div>
+
     <script>
-        // Add smooth scrolling and enhanced animations
         document.addEventListener('DOMContentLoaded', function() {
-            // Animate skill bars on load
             const skillBars = document.querySelectorAll('.skill-bar');
             skillBars.forEach((bar, index) => {
                 setTimeout(() => {
@@ -314,7 +362,6 @@
                 }, 100);
             });
             
-            // Add hover effects to tech tags
             const techTags = document.querySelectorAll('.tech-tag');
             techTags.forEach(tag => {
                 tag.addEventListener('mouseenter', function() {
@@ -326,11 +373,121 @@
                 });
             });
             
-            // Add print functionality
             document.addEventListener('keydown', function(e) {
                 if (e.ctrlKey && e.key === 'p') {
                     window.print();
                 }
+            });
+            
+            // Download functionality
+            const downloadBtn = document.getElementById('downloadBtn');
+            downloadBtn.addEventListener('click', function() {
+                // Hide the download button before capturing
+                downloadBtn.style.display = 'none';
+                
+                // Show loading state
+                const originalContent = downloadBtn.innerHTML;
+                downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                
+                // Get the QR code image and convert it to base64 to avoid CORS issues
+                const qrImage = document.querySelector('img[alt="E-Resume QR Code"]');
+                const originalQrSrc = qrImage.src;
+                
+                // Create a new image element to handle CORS
+                const corsProxyQr = new Image();
+                corsProxyQr.crossOrigin = 'anonymous';
+                
+                // Function to capture after handling QR code
+                function captureResume() {
+                    const resumeContainer = document.querySelector('.a4-size');
+                    
+                    html2canvas(resumeContainer, {
+                        scale: 2,
+                        useCORS: false,
+                        allowTaint: false,
+                        backgroundColor: '#ffffff',
+                        width: resumeContainer.offsetWidth,
+                        height: resumeContainer.offsetHeight,
+                        logging: false,
+                        imageTimeout: 0,
+                        removeContainer: true
+                    }).then(function(canvas) {
+                        // Create download link
+                        const link = document.createElement('a');
+                        link.download = 'LAI_KHING_HIAN_Victor_Resume.png';
+                        link.href = canvas.toDataURL('image/png');
+                        
+                        // Trigger download
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        // Restore original QR code source
+                        qrImage.src = originalQrSrc;
+                        
+                        // Show button again
+                        downloadBtn.style.display = 'flex';
+                        downloadBtn.innerHTML = originalContent;
+                    }).catch(function(error) {
+                        console.error('Error generating PNG:', error);
+                        
+                        // Try alternative method - replace QR with text
+                        const qrContainer = qrImage.parentElement.parentElement;
+                        const originalQrHtml = qrContainer.innerHTML;
+                        qrContainer.innerHTML = `
+                            <i class="fas fa-qrcode text-purple-600 text-4xl"></i>
+                            <span class="text-gray-700 text-xs mt-1 block">Scan for E-Resume</span>
+                            <span class="text-gray-600 text-xs">victorlai98.github.io/vickim/resume.html</span>
+                        `;
+                        
+                        // Try capture again
+                        html2canvas(resumeContainer, {
+                            scale: 2,
+                            useCORS: false,
+                            allowTaint: false,
+                            backgroundColor: '#ffffff',
+                            logging: false
+                        }).then(function(canvas) {
+                            const link = document.createElement('a');
+                            link.download = 'LAI_KHING_HIAN_Victor_Resume.png';
+                            link.href = canvas.toDataURL('image/png');
+                            
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                            
+                            // Restore original QR container
+                            qrContainer.innerHTML = originalQrHtml;
+                            
+                            // Show button again
+                            downloadBtn.style.display = 'flex';
+                            downloadBtn.innerHTML = originalContent;
+                        }).catch(function(finalError) {
+                            console.error('Final error generating PNG:', finalError);
+                            alert('Unable to generate PNG due to browser security restrictions. Please use Print to PDF instead (Ctrl+P).');
+                            
+                            // Restore everything
+                            qrContainer.innerHTML = originalQrHtml;
+                            downloadBtn.style.display = 'flex';
+                            downloadBtn.innerHTML = originalContent;
+                        });
+                    });
+                }
+                
+                // Try to load QR image with CORS, fallback if it fails
+                corsProxyQr.onload = function() {
+                    // Replace the original QR image with CORS-enabled version
+                    qrImage.src = corsProxyQr.src;
+                    captureResume();
+                };
+                
+                corsProxyQr.onerror = function() {
+                    // If CORS fails, proceed with original capture
+                    captureResume();
+                };
+                
+                // Try to load with CORS proxy (this might still fail, but we have fallbacks)
+                corsProxyQr.src = originalQrSrc;
             });
         });
     </script>
