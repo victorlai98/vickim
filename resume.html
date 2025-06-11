@@ -168,7 +168,7 @@
         </header>
 
         <section class="bg-gray-50 px-8 py-3 slide-in-right">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-3 gap-4">
                 <div class="flex items-center space-x-3 hover-scale">
                     <i class="fas fa-envelope text-xl"></i>
                     <a class="text-gray-700" href="mailto:khinghian1998@gmail.com">khinghian1998@gmail.com</a>
@@ -380,114 +380,26 @@
             });
             
             // Download functionality
-            const downloadBtn = document.getElementById('downloadBtn');
-            downloadBtn.addEventListener('click', function() {
+            document.getElementById('downloadBtn').addEventListener('click', function() {
+                var resumeElement = document.querySelector('.a4-size');
+                
                 // Hide the download button before capturing
-                downloadBtn.style.display = 'none';
+                document.getElementById('downloadBtn').style.display = 'none';
                 
-                // Show loading state
-                const originalContent = downloadBtn.innerHTML;
-                downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-                
-                // Get the QR code image and convert it to base64 to avoid CORS issues
-                const qrImage = document.querySelector('img[alt="E-Resume QR Code"]');
-                const originalQrSrc = qrImage.src;
-                
-                // Create a new image element to handle CORS
-                const corsProxyQr = new Image();
-                corsProxyQr.crossOrigin = 'anonymous';
-                
-                // Function to capture after handling QR code
-                function captureResume() {
-                    const resumeContainer = document.querySelector('.a4-size');
+                html2canvas(resumeElement, {
+                    scale: 4,  // Higher scale for better quality (2-4 recommended)
+                    useCORS: true, // Helps in avoiding cross-origin issues
+                    allowTaint: true,
+                    backgroundColor: null, // Keeps transparency
+                }).then(function(canvas) {
+                    var link = document.createElement('a');
+                    link.download = `Victor Lai Resume.png`;
+                    link.href = canvas.toDataURL('image/png', 1.0); // Maximum quality
+                    link.click();
                     
-                    html2canvas(resumeContainer, {
-                        scale: 2,
-                        useCORS: false,
-                        allowTaint: false,
-                        backgroundColor: '#ffffff',
-                        width: resumeContainer.offsetWidth,
-                        height: resumeContainer.offsetHeight,
-                        logging: false,
-                        imageTimeout: 0,
-                        removeContainer: true
-                    }).then(function(canvas) {
-                        // Create download link
-                        const link = document.createElement('a');
-                        link.download = 'LAI_KHING_HIAN_Victor_Resume.png';
-                        link.href = canvas.toDataURL('image/png');
-                        
-                        // Trigger download
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                        
-                        // Restore original QR code source
-                        qrImage.src = originalQrSrc;
-                        
-                        // Show button again
-                        downloadBtn.style.display = 'flex';
-                        downloadBtn.innerHTML = originalContent;
-                    }).catch(function(error) {
-                        console.error('Error generating PNG:', error);
-                        
-                        // Try alternative method - replace QR with text
-                        const qrContainer = qrImage.parentElement.parentElement;
-                        const originalQrHtml = qrContainer.innerHTML;
-                        qrContainer.innerHTML = `
-                            <i class="fas fa-qrcode text-purple-600 text-4xl"></i>
-                            <span class="text-gray-700 text-xs mt-1 block">Scan for E-Resume</span>
-                            <span class="text-gray-600 text-xs">victorlai98.github.io/vickim/resume.html</span>
-                        `;
-                        
-                        // Try capture again
-                        html2canvas(resumeContainer, {
-                            scale: 2,
-                            useCORS: false,
-                            allowTaint: false,
-                            backgroundColor: '#ffffff',
-                            logging: false
-                        }).then(function(canvas) {
-                            const link = document.createElement('a');
-                            link.download = 'LAI_KHING_HIAN_Victor_Resume.png';
-                            link.href = canvas.toDataURL('image/png');
-                            
-                            document.body.appendChild(link);
-                            link.click();
-                            document.body.removeChild(link);
-                            
-                            // Restore original QR container
-                            qrContainer.innerHTML = originalQrHtml;
-                            
-                            // Show button again
-                            downloadBtn.style.display = 'flex';
-                            downloadBtn.innerHTML = originalContent;
-                        }).catch(function(finalError) {
-                            console.error('Final error generating PNG:', finalError);
-                            alert('Unable to generate PNG due to browser security restrictions. Please use Print to PDF instead (Ctrl+P).');
-                            
-                            // Restore everything
-                            qrContainer.innerHTML = originalQrHtml;
-                            downloadBtn.style.display = 'flex';
-                            downloadBtn.innerHTML = originalContent;
-                        });
-                    });
-                }
-                
-                // Try to load QR image with CORS, fallback if it fails
-                corsProxyQr.onload = function() {
-                    // Replace the original QR image with CORS-enabled version
-                    qrImage.src = corsProxyQr.src;
-                    captureResume();
-                };
-                
-                corsProxyQr.onerror = function() {
-                    // If CORS fails, proceed with original capture
-                    captureResume();
-                };
-                
-                // Try to load with CORS proxy (this might still fail, but we have fallbacks)
-                corsProxyQr.src = originalQrSrc;
+                    // Show the download button again
+                    document.getElementById('downloadBtn').style.display = 'flex';
+                });
             });
         });
     </script>
