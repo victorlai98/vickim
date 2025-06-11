@@ -390,7 +390,13 @@
                     scale: 4,  // Higher scale for better quality (2-4 recommended)
                     useCORS: true, // Helps in avoiding cross-origin issues
                     allowTaint: true,
-                    backgroundColor: null, // Keeps transparency
+                    backgroundColor: '#ffffff', // White background instead of null
+                    width: resumeElement.offsetWidth,
+                    height: resumeElement.offsetHeight,
+                    x: 0,
+                    y: 0,
+                    scrollX: 0,
+                    scrollY: 0
                 }).then(function(canvas) {
                     var link = document.createElement('a');
                     link.download = `Victor Lai Resume.png`;
