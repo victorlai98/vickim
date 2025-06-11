@@ -18,8 +18,10 @@
             width: 210mm;
             min-height: 297mm;
             margin: 0 auto;
+            padding: 0;
             background: white;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-sizing: border-box;
         }
         
         @media screen {
@@ -37,6 +39,13 @@
                 margin: 0;
                 padding: 0;
             }
+        }
+        
+        /* Ensure no extra spacing for download */
+        .download-mode .a4-size {
+            margin: 0 !important;
+            padding: 0 !important;
+            box-shadow: none !important;
         }
         
         .fade-in {
@@ -382,28 +391,46 @@
             // Download functionality
             document.getElementById('downloadBtn').addEventListener('click', function() {
                 var resumeElement = document.querySelector('.a4-size');
+                var body = document.body;
                 
                 // Hide the download button before capturing
                 document.getElementById('downloadBtn').style.display = 'none';
                 
+                // Add download mode class to remove all margins/padding
+                body.classList.add('download-mode');
+                
+                // Force reflow to apply styles
+                resumeElement.offsetHeight;
+                
                 html2canvas(resumeElement, {
-                    scale: 4,  // Higher scale for better quality (2-4 recommended)
-                    useCORS: true, // Helps in avoiding cross-origin issues
+                    scale: 4,  // Higher scale for better quality
+                    useCORS: true,
                     allowTaint: true,
-                    backgroundColor: '#ffffff', // White background instead of null
-                    width: resumeElement.offsetWidth,
-                    height: resumeElement.offsetHeight,
+                    backgroundColor: '#ffffff',
+                    width: resumeElement.scrollWidth,
+                    height: resumeElement.scrollHeight,
+                    windowWidth: resumeElement.scrollWidth,
+                    windowHeight: resumeElement.scrollHeight,
                     x: 0,
                     y: 0,
                     scrollX: 0,
-                    scrollY: 0
+                    scrollY: 0,
+                    removeContainer: true,
+                    imageTimeout: 0,
+                    logging: false
                 }).then(function(canvas) {
                     var link = document.createElement('a');
                     link.download = `Victor Lai Resume.png`;
-                    link.href = canvas.toDataURL('image/png', 1.0); // Maximum quality
+                    link.href = canvas.toDataURL('image/png', 1.0);
                     link.click();
                     
-                    // Show the download button again
+                    // Remove download mode class and show button again
+                    body.classList.remove('download-mode');
+                    document.getElementById('downloadBtn').style.display = 'flex';
+                }).catch(function(error) {
+                    console.error('Error generating PNG:', error);
+                    // Cleanup on error
+                    body.classList.remove('download-mode');
                     document.getElementById('downloadBtn').style.display = 'flex';
                 });
             });
