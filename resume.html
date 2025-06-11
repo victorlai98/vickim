@@ -402,36 +402,54 @@
                 loadingIndicator.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:white;padding:20px;border-radius:10px;z-index:9999;';
                 document.body.appendChild(loadingIndicator);
                 
-                // Use dom-to-image for better results
-                domtoimage.toPng(resumeElement, {
-                    quality: 8.0,
-                    bgcolor: '#ffffff',
-                    width: resumeElement.offsetWidth,
-                    height: resumeElement.offsetHeight,
-                    style: {
-                        margin: '0',
-                        padding: '0',
-                        transform: 'scale(1)',
-                        transformOrigin: 'top left'
-                    }
-                })
-                .then(function (dataUrl) {
-                    var link = document.createElement('a');
-                    link.download = 'Victor Lai Resume.png';
-                    link.href = dataUrl;
-                    link.click();
-                    
-                    // Cleanup
-                    document.body.removeChild(loadingIndicator);
-                    downloadBtn.style.display = 'flex';
-                })
-                .catch(function (error) {
-                    console.error('dom-to-image failed, trying alternative method:', error);
-                    document.body.removeChild(loadingIndicator);
-                    
-                    // Fallback: Try print method
-                    tryPrintMethod();
-                });
+                // Ensure fonts are loaded before capturing
+                if (document.fonts && document.fonts.ready) {
+                    document.fonts.ready.then(function() {
+                        setTimeout(captureImage, 500); // Wait a bit more for icons to render
+                    });
+                } else {
+                    setTimeout(captureImage, 1000); // Fallback delay
+                }
+                
+                function captureImage() {
+                    // Use dom-to-image for better results
+                    domtoimage.toPng(resumeElement, {
+                        quality: 8.0,
+                        bgcolor: '#ffffff',
+                        width: resumeElement.offsetWidth,
+                        height: resumeElement.offsetHeight,
+                        cacheBust: true,
+                        useCORS: true,
+                        allowTaint: true,
+                        filter: function (node) {
+                            // Exclude floating download button
+                            return node.id !== 'downloadBtn';
+                        },
+                        style: {
+                            margin: '0',
+                            padding: '0',
+                            transform: 'scale(1)',
+                            transformOrigin: 'top left'
+                        }
+                    })
+                    .then(function (dataUrl) {
+                        var link = document.createElement('a');
+                        link.download = 'Victor Lai Resume.png';
+                        link.href = dataUrl;
+                        link.click();
+                        
+                        // Cleanup
+                        document.body.removeChild(loadingIndicator);
+                        downloadBtn.style.display = 'flex';
+                    })
+                    .catch(function (error) {
+                        console.error('dom-to-image failed, trying alternative method:', error);
+                        document.body.removeChild(loadingIndicator);
+                        
+                        // Fallback: Try print method
+                        tryPrintMethod();
+                    });
+                }
                 
                 // Alternative print-based method
                 function tryPrintMethod() {
