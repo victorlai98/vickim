@@ -404,10 +404,10 @@
                 
                 // Use dom-to-image for better results
                 domtoimage.toPng(resumeElement, {
-                    quality: 4.0,
+                    quality: 8.0,
                     bgcolor: '#ffffff',
-                    width: 840,
-                    height: 1188,
+                    width: resumeElement.offsetWidth,
+                    height: resumeElement.offsetHeight,
                     style: {
                         margin: '0',
                         padding: '0',
